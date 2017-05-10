@@ -1,0 +1,47 @@
+{
+	"apiStatus": {
+		"resultInformation": null,
+		"statusCode": "200",
+		"serviceDescription": "com.aph.webservice.ApAssessmentServiceV8Impl",
+		"timestamp": "2017-03-23 12:17:38.609",
+		"errorMessage": "SUCCESS",
+		"errorStackTrace": null
+	},
+	"memberAssessmentId": "70791",
+	"assessmentStatus": "COMPLETE",
+	"questionList": [{
+		"questionText": {
+			"baseText": "<B>Need help with food, shelter, or utilities?</B><BR />Do you need help food, housing or keeping your utilities on?",
+			"layText": "",
+			"expertText": ""
+		},
+		"isRequired": true,
+		"helpText": "Script: Part of staying healthy is being in a safe place and having enough healthy food to eat.",
+		"questionType": "MULTIPLE_CHOICE_MULTIPLE_SELECT",
+		"questionId": "12e392c0-3808-4d1f-86e5-6cbc17452078",
+		"isFirstQuestion": false,
+		"isLastQuestion": false,
+		"answerList": [{
+			"answerText": {
+				"baseText": "None of the above",
+				"layText": "",
+				"expertText": ""
+			},
+			"helpText": "",
+			"answerId": "db7e0d3d-81ac-499e-9f86-68f21d17bfc3",
+			"userResponse": "TRUE",
+			"userResponseUOM": null,
+			"isExclusive": true
+		}]
+	}, {
+		"questionText": {
+			"layText": null,
+			"expertText": null
+		},
+		"isRequired": false,
+		"helpText": null,
+		"questionId": "a3ee832c-844f-4f26-b187-c4e48c371d89",
+		"isFirstQuestion": false,
+		"isLastQuestion": false
+	}]
+}

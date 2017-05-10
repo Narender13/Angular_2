@@ -1,0 +1,346 @@
+{
+	"apiStatus": {
+		"resultInformation": null,
+		"statusCode": "200",
+		"serviceDescription": "com.aph.webservice.ApCarePlanServiceV8Impl",
+		"timestamp": "2017-03-17 10:00:58.908",
+		"errorMessage": "SUCCESS",
+		"errorStackTrace": null
+	},
+	"goalList": [{
+		"memberGoalId": "9341",
+		"goalId": "1781",
+		"goalName": "<B>Take medication as prescribed</B>",
+		"goalStartDate": "03/16/2017 09:17AM",
+		"goalEndDate": "",
+		"goalSensitivityCategoryDescription": "",
+		"currentGoalStatus": {
+			"value": "MEMBER_NOT_PROG",
+			"label": "Member Not Progressing",
+			"activityDate": "03/17/2017 06:23AM",
+			"activityPerformedBy": "CCMS Last Name, CCMS First Name"
+		},
+		"currentGoalType": {
+			"value": "SHORT_TERM",
+			"label": "Short Term",
+			"activityDate": "03/17/2017 02:56AM",
+			"activityPerformedBy": "CCMS Last Name, CCMS First Name"
+		},
+		"currentGoalActivitySource": {
+			"value": "ZDEFAULT",
+			"label": "Member",
+			"activityDate": "03/17/2017 09:14AM",
+			"activityPerformedBy": "System User, Main"
+		},
+		"barrierList": [{
+			"memberGoalBarrierId": "8161",
+			"barrierId": "2101",
+			"barrierName": "<B>Cost or delivery issue affects medication adherence</B>",
+			"barrierSensitivityCategoryDescription": "",
+			"barrierMotivationalStateFlag": false,
+			"barrierStartDate": "03/16/2017 07:27AM",
+			"barrierEndDate": "",
+			"currentBarrierStatus": {
+				"value": "NOT_APPLICABLE",
+				"label": "Not Applicable",
+				"activityDate": "03/16/2017 07:15PM",
+				"activityPerformedBy": "System User, Main"
+			},
+			"currentBarrierMotivationalState": {
+				"value": "ZDEFAULT",
+				"label": "Precontemplation: Not ready",
+				"activityDate": "",
+				"activityPerformedBy": ""
+			},
+			"interventionList": [{
+				"memberGoalBarrierInterventionId": "17411",
+				"interventionId": "3901",
+				"interventionName": "<B>Explore solutions for cost of medication</B>",
+				"interventionSensitivityCategoryDescription": "",
+				"interventionStartDate": "03/16/2017 09:44AM",
+				"interventionEndDate": "",
+				"isInstructionAvailable": true,
+				"isEducationMaterialAvailable": true,
+				"currentInterventionStatus": {
+					"value": "ZDEFAULT",
+					"label": "Open",
+					"activityDate": "",
+					"activityPerformedBy": ""
+				},
+				"currentInterventionNote": {
+					"value": "03/16/2017 09:44AM",
+					"label": "This is a sample note that is too long to fit in normal window",
+					"activityDate": "03/16/2017 09:44AM",
+					"activityPerformedBy": ""
+				},
+				"currentInterventionAssignedTo": {
+					"value": "10171",
+					"label": "Care Manager",
+					"activityDate": "03/16/2017 07:15PM",
+					"activityPerformedBy": "System User, Main"
+				},
+				"interventionAssignedToList": [{
+					"value": "10171",
+					"label": "Care Manager"
+				}]
+			}, {
+				"memberGoalBarrierInterventionId": "17431",
+				"interventionId": "3921",
+				"interventionName": "<B>Ask provider about less-expensive medication</B>",
+				"interventionSensitivityCategoryDescription": "",
+				"interventionStartDate": "03/16/2017 07:27AM",
+				"interventionEndDate": "03/16/2017 07:27AM",
+				"isInstructionAvailable": false,
+				"isEducationMaterialAvailable": false,
+				"currentInterventionStatus": {
+					"value": "NOT_APPLICABLE",
+					"label": "Not Applicable",
+					"activityDate": "03/16/2017 04:57PM",
+					"activityPerformedBy": "CCMS Last Name, CCMS First Name"
+				},
+				"currentInterventionNote": {
+					"value": "03/16/2017 03:50PM",
+					"label": "ertertertertetrer",
+					"activityDate": "03/16/2017 03:50PM",
+					"activityPerformedBy": "CCMS Last Name, CCMS First Name"
+				},
+				"currentInterventionAssignedTo": {
+					"value": "10251",
+					"label": "Member",
+					"activityDate": "03/16/2017 04:57PM",
+					"activityPerformedBy": "CCMS Last Name, CCMS First Name"
+				},
+				"interventionAssignedToList": [{
+					"value": "10231",
+					"label": "Care Manager"
+				}, {
+					"value": "10251",
+					"label": "Member"
+				}, {
+					"value": "10261",
+					"label": "Caregiver"
+				}]
+			}, {
+				"memberGoalBarrierInterventionId": "17441",
+				"interventionId": "3931",
+				"interventionName": "<B>Enroll in a mail-order pharmacy</B>",
+				"interventionSensitivityCategoryDescription": "",
+				"interventionStartDate": "03/17/2017 05:23AM",
+				"interventionEndDate": "",
+				"isInstructionAvailable": false,
+				"isEducationMaterialAvailable": true,
+				"currentInterventionStatus": {
+					"value": "IN_PROGRESS",
+					"label": "In Progress",
+					"activityDate": "03/17/2017 02:53PM",
+					"activityPerformedBy": "CCMS Last Name, CCMS First Name"
+				},
+				"currentInterventionNote": {
+					"value": "",
+					"label": "",
+					"activityDate": "",
+					"activityPerformedBy": ""
+				},
+				"currentInterventionAssignedTo": {
+					"value": "10271",
+					"label": "Care Manager",
+					"activityDate": "",
+					"activityPerformedBy": ""
+				},
+				"interventionAssignedToList": [{
+					"value": "10271",
+					"label": "Care Manager"
+				}, {
+					"value": "10291",
+					"label": "Member"
+				}, {
+					"value": "10301",
+					"label": "Caregiver"
+				}]
+			}, {
+				"memberGoalBarrierInterventionId": "17421",
+				"interventionId": "3911",
+				"interventionName": "<B>Enroll in a medication discount program</B>",
+				"interventionSensitivityCategoryDescription": "",
+				"interventionStartDate": "03/16/2017 07:16AM",
+				"interventionEndDate": "",
+				"isInstructionAvailable": true,
+				"isEducationMaterialAvailable": false,
+				"currentInterventionStatus": {
+					"value": "IN_PROGRESS",
+					"label": "In Progress",
+					"activityDate": "03/16/2017 04:46PM",
+					"activityPerformedBy": "CCMS Last Name, CCMS First Name"
+				},
+				"currentInterventionNote": {
+					"value": "",
+					"label": "",
+					"activityDate": "",
+					"activityPerformedBy": ""
+				},
+				"currentInterventionAssignedTo": {
+					"value": "10191",
+					"label": "Care Manager",
+					"activityDate": "",
+					"activityPerformedBy": ""
+				},
+				"interventionAssignedToList": [{
+					"value": "10191",
+					"label": "Care Manager"
+				}, {
+					"value": "10211",
+					"label": "Member"
+				}, {
+					"value": "10221",
+					"label": "Caregiver"
+				}]
+			}, {
+				"memberGoalBarrierInterventionId": "17451",
+				"interventionId": "3941",
+				"interventionName": "<B>If available, engage caregiver in solving problem</B>",
+				"interventionSensitivityCategoryDescription": "",
+				"interventionStartDate": "",
+				"interventionEndDate": "",
+				"isInstructionAvailable": true,
+				"isEducationMaterialAvailable": false,
+				"currentInterventionStatus": {
+					"value": "ZDEFAULT",
+					"label": "Open",
+					"activityDate": "",
+					"activityPerformedBy": ""
+				},
+				"currentInterventionNote": {
+					"value": "",
+					"label": "",
+					"activityDate": "",
+					"activityPerformedBy": ""
+				},
+				"currentInterventionAssignedTo": {
+					"value": "10311",
+					"label": "Care Manager",
+					"activityDate": "",
+					"activityPerformedBy": ""
+				},
+				"interventionAssignedToList": [{
+					"value": "10311",
+					"label": "Care Manager"
+				}]
+			}, {
+				"memberGoalBarrierInterventionId": "17461",
+				"interventionId": "3951",
+				"interventionName": "<B>Follow up when due for refill</B>",
+				"interventionSensitivityCategoryDescription": "",
+				"interventionStartDate": "",
+				"interventionEndDate": "",
+				"isInstructionAvailable": true,
+				"isEducationMaterialAvailable": false,
+				"currentInterventionStatus": {
+					"value": "ZDEFAULT",
+					"label": "Open",
+					"activityDate": "",
+					"activityPerformedBy": ""
+				},
+				"currentInterventionNote": {
+					"value": "",
+					"label": "",
+					"activityDate": "",
+					"activityPerformedBy": ""
+				},
+				"currentInterventionAssignedTo": {
+					"value": "10331",
+					"label": "Care Manager",
+					"activityDate": "",
+					"activityPerformedBy": ""
+				},
+				"interventionAssignedToList": [{
+					"value": "10331",
+					"label": "Care Manager"
+				}]
+			}]
+		}]
+	}],
+	"goalStatusList": [{
+		"value": "NOT_APPLICABLE",
+		"label": "Not Applicable"
+	}, {
+		"value": "ZDEFAULT",
+		"label": "Not Met"
+	}, {
+		"value": "MET",
+		"label": "Met"
+	}, {
+		"value": "MEMBER_REFUSED",
+		"label": "Member Refused"
+	}, {
+		"value": "ADDRESSED_NORES",
+		"label": "Addressed-No Resources"
+	}, {
+		"value": "MEMBER_NOT_PROG",
+		"label": "Member Not Progressing"
+	}],
+	"goalActivitySourceList": [{
+		"value": "ZDEFAULT",
+		"label": "Member"
+	}, {
+		"value": "CARE_GIVER",
+		"label": "Caregiver"
+	}],
+	"goalTypeList": [{
+		"value": "ZDEFAULT",
+		"label": "Select..."
+	}, {
+		"value": "SHORT_TERM",
+		"label": "Short Term"
+	}, {
+		"value": "LONG_TERM",
+		"label": "Long Term"
+	}],
+	"barrierStatusList": [{
+		"value": "ZDEFAULT",
+		"label": "Not Met"
+	}, {
+		"value": "NOT_APPLICABLE",
+		"label": "Not Applicable"
+	}, {
+		"value": "MET",
+		"label": "Met"
+	}, {
+		"value": "MEMBER_REFUSED",
+		"label": "Member Refused"
+	}, {
+		"value": "ADDRESSED_NORES",
+		"label": "Addressed-No Resources"
+	}, {
+		"value": "MEMBER_NOT_PROG",
+		"label": "Member Not Progressing"
+	}],
+	"barrierMotivationalStateList": [{
+		"value": "ZDEFAULT",
+		"label": "Precontemplation: Not ready"
+	}, {
+		"value": "CONTEMPLATION",
+		"label": "Contemplation: Getting ready"
+	}, {
+		"value": "PREPARATION",
+		"label": "Preparation: Ready"
+	}, {
+		"value": "ACTION",
+		"label": "Action"
+	}, {
+		"value": "MAINTENANCE",
+		"label": "Maintenance"
+	}],
+	"interventionStatusList": [{
+		"value": "ZDEFAULT",
+		"label": "Open"
+	}, {
+		"value": "IN_PROGRESS",
+		"label": "In Progress"
+	}, {
+		"value": "COMPLETED",
+		"label": "Completed"
+	}, {
+		"value": "NOT_APPLICABLE",
+		"label": "Not Applicable"
+	}]
+}

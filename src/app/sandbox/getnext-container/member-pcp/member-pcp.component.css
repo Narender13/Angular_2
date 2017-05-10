@@ -1,0 +1,111 @@
+    .row_container {
+        display: flex;
+        flex-flow: row nowrap;
+    }
+    
+    .column_container {
+        display: flex;
+        flex-flow: column nowrap;
+    }
+    
+    .pcp {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 13px;
+        margin-top: 0px;
+        margin-left: 5px;
+        margin-right: 5px;
+        margin-bottom: 40px;
+        width: 100px;
+        position: relative;
+        word-wrap: break-word;
+    }
+    
+    .pcp:empty {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 13px;
+        margin-top: 0px;
+        margin-left: 5px;
+        margin-right: 5px;
+        margin-bottom: 55px;
+        width: 100px;
+        word-wrap: break-word;
+    }
+    
+    .pcp_last_name {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 13px;
+        margin-top: 0px;
+        margin-left: 5px;
+        margin-right: 5px;
+        margin-bottom: 40px;
+        width: 260px;
+        word-wrap: break-word;
+    }
+    
+    .pcp_last_name_long {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 13px;
+        margin-top: 0px;
+        margin-left: 5px;
+        margin-right: 5px;
+        margin-bottom: 25px;
+        width: 270px;
+        word-wrap: break-word;
+    }
+    
+    .pcp_end_date {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 13px;
+        margin-top: 0px;
+        margin-left: 5px;
+        margin-right: 5px;
+        margin-bottom: 0px;
+        width: 100px;
+        word-wrap: break-word;
+    }
+    
+    .label {
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        white-space: nowrap;
+        font-size: 14px;
+        margin-top: 5px;
+        margin-left: 5px;
+        margin-right: 5px;
+        margin-bottom: 10px;
+    }
+    
+    .left_align {
+        margin-left: auto;
+    }
+    
+    .autocomplete_column_container {
+        display: flex;
+        flex-flow: column nowrap;
+        margin-right: 5px;
+    }
+    
+    #tabViewPcp .ui-tabview-panel {
+        height: 360px;
+    }
+    
+    #tabViewPcp .ui-tabview-left .ui-tabview-panels {
+        width: 77%;
+    }
+    
+    #tabViewPcp .ui-tabview-left .ui-tabview-nav {
+        height: auto;
+        border: 0;
+        width: 23%;
+    }
+    
+    .ui-button,
+    button.ui-button.ui-state-default,
+    .ui-button.ui-state-default {
+        top: 0px;
+        right: -1px;
+    }
+    
+    .ui-calendar button {
+        width: 2em;
+    }

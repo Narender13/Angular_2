@@ -1,0 +1,73 @@
+<div class="panel panel-default page-content">
+    <div class="panel-heading axis-panel-background">
+        <div id="wrapper" style="text-align: center">
+            <div class="panel-title axis-page-header">
+                Admin Calendar SANDBOX
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="!isLoading" class="axis-progress-indicator"></div>
+    <div *ngIf="isLoading" class="demo-progress-bar-container">
+        <md-progress-bar mode="query" class="demo-progress-bar-margins"></md-progress-bar>
+    </div>
+
+    <div class="ui-grid ui-grid-responsive ui-grid-pad">
+        <div class="ui-grid-row">
+
+            <!--<p-schedule [events]="appointments" [header]="header"></p-schedule>-->
+
+            <p-schedule [events]="appointments" [header]="header" defaultDate="2016-09-26" [eventLimit]="4" [editable]="true"
+                (onDayClick)="handleDayClick($event)" (onEventClick)="handleAppointmentClick($event)"></p-schedule>
+
+            <p-dialog header="Appointment Details" [(visible)]="dialogVisible" [responsive]="true" showEffect="fade" [modal]="false">
+                <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="appointment">
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-4"><label for="vin">Title</label></div>
+                        <div class="ui-grid-col-8"><input pInputText id="title" [(ngModel)]="appointment.title" /></div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-4"><label for="start">Start</label></div>
+                        <div class="ui-grid-col-8">
+                            <p-calendar id="start" dateFormat="yy-mm-dd" [(ngModel)]="appointment.start"></p-calendar>
+                        </div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-4"><label for="end">End</label></div>
+                        <div class="ui-grid-col-8">
+                            <p-calendar id="end" dateFormat="yy-mm-dd" [(ngModel)]="appointment.end" defaultDate="2016-01-01" placeholder="Optional"></p-calendar>
+                        </div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-4"><label for="allday">All Day</label></div>
+                        <div class="ui-grid-col-8">
+                            <p-toggleButton [(ngModel)]="appointment.allDay" style="width:150px" onLabel="Yes" offLabel="No"></p-toggleButton>
+                        </div>
+                    </div>
+                </div>
+                <footer>
+                    <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+                        <button type="button" pButton icon="fa-close" (click)="deleteAppointment()" label="Delete"></button>
+                        <button type="button" pButton icon="fa-check" (click)="saveAppointment()" label="Save"></button>
+                    </div>
+                </footer>
+            </p-dialog>
+            
+            <!--<div class="ui-grid-col-6">
+
+                <p-panel>
+                    <header>
+                        <div>
+                            <span class="ui-panel-title axis-panel-header-background">Configurations</span>
+                            <i class="fa fa-plus axis-i-float-right" (click)="addNewTable()" color="white"></i>
+                        </div>
+                    </header>
+
+                    <div>
+                        Information
+                    </div>
+                </p-panel>
+            </div>-->
+        </div>
+    </div>
+</div>

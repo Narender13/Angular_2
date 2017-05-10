@@ -1,0 +1,50 @@
+
+
+input, label {
+    display:block;
+}
+
+.ui-chkbox-label {
+    vertical-align: middle;
+    display: inline;
+}
+
+.ui-widget-header {
+    border: 0px;
+    border-bottom: 1px solid #cccccc;
+}
+
+.activity-log {
+    font-size: 12px;
+    max-height: 104px;
+    border: 1px solid #cccccc;
+    border-top: 0px;
+    width: auto;
+    overflow-y: auto;
+}
+
+div[class*="activity-item"]:not(:last-of-type) {
+    border-bottom: 1px solid #cccccc;
+}
+
+div[class*="activity-item"]:first-of-type {
+    border-top: 0px;
+}
+
+.user-defined-fields {
+    font-weight: normal;
+    margin-bottom: 8px;
+}
+
+.user-defined-fields label {
+    font-weight: normal;
+    padding-top: 4px;
+}
+
+.ql-toolbar.ql-snow {
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-family: Arial, Verdana, sans-serif;
+    padding: 0px; 
+}
+

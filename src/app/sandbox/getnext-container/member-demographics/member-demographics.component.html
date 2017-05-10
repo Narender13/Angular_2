@@ -1,0 +1,222 @@
+<p-growl [value]="messages" sticky="true"></p-growl>
+
+<section>
+    <confirmDialog [text]="alertDialog" (acceptedEmitter)="yesNo($event)"></confirmDialog>
+</section>
+
+<p-dialog [(visible)]="display" modal="modal" [closable]="false" [closeOnEscape]="false" (onBeforeHide)="onBeforeDialogHide($event) " showEffect="fade" width="800" height="auto" responsive="true">    
+    <p-header>
+        <span style="font-family: Arial, Helvetica, sans-serif; font-size: 16px;">Member Demographics Information</span>
+    </p-header>
+    <div *ngIf="isLoading">
+        <div class="mt-10">
+            <img src="assets/images/loading_small.gif"> Loading ...
+        </div>
+    </div>
+    <div *ngIf="!isLoading">
+        <div class="column_container">
+            <div class="row_container">
+                <div class="member_name">{{dto.firstName}} {{dto.middleName}} {{dto.lastName}}</div>
+            </div>
+            <div class="member_language_label"> Spoken Language:</div>
+            <div class="language_dropdown">
+                <p-dropdown id="contactOptionType" [options]="spokenLanguageTypeOptions" [disabled]="memberSpokenLanguageDisabled"  [(ngModel)]="dto.spokenLanguage" [filter]="true" [style]="{'width':'150px'}" (ngModelChange)="onNgModelChange()" ></p-dropdown>
+            </div>
+        </div>
+        <div class="row_container">
+            <div class="member_address">Member Address Information </div>
+            <button pButton type="text" title="Add Member Address" class="ui-button-icon-only" (click)="addAddress()" style="background-color: rgba(0, 0, 0,0); color:black; border: none; width: 1em; margin-top: 13px; margin-left: 7px;" icon="fa fa-plus-circle fa-lg"></button>
+        </div>
+
+        <div style="min-height: 40px; max-height: 100px; overflow-y: auto; width: 750px; overflow-x: visible;">
+            
+            <div  class="row_container">
+                    <div class="column_container">
+                        <div class="address_inputText_1"><input type="text" size="15" pInputText [disabled]="memberAddress1Disabled" placeholder="{{address1Label}}" [(ngModel)]="dto.address1" (change)="changeModel()" /></div>
+                    </div>
+
+                    <div class="column_container">
+                        <div class="address_inputText"><input type="text" size="5" pInputText [disabled]="memberAddress2Disabled" placeholder="{{address2Label}}" [(ngModel)]="dto.address2" (change)="changeModel()" /></div>
+                    </div>
+
+                    <div class="column_container">
+                        <div class="address_inputText"><input type="text" size="8" pInputText [disabled]="memberCityDisabled" placeholder="{{cityLabel}}" [(ngModel)]="dto.city" (change)="changeModel()"  /></div>
+                    </div>
+
+                    <div class="column_container">
+                        <div class="state_dropdown">
+                            <p-dropdown id="stateType" [options]="stateTypeOptions" [disabled]="memberStateDisabled" [(ngModel)]="dto.state" [filter]="true" [style]="{'width':'55px'}" (ngModelChange)="onNgModelChange()" ></p-dropdown>
+                        </div>
+                    </div>
+
+                    <div class="column_container">
+                        <div class="address_inputText"><input type="text" size="6" pInputText [disabled]="memberZipDisabled" placeholder="{{zipLabel}}" [(ngModel)]="dto.zip" (change)="changeModel()" /></div>
+                    </div>
+           
+                    <div class="column_container">
+                        <div class="address_inputText"><input type="text" size="8" pInputText [disabled]="memberCountyDisabled" placeholder="{{countyLabel}}" [(ngModel)]="dto.county" (change)="changeModel()"  /></div>
+                    </div>
+ 
+                    <div class="column_container">
+                        <button pButton type="text" title="Delete Address" [disabled]="deleteMemberAddressDisabled" class="ui-button-icon-only" (click)="deleteMemberAddress()" style="width: 1em; height: 1em; background: white; color:black; border: none; margin-top:12px;" icon="fa-trash-o"></button>
+                    </div>
+
+            </div>
+
+            <div *ngFor="let address of  addresses">
+                <div *ngIf="address.isActive" class="row_container">
+                    <div class="column_container">
+                        <div class="address_inputText_1"><input type="text" size="15" pInputText [disabled]="address1Disabled" placeholder="{{address1Label}}" [(ngModel)]="address.address1" (change)="changeModel()" /></div>
+                    </div>
+
+                    <div class="column_container">
+                        <div class="address_inputText"><input type="text" size="5" pInputText [disabled]="address2Disabled" placeholder="{{address2Label}}" [(ngModel)]="address.address2" (change)="changeModel()"  /></div>
+                    </div>
+
+                    <div class="column_container">
+                        <div class="address_inputText"><input type="text" size="8" pInputText [disabled]="cityDisabled" placeholder="{{cityLabel}}" [(ngModel)]="address.city" (change)="changeModel()" /></div>
+                    </div>
+
+                    <div class="column_container">
+                        <div class="state_dropdown">
+                            <p-dropdown id="stateType" [options]="stateTypeOptions" [(ngModel)]="address.state" [disabled]="stateDisabled" [filter]="true" [style]="{'width':'55px'}" (ngModelChange)="onNgModelChange()" ></p-dropdown>
+                        </div>
+                    </div>
+
+                    <div class="column_container">
+                        <div class="address_inputText"><input type="text" size="6" pInputText [disabled]="zipDisabled" placeholder="{{zipLabel}}" [(ngModel)]="address.zip" (change)="changeModel()" /></div>
+                    </div>
+                    
+                    <div class="column_container">
+                        <div class="address_inputText"><input type="text" size="8" pInputText [disabled]="countyDisabled" placeholder="{{countyLabel}}" [(ngModel)]="address.county" (change)="changeModel()" /></div>
+                    </div>
+
+                    <div class="radio" style="font-family: Arial, Helvetica, sans-serif;">
+                        <p-radioButton name="group1" value="{{address.entryNumber}}" label="Primary" [disabled]="primaryAddressDisabled" [(ngModel)]="addressPrimary" (click)="changeModel()" ></p-radioButton>
+                    </div>
+ 
+                    <div class="column_container">
+                        <button pButton type="text" title="Delete Address" class="ui-button-icon-only" [disabled]="deleteAddressDisabled" (click)="deleteAddress(address)" style="width: 1em; height: 1em; background: white; color:black; border: none; margin-top:12px;" icon="fa-trash-o"></button>
+                    </div>
+
+                </div>
+                
+            </div>
+              <div *ngFor="let address of  newaddresses">
+                <div *ngIf="address.isActive" class="row_container">
+                    <div class="column_container">
+                        <div class="address_inputText_1"><input type="text" size="15" pInputText placeholder="{{address1Label}}" [(ngModel)]="address.address1" (change)="changeModel()" /></div>
+                    </div>
+
+                    <div class="column_container">
+                        <div class="address_inputText"><input type="text" size="5" pInputText  placeholder="{{address2Label}}" [(ngModel)]="address.address2" (change)="changeModel()" /></div>
+                    </div>
+
+                    <div class="column_container">
+                        <div class="address_inputText"><input type="text" size="8" pInputText placeholder="{{cityLabel}}" [(ngModel)]="address.city" (change)="changeModel()" /></div>
+                    </div>
+
+                    <div class="column_container">
+                        <div class="state_dropdown">
+                            <p-dropdown id="stateType" [options]="stateTypeOptions" [(ngModel)]="address.state" [filter]="true" [style]="{'width':'55px'}" (ngModelChange)="onNgModelChange()" ></p-dropdown>
+                        </div>
+                    </div>
+
+                    <div class="column_container">
+                        <div class="address_inputText"><input type="text" size="6" pInputText placeholder="{{zipLabel}}" [(ngModel)]="address.zip" (change)="changeModel()" /></div>
+                    </div>
+                    
+                    <div class="column_container">
+                        <div class="address_inputText"><input type="text" size="8" pInputText  placeholder="{{countyLabel}}" [(ngModel)]="address.county" (change)="changeModel()" /></div>
+                    </div>
+
+                    <div class="radio" style="font-family: Arial, Helvetica, sans-serif;">
+                        <p-radioButton name="group1" value="{{address.entryNumber}}" label="Primary" [(ngModel)]="addressPrimary" (click)="changeModel()"  ></p-radioButton>
+                    </div>
+ 
+                    <div class="column_container">
+                        <button pButton type="text" title="Delete Address" class="ui-button-icon-only" (click)="deleteAddress(address)" style="width: 1em; height: 1em; background: white; color:black; border: none; margin-top:12px;" icon="fa-trash-o"></button>
+                    </div>
+
+                </div>
+                
+            </div>
+        </div>
+
+        <div class="row_container">
+            <div class="column_container">
+                <div class="row_container">
+                    <div class="phone_information">Member Phone Information </div>
+                    <button pButton type="text" title="Add Member Phone" class="ui-button-icon-only" (click)="addPhone()" style="background-color: rgba(0, 0, 0,0); color:black; border: none; width: 1em; margin-top: 20px; margin-left: 7px;" icon="fa fa-plus-circle fa-lg"></button>
+                </div>
+
+                <div class="column_container">
+                    <div style="min-height: 40px; max-height: 100px; overflow-y: auto; width: 360px; overflow-x: visible;">
+                        <div *ngFor="let phone of phones">
+                            <div *ngIf="phone.isActive" class="row_container">
+                                <div class="column_container">
+
+                                    <div class="address_inputText">
+                                        <p-inputMask size="10" mask="(999) 999-9999" unmask="true"  [(ngModel)]="phone.number" [disabled]="phoneNumberDisabled" placeholder="{{phoneNumberLabel}}" [style]="{'padding':'1px'}" (change)="changeModel()" ></p-inputMask>
+                                    </div>
+                                </div>
+
+                                <div class="column_container">
+                                    <div class="state_dropdown">
+                                        <p-dropdown id="phoneType" [options]="phoneTypeOptions" [disabled]="phoneTypeDisabled" [(ngModel)]="phone.phoneType" [filter]="true" [style]="{'width':'100px'}" (ngModelChange)="onNgModelChange()" ></p-dropdown>
+                                    </div>
+                                </div>
+
+                                <div class="radio" style="font-family: Arial, Helvetica, sans-serif;">
+                                    <p-radioButton name="group2" value="{{phone.entryNumber}}" label="Primary" [disabled]="primaryPhoneDisabled" [(ngModel)]="phonePrimary" (click)="changeModel()" ></p-radioButton>
+                                </div>
+                              
+
+                                <div class="column_container">
+                                    <button pButton type="text" title="Delete Phone" class="ui-button-icon-only" [disabled]="deletePhoneDisabled" (click)="deletePhone(phone)" style="width: 10px;; height: 1em; background: white; color:black; border: none; margin-top:12px;" icon="fa-trash-o"></button>
+                                </div>
+                            </div>
+                        </div>
+                         <div *ngFor="let phone of newphones">
+                            <div *ngIf="phone.isActive" class="row_container">
+                                <div class="column_container">
+
+                                    <div class="address_inputText">
+                                        <p-inputMask size="10" mask="(999) 999-9999" unmask="true"  [(ngModel)]="phone.number"  placeholder="{{phoneNumberLabel}}" [style]="{'padding':'1px'}" (change)="changeModel()" ></p-inputMask>
+                                    </div>
+                                </div>
+
+                                <div class="column_container">
+                                    <div class="state_dropdown">
+                                        <p-dropdown id="phoneType" [options]="phoneTypeOptions" [(ngModel)]="phone.phoneType" [filter]="true" [style]="{'width':'100px'}" (ngModelChange)="onNgModelChange()" ></p-dropdown>
+                                    </div>
+                                </div>
+
+                                <div class="radio" style="font-family: Arial, Helvetica, sans-serif;">
+                                    <p-radioButton name="group2" value="{{phone.entryNumber}}" label="Primary" [(ngModel)]="phonePrimary" (click)="changeModel()" ></p-radioButton>
+                                </div>
+                              
+
+                                <div class="column_container">
+                                    <button pButton type="text" title="Delete Phone" class="ui-button-icon-only"  (click)="deletePhone(phone)" style="width: 10px;; height: 1em; background: white; color:black; border: none; margin-top:12px;" icon="fa-trash-o"></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column_container">
+                <div class="email_label_edit">Email</div>
+                <div class="row_container">
+                    <div class="email_inputText"><input type="text" size="20" pInputText [disabled]="memberEmailDisabled" placeholder="{{emailLabel}}" [(ngModel)]="dto.email" (change)="changeModel()" /></div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+            <button type="button" pButton icon="" (click)="warnUserDiscardingChanges()" label="Close"></button>
+            <button type="button" pButton icon="" [disabled]="saveButtonDisabled" (click)="saveMemberDemographics()" label="Save"></button>
+        </div>
+    </div>
+</p-dialog>

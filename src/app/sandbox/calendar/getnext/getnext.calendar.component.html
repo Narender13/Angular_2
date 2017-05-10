@@ -1,0 +1,37 @@
+<div class="panel panel-default page-content">
+    <div class="panel-heading axis-panel-background">
+        <div id="wrapper" style="text-align: center">
+            <div class="panel-title axis-page-header">
+                GetNext Calendar SANDBOX
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="!isLoading" class="axis-progress-indicator"></div>
+    <div *ngIf="isLoading" class="demo-progress-bar-container">
+        <md-progress-bar mode="query" class="demo-progress-bar-margins"></md-progress-bar>
+    </div>
+
+    <div class="ui-grid ui-grid-responsive ui-grid-pad">
+        <div class="ui-grid-row">
+
+            This calendar will list the appointements for the user for today. This UI will be used within the GetNext top-level UI component.
+
+            <!--<div class="ui-grid-col-6">
+
+                <p-panel>
+                    <header>
+                        <div>
+                            <span class="ui-panel-title axis-panel-header-background">Configurations</span>
+                            <i class="fa fa-plus axis-i-float-right" (click)="addNewTable()" color="white"></i>
+                        </div>
+                    </header>
+
+                    <div>
+                        Information
+                    </div>
+                </p-panel>
+            </div>-->
+        </div>
+    </div>
+</div>

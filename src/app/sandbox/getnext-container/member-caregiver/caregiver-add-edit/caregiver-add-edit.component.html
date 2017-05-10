@@ -1,0 +1,99 @@
+<div>
+    <confirmDialog [text]="alertDialog" (acceptedEmitter)="yesNo($event)"></confirmDialog>
+    <p-growl [value]="messages" sticky="true"></p-growl>
+    <p-dialog [(visible)]="show" modal="modal" [closable]="false" [closeOnEscape]="false" showEffect="fade" responsive="true" height="500" width="1100" styleClass="disableScroll">
+        <p-header>
+            {{title}}
+        </p-header>
+
+        <div *ngIf="isLoading">
+            <div class="mt-10">
+                <img src="assets/images/loading_small.gif"> Loading ...
+            </div>
+        </div>
+        <div *ngIf="!isLoading&&dto!=undefined">
+
+            <div class="row_container">
+                <div class="prefix_dropdown">
+                    <p-dropdown id="prefixType" [options]="prefixTypeOptions" [(ngModel)]="dto.prefix" [style]="{'width':'125px'}"></p-dropdown>
+                </div>
+                <div class="name_inputText"><input type="text" size="30" maxlength="30" pInputText placeholder="{{firstNameLabel}}" [(ngModel)]="dto.firstName" /></div>
+                <div class="name_inputText"><input type="text" size="30" maxlength="30" pInputText placeholder="{{lastNameLabel}}" [(ngModel)]="dto.lastName" /></div>
+                <div class="ui-g-12" style="font-family: Arial, Helvetica, sans-serif; width: 175px;white-space: nowrap; font-size: 16px;">
+                    <p-checkbox [(ngModel)]="dto.primary" binary="true" label={{primaryLabel}}></p-checkbox>
+                </div>
+            </div>
+            <div class="row_container">
+                <div class="column_container">
+                    <div class="label">{{relationshipLabel}}</div>
+                    <div class="prefix_dropdown_2">
+                        <p-dropdown id="relationshipType" [options]="relationshipTypeOptions" [(ngModel)]="dto.relationship" [filter]="true" [style]="{'width':'150px'}"></p-dropdown>
+                    </div>
+                    <div class="axis-required">{{contactMethodLabel}}</div>
+                    <div class="prefix_dropdown_2">
+                        <p-dropdown id="contactOptionType" [options]="contactMethodTypeOptions" [(ngModel)]="dto.preferedContactMethod" [filter]="true" [style]="{'width':'150px'}"></p-dropdown>
+                    </div>
+                    <div class="label">{{spokenLanguageLabel}}</div>
+                    <div class="prefix_dropdown_2">
+                        <p-dropdown id="spokenLanguageType" [options]="spokenLanguageTypeOptions" [(ngModel)]="dto.spokenLanguage" [filter]="true" [style]="{'width':'150px'}"></p-dropdown>
+                    </div>
+
+                </div>
+                <div class="column_container_address">
+                    <div class="label_address">Address</div>
+                    <div class="address_inputText"><input type="text" size="25" pInputText placeholder="Address" [(ngModel)]="dto.addressLine1" /></div>
+                    <div class="address_inputText"><input type="text" size="25" pInputText placeholder="Address 2" [(ngModel)]="dto.addressLine2" /></div>
+                    <div class="address_inputText"><input type="text" size="25" pInputText placeholder="City" [(ngModel)]="dto.city" /></div>
+                    <div class="prefix_dropdown">
+                        <p-dropdown id="stateType" [options]="stateTypeOptions" [(ngModel)]="dto.state" [filter]="true" [style]="{'width':'150px'}"></p-dropdown>
+                    </div>
+                    <div class="address_inputText"><input type="text" size="25" pInputText placeholder="Zip" [(ngModel)]="dto.zip" /></div>
+                    <div class="address_inputText"><input type="text" size="25" pInputText placeholder="County" [(ngModel)]="dto.county" /></div>
+                </div>
+                <div class="column_container_phone_email">
+                    <div class="row_container">
+                        <div class="label_phone">Phone</div>
+                        <button pButton type="text" title="Add Phone" class="ui-button-icon-only" (click)="addPhone()" style="background-color: rgba(0, 0, 0,0); color:black; border: none;" icon="fa fa-plus-circle fa-lg"></button>
+                        <div class="label_add">Add</div>
+                    </div>
+
+                    <div *ngIf="phones!=undefined" class="column_container" style="overflow-x:hidden; overflow-y:auto; height: 115px;">
+                        <div *ngFor="let phone of phones">
+                            <div *ngIf="phone.active" class="row_container">
+                                <div class="phone_inputText">
+                                    <p-inputMask mask="(999) 999-9999" unmask="true" (onComplete)="onChangedPhone(phone)" [(ngModel)]="phone.phoneNumber" placeholder="Phone Number" [style]="{'padding':'1px'}"></p-inputMask>
+                                </div>
+                                <div class="prefix_dropdown">
+                                    <p-dropdown id="phoneType" [options]="phoneTypeOptions" [(ngModel)]="phone.phoneType" [style]="{'width':'120px'}"></p-dropdown>
+                                </div>
+                                <div class="ui-g-12" style="font-family: Arial, Helvetica, sans-serif; margin-right:5px; white-space: nowrap;">
+                                    <p-radioButton name="primaryGroup" value="{{phone.phoneNumber}}" label="{{primaryLabel}}" [(ngModel)]="phonePrimary"></p-radioButton>
+                                </div>
+                                <div class="ui-g-12 ui-chkbox-label" style="font-family: Arial, Helvetica, sans-serif; font-weight: normal; margin-left:0px; padding-top:10px; padding-right: 2px;">
+                                    <p-checkbox binary="true" label="Text" [(ngModel)]="phone.text"></p-checkbox>
+                                </div>
+                                <button pButton type="text" class="ui-button-icon-only" (click)="deletePhone(phone)" style="width: 10%; height: 1em; background: white; color:black; border: none; margin-top:11px; margin-left:5px;" icon="fa-trash-o"></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="label_phone">Email</div>
+
+                    <div class="phone_inputText"><input type="text" size="30" pInputText placeholder="Email" [(ngModel)]="dto.email" /></div>
+
+
+                </div>
+            </div>
+            <div class="column_container">
+                <div class="label_phone">Comments</div>
+                <div style="width:50%;"> <textarea rows="4" cols="58" maxlength="254" [(ngModel)]="dto.comments" pInputTextarea></textarea></div>
+            </div>
+            <div class="row_container_footer">
+                <div style="font-family: Arial, Helvetica, sans-serif; font-weight: normal; width:100%;">
+                    <span style="margin-right: 15px;"> <p-checkbox  binary="true" label="Send Consent Form"  [(ngModel)]="dto.sendConsent"> ></p-checkbox></span>
+                    <span style="margin-right: 15px;"><button type="button" pButton icon="" (click)="closeWindow()" label="Close"></button></span>
+                    <button type="button" pButton icon="" (click)="saveMemberOtherContact()" label="Save"></button>
+                </div>
+            </div>
+        </div>
+    </p-dialog>
+</div>

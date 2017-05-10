@@ -1,0 +1,54 @@
+<div class="panel panel-default page-content">
+    <div style="width: 100%;">
+
+        <div class="ui-g">
+            <div id="testValueControls" class="ui-g-12">
+
+                <div>
+                    <label class="testLabel" for='userIdInput'>User id * :&nbsp;&nbsp; </label>
+                    <input pInputText id="userIdInput" value="1" #userIdInput/>    
+                </div>                
+
+                <div>
+                    <label class="testLabel" for='userTokenInput' style="margin-top: 15px;">User token * :&nbsp;&nbsp; </label>
+                    <input pInputText id="userTokenInput" value="eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJjY21zZGJhIiwiaWF0IjoxNDg1NjI5NTc0LCJzdWIiOiJBUEggU3ViamVjdCIsImlzcyI6IkFQSCBJc3N1ZXIifQ.l6p4W6xPueAkBvfMtXW_n-48MEX5_FchNm4i4gC-POYEGt-RbnXO7GNAfmwlGt5vR8tFvyH43jPRU4FPi1qhqg" #userTokenInput/>
+                </div>
+
+                <div>
+                    <label class="testLabel" for='tenantIdInput' style="margin-top: 15px;">Tenant id * :&nbsp;&nbsp; </label>
+                    <input pInputText id="tenantIdInput" value="ABC123" #tenantIdInput/>
+                </div>
+
+                <div>
+                    <label class="testLabel" for='memberIdInput' style="margin-top: 15px;">Member id * :&nbsp;&nbsp; </label>
+                    <input pInputText id="memberIdInput" value="TMBEN" #memberIdInput/>
+                </div>
+
+                <div>
+                    <label class="testLabel" for='typeInput' style="margin-top: 15px;">GetNext Item Type :&nbsp;&nbsp; </label>
+                    <p-dropdown id="typeInput" [(ngModel)]="selectedType" [options]="types"></p-dropdown>
+                </div>
+
+                <div>
+                    <label class="testLabel" for='assessmentTypeInput' style="margin-top: 15px;">Assessment type :&nbsp;&nbsp; </label>
+                    <p-dropdown id="assessmentTypeInput" [(ngModel)]="selectedAssessmentType" [options]="assessmentTypes"></p-dropdown>
+                </div>
+
+                <div>
+                    <label class="testLabel" for='getNextQueueItemIdInput' style="margin-top: 15px;">GetNext Queue item id :&nbsp;&nbsp; </label>
+                    <input pInputText id="getNextQueueItemIdInput" value="2" #getNextQueueItemIdInput size="52" />
+                </div>
+
+                <div>
+                    <button pButton type="button" label="Start by type" style="margin-top: 15px;" (click)="startForType(
+                                getNextQueueItemIdInput.value,
+                                userIdInput.value,
+                                userTokenInput.value,
+                                tenantIdInput.value,
+                                memberIdInput.value)">
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,43 @@
+{
+      "apiStatus": {
+            "statusCode": "0",
+            "serviceDescription": "com.aph.webservice.ApAssessmentServiceV8Impl",
+            "timestamp": "2016-11-21 12:56:22.317",
+            "errorMessage": "SUCCESS",
+            "errorStackTrace": null
+      },
+      "memberAssessmentId": "2601",
+      "isFirstQuestion": false,
+      "isLastQuestion": true,
+      "question": {
+            "questionText": {
+                  "baseText": "<B>Is this an Enrollment call?<\/B>",
+                  "layText": "",
+                  "expertText": ""
+            },
+            "isRequired": false,
+            "helpText": null,
+            "questionType": "MULTIPLE_CHOICE_SINGLE_SELECT",
+            "questionId": "5ec544a9-01ea-473b-b2a2-7c70273e70b1"
+      },
+      "answerList": [
+            {
+                  "answerText": {
+                        "baseText": "Yes",
+                        "layText": "Yes",
+                        "expertText": "Yes"
+                  },
+                  "helpText": null,
+                  "answerId": "c708da0f-05c7-4f18-9e3f-61bb0cf0a94a"
+            },
+            {
+                  "answerText": {
+                        "baseText": "No",
+                        "layText": "No",
+                        "expertText": "No"
+                  },
+                  "helpText": null,
+                  "answerId": "81088556-ad11-4989-8217-602673523849"
+            }
+      ]
+}

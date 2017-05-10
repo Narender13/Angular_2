@@ -1,0 +1,295 @@
+#member-ap-careplan{
+ font-family: Arial, Helvetica, sans-serif;
+ font-size: 14px; 
+}
+#member-ap-careplan  .carePlanHeader {
+    font-weight: bold;
+    background: #A1AFB9; 
+    border-top: 1px solid #A1AFB9; 
+    position: relative;
+    display: block;
+    padding: 0em .5em 0em 2em;
+    color: #fff;
+}
+#member-ap-careplan .interventionNoteWrapper {
+    padding-left: 1em;
+}
+
+#member-ap-careplan .carePlanGoalList{
+   position: relative;
+    overflow: auto;
+    width: 100%;  
+    min-height: 300px;
+    height: auto;
+    padding-bottom: 40px
+}
+#member-ap-careplan .ui-accordion .ui-accordion-header .careplanDropdown .fa {
+    left: .2em;
+    top: 0%;
+}
+
+#member-ap-careplan .careplanTitle{
+    width:27%
+}
+
+#member-ap-careplan .ui-accordion .ui-accordion-content{
+    padding-left:5px;
+}
+#member-ap-careplan .careplanDropdown{width:11%;}
+#member-ap-careplan .carePlanHeader div.ui-grid-row div:nth-child(3),
+#member-ap-careplan .carePlanHeader div.ui-grid-row div:first-child,
+#member-ap-careplan .carePlanHeader div.ui-grid-row div:nth-last-child(6) {
+    padding-left:.8em;
+}
+#member-ap-careplan .carePlanHeader div.ui-grid-row div:last-child,
+#member-ap-careplan .carePlanHeader div.ui-grid-row div:nth-last-child(2) {
+   padding-left:.5em;  
+}
+#member-ap-careplan  .ui-state-disabled {
+    opacity:1;
+}
+#member-ap-careplan  .ui-accordion-header > .fa {
+      top: 25px;
+}
+#member-ap-careplan .ui-accordion-content .ui-accordion-header > .fa{
+    top: 24px;
+}
+#member-ap-careplan .ui-accordion-header > span.fa-caret-right:before {
+    content: "\f067";
+}
+#member-ap-careplan .ui-accordion-header > span.fa-caret-down:before {
+    content: "\f068";
+}
+#member-ap-careplan .ui-accordion .ui-accordion-header a{padding-top:0px;padding-bottom:0px;}
+#member-ap-careplan .saveGoalButton,
+#member-ap-careplan .saveNoteButton
+{
+   background: #7cbfd4;   
+}
+#member-ap-careplan .sensitivityText{
+    color:red;
+    font-size: 15px;
+    margin-top: 5px;
+}
+#member-ap-careplan .sensitivityBgcolor {
+    background: rgba(255, 0, 0, 0.24)
+}
+
+#member-ap-careplan .sensitivityText > i.fa-warning{    
+    position: relative;
+    padding-right: 5px;
+    display: inline-block;
+    top: 0; 
+    left: 0; 
+    margin-top:0px; 
+}
+#member-ap-careplan .ui-dropdown-items-wrapper{
+    max-height:100%;
+}
+#member-ap-careplan p-dropdown,
+.ui-dropdown,#member-ap-careplan .ui-dropdown-trigger,
+#member-ap-careplan .ui-dropdown-label{
+    background: #f3f3f5;
+}
+
+.goalTitle{
+    width: 40px;
+    float: left;
+    padding: 5px
+}
+.goalName{
+   padding: 5px;
+    width: 85%;
+    float: left;
+    text-align: left;
+}
+
+.barrierTitle{
+    width: 58px;
+    float: left;
+    padding: 5px
+}
+.barrierName{
+   padding: 5px;
+    width: 79%;
+    float: left;
+    text-align: left;
+}
+.intervention{
+    border: 1px solid #d6d6d6;
+    margin-bottom: 20px;
+}
+.interventionTitle{
+    width: 89px;
+    float: left;
+    padding: 5px
+}
+.interventionName{
+   padding: 5px;
+    width:66%;
+    float: left;
+    text-align: left;
+}
+#member-ap-careplan .gapStatementText{margin-left:58px;padding-top: 0px;}
+#member-ap-careplan .carePlanLastActivity{width:21.7%;}
+#member-ap-careplan .careplanDropdown .ui-dropdown{
+    width:100%!important;
+}
+#member-ap-careplan a.link {
+    color: blue;
+    cursor: pointer;
+}
+
+#member-ap-careplan .goalBarrierInstructionLink,.goalBarrierEducationLink,.goalBarrierNoteHistoryLink{
+    text-align:center;    
+    display: inline-block;
+    cursor: pointer;
+}
+.clearfix{
+    clear: both;
+    content: "";
+    display: block;
+}
+#member-ap-careplan .paddingLeft25 {
+    padding-left:25px;
+}
+#member-ap-careplan .interventionAssignToText {
+    width:35.60%;
+    padding-top: 0px;
+    padding-left: 0px;
+}
+#member-ap-careplan .displayPopup table thead tr th:first-child{
+    width:25%;
+}
+#member-ap-careplan .motivationalStateText{
+    width: 54%;
+    max-width: 150px;
+    }
+#member-ap-careplan .motivationalStateText ~ .careplanDropdown{
+     width:46%;
+     padding-top: 0px;
+     padding-left: 0px;
+}
+#member-ap-careplan .interventionAssignToText ~ .careplanDropdown{
+     padding-top: 0px;
+}
+.noPaddingRight{
+    padding-right: 0px!important;
+}
+
+#member-ap-careplan .loading {
+    margin: 16px;
+    display: block;
+}
+
+#member-ap-careplan .warningText {
+    color: #ff9800;
+    font-weight: bold;
+}
+
+.separator {
+    border-bottom: 1px solid #ccc;
+    margin-left: 6px;
+    margin-right: 20px;
+    width: 100%;
+}
+.disableLink{
+    pointer-events: none;
+    cursor: default;
+    opacity: .5;
+}
+
+#member-ap-careplan .educationMaterial {
+    max-height: 220px;
+    overflow-y: auto;
+}
+
+#member-ap-careplan .displayPopup  > .ui-widget-content > .ui-widget-content {
+    max-height: 300px;
+    overflow-y: auto;
+}
+ 
+#member-ap-careplan .padding5 {
+    padding: 5px;
+}
+
+.small-font {
+    font-size: smaller
+}
+
+.large-font {
+    font-size: large
+}
+
+.carePlanGoalAccordian:nth-child(odd) a[role="tab"],.carePlanGoalAccordian:nth-child(odd) p-accordionTab a[role="tab"] {
+    background-color:#E6ECEF;
+}
+.carePlanGoalAccordian:nth-child(even) a[role="tab"],.carePlanGoalAccordian:nth-child(even) p-accordionTab a[role="tab"] {
+    background-color:#fff;
+}
+
+.fullWidth {
+    width: 100%;
+}
+
+.alignRight {
+    text-align: right;
+}
+
+.noteHistoryButton {
+    width: 2em;
+}
+
+.noPaddingBottom {
+    padding-bottom: 0px;
+}
+.paddingLeft5 {
+    padding-left: 5px;
+}
+
+
+.noPaddingTop {
+    padding-top: 0px;
+}
+.tooltips {
+  position: relative;
+  display: inline;
+  cursor:pointer;
+}
+.tooltips span {
+  position: absolute;
+  width:140px;
+  color: #FFFFFF;
+  background: #000000;
+  min-height: 10px;
+  line-height: 20px;
+  text-align: center;
+  visibility: hidden;
+  border-radius: 6px;
+  height:auto;
+  font-weight: normal;
+}
+.tooltips span:after {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -8px;
+  width: 0; height: 0;
+  border-bottom: 8px solid #000000;
+  border-right: 8px solid transparent;
+  border-left: 8px solid transparent;
+}
+.tooltips:hover span {
+  visibility: visible;
+  opacity: 0.8;
+  top: 30px;
+  left: 55%;
+  margin-left: -76px;
+  z-index: 1999;
+}
+a.tooltips:hover span{
+    padding-left: 30px;
+    width: 150px;
+}
+

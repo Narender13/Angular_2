@@ -1,0 +1,14 @@
+{
+    "apiStatus": {
+        "resultInformation": null,
+        "statusCode": "200",
+        "serviceDescription": "com.aph.webservice.ApCarePlanServiceV8Impl",
+        "timestamp": "2017-03-02 14:49:01.393",
+        "errorMessage": "There is no applied pathways data available",
+        "errorStackTrace": null
+    },
+    "instructionId": "",
+    "title": "Instructions",
+    "text": "Lorem ipsum dolor sit amet, sit ut ubique patrioque. Ius iudico sanctus apeirian ea, et tibique eloquentiam vis. Tamquam volumus ex per, pro ei ipsum iuvaret. Eu zril epicuri nec, ad debet corrumpit torquatos eum. Mel et putant melius nostrud, nihil eripuit constituam et sea.",
+    "isDelivered": "N"
+}

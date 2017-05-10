@@ -1,0 +1,340 @@
+<div id="member-ap-careplan">
+
+    <div class="ui-g">
+        <p-growl [value]="_messageService.msgs" life=5000></p-growl>
+    </div>
+    <!--<div *ngIf="uiDisplayControl.isLoading" class="demo-progress-bar-container">
+        <md-progress-bar mode="query" class="demo-progress-bar-margins"></md-progress-bar>
+    </div>-->
+    <div *ngIf="uiDisplayControl.isSpinnerVisible">
+        <img src="assets/images/loading_small.gif"> Loading Content ...
+    </div>
+    <p-messages [value]="messages"></p-messages>
+    <div class="ui-g">
+        <form class="fullWidth" [formGroup]="carePlanForm">
+            <div class="ui-g-12 ui-g-nopad">
+                <article *ngIf="carePlanDto?.goalList">
+                    <div class="ui-g-9">
+                        <div [hidden]="!carePlanForm.dirty || uiDisplayControl.isLoading">
+                            <div class="warningText">
+                                <i class="fa fa-exclamation-circle fa-fw"></i>Care Plan is modified. Please click 'Save'
+                                to save your changes
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-g-3 alignRight">
+                        <button label="Save" (click)="onClickSaveCarePlan()" class="saveGoalButton" pButton type="button" [disabled]="!carePlanForm.dirty || uiDisplayControl.isLoading"></button>
+                    </div>
+                </article>
+            </div>
+            <div class="ui-g-12 carePlanHeader" *ngIf="carePlanDto">
+                <div class="ui-grid-row">
+                    <div class="ui-g-3 careplanTitle">{{uiLabel.goalTitle}}</div>
+                    <div class="ui-g-2 careplanDropdown">{{uiLabel.goalStatus}}</div>
+                    <div class="ui-g-2 carePlanLastActivity">{{uiLabel.goalLastActivity}}</div>
+                    <div class="ui-g-1">{{uiLabel.goalStartDate}}</div>
+                    <div class="ui-g-1">{{uiLabel.goalEndDate}}</div>
+                    <div class="ui-g-2 careplanDropdown">{{uiLabel.goalSource}}</div>
+                    <div class="ui-g-1 careplanDropdown">{{uiLabel.goalType}}</div>
+                </div>
+            </div>
+
+            <div class="carePlanGoalList" formArrayName='goalFormList'>
+                <p-accordion [multiple]="true">
+                    <p-accordionTab class="carePlanGoalAccordian"
+                     [disabled]="!uiDisplayControl.isAccordianDisabled" 
+                     *ngFor="let goal of carePlanDto?.goalList; let i=index"
+                        [formGroupName]="i">
+                        <p-header>
+
+                            <div class="ui-grid-row">
+
+                                <div class="ui-g-3 careplanTitle">
+                                    <div class="goalTitle"> Goal:</div>
+                                    <div [ngClass]="{'sensitivityBgcolor': goal.goalSensitivityCategoryDescription}" class="goalName">
+
+                                        <span [innerHTML]="goal.goalName"></span>
+                                        <div *ngIf="goal.goalSensitivityCategoryDescription" class="sensitivityText">
+                                            <i class="fa fa-warning"></i>
+                                            <b>{{goal.goalSensitivityCategoryDescription}}</b>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ui-g-2 careplanDropdown">
+                                    <p-dropdown [options]="carePlanDto.goalStatusList"
+                                     [(ngModel)]="goal.currentGoalStatus.value" formControlName="goalStatus"
+                                        (onBlur)="blurEvent($event)" (onChange)="changeEvent($event)" (click)="onEvent($event)">
+                                    </p-dropdown>
+                                </div>
+                                <div class="ui-g-2 carePlanLastActivity">
+                                    <div *ngFor="let latestActivity of getGoalLastActivity(goal.currentGoalStatus,
+                                        goal.currentGoalActivitySource, goal.currentGoalType)">
+                                            <b><span class="tooltips">{{latestActivity.activityPerformedBy | 
+                                            slice:0:27}}{{latestActivity.activityPerformedBy.length > 27 ? '...' : ''}}
+                                         <span>{{latestActivity.activityPerformedBy}}</span></span></b>
+                                            <br>{{latestActivity.activityDate}}
+                                            <br> Updated: {{latestActivity.titleList}}
+                                    </div>
+
+                                </div>
+                                <div class="ui-g-1"><span *ngIf="goal.goalStartDate">{{goal.goalStartDate}}</span> </div>
+                                <div class="ui-g-1"><span *ngIf="goal.goalEndDate">{{goal.goalEndDate}}</span></div>
+                                <div class="ui-g-1 careplanDropdown">
+                                    <p-dropdown [options]="carePlanDto.goalActivitySourceList" [(ngModel)]="goal.currentGoalActivitySource.value" formControlName="goalActivitySource"
+                                        (onBlur)="blurEvent($event)" (click)="onEvent($event)">
+                                    </p-dropdown>
+                                </div>
+                                <div class="ui-g-1 careplanDropdown">
+                                    <p-dropdown [options]="carePlanDto.goalTypeList" formControlName="goalType" [(ngModel)]="goal.currentGoalType.value" (onBlur)="blurEvent($event) "
+                                        (click)="onEvent($event)"></p-dropdown>
+                                </div>
+                            </div>
+                        </p-header>
+                        <div formArrayName="barrierFormList">
+                            <span *ngIf="!goal.barrierList || goal.barrierList.length === 0" class="warningText">
+                                <i class="fa fa-exclamation-circle fa-fw"></i>No barriers found for this goal.
+                            </span>
+                            <p-accordion [multiple]="true " *ngIf="goal.barrierList">
+                                <p-accordionTab [disabled]="!uiDisplayControl.isAccordianDisabled" *ngFor="let barrier of goal?.barrierList; let j=index"
+                                    [formGroupName]="j">
+                                    <p-header>
+                                        <div>
+                                            <div class="ui-g-3 careplanTitle">
+                                                <div class="barrierTitle">Barrier: </div>
+                                                <div [ngClass]="{'sensitivityBgcolor': barrier?.barrierSensitivityCategoryDescription}" class="noPaddingBottom barrierName">
+                                                    <span [innerHTML]="barrier.barrierName">
+                                                </span>
+                                                    <div *ngIf="barrier?.barrierSensitivityCategoryDescription" class="sensitivityText">
+                                                        <i class="fa fa-warning "></i><b>{{barrier?.barrierSensitivityCategoryDescription}}</b>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="ui-g-2 careplanDropdown">
+                                                <p-dropdown [options]="carePlanDto.barrierStatusList" formControlName="barrierStatus" [(ngModel)]="barrier.currentBarrierStatus.value"
+                                                    (onBlur)="blurEvent($event)" (onChange)="changeEvent($event)" (click)="onEvent($event)">
+                                                </p-dropdown>
+                                            </div>
+                                            <div class="ui-g-2 carePlanLastActivity">
+                                                <div *ngFor="let latestActivity of getBarrierLastActivity(barrier.currentBarrierStatus,
+                                        barrier.currentBarrierMotivationalState)">
+                                                    <b><span class="tooltips">{{latestActivity.activityPerformedBy | 
+                                            slice:0:27}}{{latestActivity.activityPerformedBy.length > 27 ? '...' : ''}}
+                                         <span>{{latestActivity.activityPerformedBy}}</span></span></b>
+                                                    <br> {{latestActivity.activityDate}}
+                                                    <br> Updated: {{latestActivity.titleList}}
+                                                </div>
+                                            </div>
+                                            <div class="ui-g-1"><span *ngIf="barrier.barrierStartDate">{{barrier.barrierStartDate}}</span> </div>
+                                            <div class="ui-g-1"><span *ngIf="barrier.barrierEndDate">{{barrier.barrierEndDate}}</span> </div>
+                                             <div class="clearfix"></div>
+                                             <div class="ui-g-4 gapStatementText">
+                                               <div [ngClass]="{'paddingLeft5': !barrier?.barrierSensitivityCategoryDescription}"  *ngIf="barrier?.gapStatementList"> {{barrier?.gapStatementList[0].gapStatementDesc}} <span *ngIf="barrier?.gapStatementList[0].medicationName">- {{barrier?.gapStatementList[0].medicationName}}</span><span *ngIf="barrier?.gapStatementList[0].type == 'MED'"><strong>: Last Filled:</strong> <span *ngIf="barrier?.gapStatementList[0].fillDate">{{barrier?.gapStatementList[0].fillDate}}</span></span></div>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                            <div class="ui-g-3">
+                                                <div *ngIf="barrier?.barrierMotivationalStateFlag === true">
+                                               
+                                                <div class="ui-g-5 motivationalStateText">Motivational State:</div>
+                                                <div class="ui-g-7 careplanDropdown">
+                                                    <p-dropdown [(ngModel)]="barrier.currentBarrierMotivationalState.value" class="mediumWidthDropdown" formControlName="motivationalState"
+                                                        (onBlur)="blurEvent($event)" (onChange)="changeEvent($event)" (click)="onEvent($event)"
+                                                        [options]="carePlanDto.barrierMotivationalStateList">
+                                                    </p-dropdown>
+                                                </div>
+                                                </div>
+                                            </div>
+                                           <!--<div class="ui-g-6">
+                                               <div *ngIf="barrier?.gapStatementList"> {{barrier?.gapStatementList[0].gapStatementDesc}} <span *ngIf="barrier?.gapStatementList[0].medicationName">- {{barrier?.gapStatementList[0].medicationName}}</span><span *ngIf="barrier?.gapStatementList[0].type == 'MED'"><strong>: Last Filled:</strong> <span *ngIf="barrier?.gapStatementList[0].fillDate">{{barrier?.gapStatementList[0].fillDate}}</span></span></div>
+                                            </div>-->
+                                            <div class="clearfix "></div>
+                                        </div>
+                                    </p-header>
+                                    <div class="paddingLeft25" formArrayName="interventionFormList">
+                                        <span *ngIf="!barrier?.interventionList || barrier?.interventionList.length === 0" class="warningText">
+                                        <i class="fa fa-exclamation-circle fa-fw"></i>No intervention found for this barrier.
+                                    </span>
+                                        <div class="intervention" *ngFor="let intervention of barrier?.interventionList; let k=index" [formGroupName]="k">
+
+                                            <div class="ui-g-3 careplanTitle">
+                                                <div class="interventionTitle">Intervention: </div>
+                                                <div [ngClass]="{'sensitivityBgcolor': intervention?.interventionSensitivityCategoryDescription}" class="interventionName">
+                                                    <span [innerHTML]="intervention.interventionName">
+                                                </span>
+                                                    <div *ngIf="intervention?.interventionSensitivityCategoryDescription" class="sensitivityText">
+                                                        <i class="fa fa-warning "></i><b>{{intervention?.interventionSensitivityCategoryDescription}}</b>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="ui-g-3 careplanDropdown">
+                                                <p-dropdown [(ngModel)]="intervention.currentInterventionStatus.value" formControlName="interventionStatus"
+                                                    [options]="carePlanDto.interventionStatusList"></p-dropdown>
+                                            </div>
+                                            <div class="ui-g-2 carePlanLastActivity">
+                                                <div *ngFor="let latestActivity of getIntervetionLastActivity(intervention.currentInterventionStatus,
+                                        intervention.currentInterventionNote, 
+                                        intervention.currentInterventionAssignedTo)">
+                                                    <b><span class="tooltips">{{latestActivity.activityPerformedBy | 
+                                            slice:0:27}}{{latestActivity.activityPerformedBy.length > 27 ? '...' : ''}}
+                                         <span>{{latestActivity.activityPerformedBy}}</span></span></b>
+                                                    <br>{{latestActivity.activityDate}}
+                                                    <br> Updated: {{latestActivity.titleList}}
+
+
+                                                </div>
+                                            </div>
+                                            <div class="ui-g-1"><span *ngIf="intervention.interventionStartDate">{{intervention.interventionStartDate}}</span>                                                </div>
+                                            <div class="ui-g-1"><span *ngIf="intervention.interventionEndDate">{{intervention.interventionEndDate}}</span>                                                </div>
+                                            <div class="clearfix "></div>
+
+                                            <div class="ui-g-1 noPaddingRight">Assigned To:</div>
+                                            <div class="ui-g-2 careplanDropdown">
+                                                <p-dropdown [(ngModel)]="intervention.currentInterventionAssignedTo.value" formControlName="interventionAssignedTo" [options]="intervention.interventionAssignedToList"></p-dropdown>
+                                            </div>
+                                            <div class="ui-g-1 ">
+                                                <a class="link goalBarrierInstructionLink " [ngClass]="{'disableLink':uiDisplayControl.isLoading || !intervention.isInstructionAvailable}"
+                                                    (click)="onClickViewInstructions(intervention.memberGoalBarrierInterventionId)">
+
+                                                    <i class="ui-messages-icon fa fa-info-circle "></i>
+                                                    <br>Instructions</a>
+                                            </div>
+                                            <div class="ui-g-1">
+                                                <a class="link goalBarrierEducationLink" [ngClass]="{'disableLink':uiDisplayControl.isLoading || !intervention.isEducationMaterialAvailable}"
+                                                    (click)="viewEducation(intervention.memberGoalBarrierInterventionId)">
+                                                    <i class="ui-messages-icon fa fa-graduation-cap "></i>
+                                                    <br>Education</a>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                            <div class="ui-g">
+                                                <div class="ui-g-4 no-padding-bottom">
+                                                    <textarea class="fullWidth" rows="5" maxlength="500" #noteText [attr.id]="'Noteid'+intervention.memberGoalBarrierInterventionId"
+                                                        pInputTextarea></textarea>
+                                                </div>
+                                                <div class="ui-g-2">
+                                                    <button class="saveNoteButton" type="button" [disabled]="uiDisplayControl.isLoading || checkForEmpty(noteText.value)" (click)="OnClickSaveNote(intervention, noteText)"
+                                                        pButton label="Save Note"></button>
+                                                </div>
+                                            </div>
+                                            <div class="ui-g small-font" *ngIf="intervention?.currentInterventionNote?.activityDate">
+                                                <div class="ui-g-2 noteHistoryButton">
+                                                    <a class="link tooltips" [ngClass]="{'disableLink':uiDisplayControl.isLoading}" (click)="viewNoteHistory(intervention.memberGoalBarrierInterventionId)">
+                                                        <i class="ui-messages-icon fa fa-history fa-fw "></i>
+                                                        <span>View Note History</span>
+                                                    </a>
+                                                </div>
+
+                                                <div class="ui-g-4">
+                                                    <span>
+                                                            <b>{{intervention?.currentInterventionNote?.activityDate}}: {{intervention?.currentInterventionNote?.label | slice:0:40}}{{intervention?.currentInterventionNote?.label?.length > 40 ? '...' : ''}}</b> &nbsp;
+                                                        </span>
+                                                </div>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                            <!--<div class="interventionNoteWrapper" *ngIf="saveInterventionNoteDto">
+                                                <div *ngIf="saveInterventionNoteDto.memberGoalBarrierInterventionId == intervention.memberGoalBarrierInterventionId">
+                                                    <b>{{saveInterventionNoteDto?.interventionActivityDate}}: {{saveInterventionNoteDto?.note}}</b>
+                                                </div>
+                                            </div>-->
+
+                                        </div>
+                                    </div>
+                                </p-accordionTab>
+                            </p-accordion>
+                        </div>
+                    </p-accordionTab>
+                </p-accordion>
+            </div>
+        </form>
+    </div>
+
+    <!-- Popups for instruction, education, note history -->
+    <div class="ui-g">
+        <p-confirmDialog width="425" #validationPopup>
+            <footer>
+                <button type="button" pButton label="Close" (click)="validationPopup.reject()"></button>
+            </footer>
+        </p-confirmDialog>
+
+        <p-dialog header="{{cpEducationDto?.title}}" [(visible)]="uiDisplayControl.isEducatonVisible" [width]="700" [height]="430"
+            *ngIf="cpEducationDto" responsive="true" [(draggable)]="uiDisplayControl.isDraggable" modal="modal" [(dismissableMask)]="uiDisplayControl.isDismissableMask">
+            <form [formGroup]="educationForm" (ngSubmit)="saveEducation()">
+
+                <div class="ui-g">
+                    <div class="ui-g-12" class="educationMaterial">
+                        <span [innerHTML]="educationText"></span>
+
+                    </div>
+                    <div class="ui-g separator"></div>
+                    <div class="ui-g-12 ui-g-nopad">
+                        <div class="ui-g-6 padding5">
+                            Level of Understanding
+                        </div>
+                        <div class="ui-g-6 padding5">
+                            <p-dropdown class="mediumWidthDropdown" (onBlur)="blurEvent($event)" (onChange)="changeEvent($event)" (click)="onEvent($event)"
+                                [options]="cpEducationDto.levelOfUnderstandingList" formControlName="levelOfUnderstanding">
+                            </p-dropdown>
+                        </div>
+                    </div>
+                    <div class="ui-g separator"></div>
+                    <div class="ui-g-12 ui-g-nopad">
+                        <div class="ui-g-6 padding5">
+                            Have you delivered the education material to the member?
+                        </div>
+                        <div class="ui-g-6 padding5">
+                            <p-selectButton [options]="deliveryConfirmationList" [(ngModel)]="cpEducationDto.isDelivered" formControlName="deliveredFlag"></p-selectButton>
+                        </div>
+
+                    </div>
+                    <div class="ui-g separator"></div>
+                    <div class="ui-g-12 ui-g-nopad ">
+                        <div class="ui-g-6">
+                            Do you want to mark the education as completed?
+                        </div>
+                        <div class="ui-g-6 padding5">
+                            <p-selectButton [options]="completionOfReviewingList" [(ngModel)]="cpEducationDto.isComplete" formControlName="completedFlag"></p-selectButton>
+                        </div>
+                    </div>
+                    <div class="ui-g-12">
+                        <button pButton type="submit" label="OK" [disabled]="!educationForm.dirty"></button>
+                    </div>
+                </div>
+            </form>
+        </p-dialog>
+
+        <p-dialog class="displayPopup" header="Note History" [(visible)]="uiDisplayControl.isNoteHistoryVisible" [width]="700" responsive="true"
+            [(draggable)]="uiDisplayControl.isDraggable" modal="modal" [(dismissableMask)]="uiDisplayControl.isDismissableMask">
+            <p-dataTable [value]="cpNoteHistoryDto?.noteList">
+                <p-column field="interventionActivityDate" header="Date"></p-column>
+                <p-column field="note" header="Note"></p-column>
+            </p-dataTable>
+        </p-dialog>
+
+        <p-dialog *ngIf="cpInstructionsResponseDto" class="displayPopup" header="{{cpInstructionsResponseDto.title}}" [(visible)]="uiDisplayControl.isInstructionsVisible"
+            [width]="700" responsive="true" [(draggable)]="uiDisplayControl.isDraggable" modal="modal" [(dismissableMask)]="uiDisplayControl.isDismissableMask">
+            <form [formGroup]="cpInstructionsForm">
+                <div class="ui-g">
+                    <div class="ui-g-12">
+                        <span [innerHTML]="cpInstructionsResponseDto.text"></span>
+                    </div>
+                    <div class="ui-g separator"></div>
+                    <div class="ui-g-12">
+                        <div class="ui-g-6">
+                            Have you delivered these Instructions to the member?
+                        </div>
+                        <div class="ui-g-6">
+                            <p-selectButton formControlName="deliveredFlag" [(ngModel)]="cpInstructionsResponseDto.isDelivered" [options]="deliveryConfirmationList"></p-selectButton>
+                        </div>
+
+                    </div>
+                    <div class="ui-g separator"></div>
+
+                    <div class="ui-g-12">
+                        <button type="button" [disabled]="!cpInstructionsForm.dirty || uiDisplayControl.isLoading || cpInstructionsResponseDto.isDelivered == ''"
+                            pButton label="OK" (click)="onClickSaveInstructions()"></button>
+                    </div>
+                </div>
+            </form>
+        </p-dialog>
+
+    </div>
+</div>

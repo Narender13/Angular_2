@@ -1,0 +1,87 @@
+<div class="flex-container">
+<header>
+    <div class="panel panel-default page-content">
+        <p-panel [toggleable]="true" class="toggle-Panel">
+            <div class="ui-grid ui-grid-responsive ui-grid-pad">
+                <div class="ui-grid-row">
+                    <div class="ui-grid-col-3">
+                        <div class="ui-grid ui-grid-responsive">
+                            <div class="ui-grid-row">
+                                <div class="ui-grid-col-11 usernameblock" *ngIf="member && member.lastName && member.firstName"><label class="ui-widget tooltip"> {{member.lastName}}, {{member.firstName}}<span class="tooltiptext">Member Name</span> </label></div>
+                            </div>
+                            <div class="ui-grid-row">
+                                <div class="ui-grid-col-4">{{ getLabelName(memberWindowDefinition, 'member_id', 'Member Id') }}:</div>
+                                <div class="ui-grid-col-7"><label class="ui-widget tooltip"> {{member?.memberId}}<span class="tooltiptext">Member Id</span></label></div>
+                            </div>
+                            <div class="ui-grid-row">
+                                <div class="ui-grid-col-4">{{ getLabelName(memberWindowDefinition, 'member_external_id', 'Alternate Id') }}:</div>
+                                <div class="ui-grid-col-7"><label class="ui-widget"> {{member?.alternateId}}</label></div>
+                            </div>
+                            <div class="ui-grid-row">
+                                <div class="ui-grid-col-4">{{ getLabelName(memberWindowDefinition, 'member_phone', 'Phone') }}:</div>
+                                <div class="ui-grid-col-7"><label class="ui-widget tooltip">{{formatPhone(member?.phone)}}<span class="tooltiptext">Member Phone</span> </label></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-grid-col-3">
+                        <div class="ui-grid ui-grid-responsive">
+                            <div class="ui-grid-row">
+                                <div class="ui-grid-col-4">{{ getLabelName(memberWindowDefinition, 'member_dob', 'DOB') }}:</div>
+                                <div class="ui-grid-col-7"> <label class="ui-widget">{{member?.dateOfBirth}}</label><label class="ui-widget" *ngIf="member && member.age"> ({{member.age}})</label></div>
+                            </div>
+                            <div class="ui-grid-row">
+                                <div class="ui-grid-col-4"> {{ getLabelName(memberWindowDefinition, 'member_gender', 'Gender') }}:</div>
+                                <div class="ui-grid-col-7"><label class="ui-widget"> {{member?.gender}}</label></div>
+                            </div>
+                            <div class="ui-grid-row">
+                                <div class="ui-grid-col-4">{{ getLabelName(memberWindowDefinition, 'member_pcp', 'PCP') }}:</div>
+                                <div class="ui-grid-col-7"><label class="ui-widget">{{member?.pcp}} </label></div>
+                            </div>
+                            <div class="ui-grid-row">
+                                <div class="ui-grid-col-4"> {{ getLabelName(memberWindowDefinition, 'member_care_manager', 'CM') }}:</div>
+                                <div class="ui-grid-col-7"><label class="ui-widget">{{member?.careManager}}</label></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-grid-col-3">
+                        <div class="ui-grid ui-grid-responsive">
+                            <div class="ui-grid-row">
+                                <div class="ui-grid-col-4"> {{ getLabelName(memberWindowDefinition, 'member_coverages', 'Coverages') }}:</div>
+                                <div class="ui-grid-col-7" *ngIf="member && member.pastCount && member.currentCount && member.futureCount"> <label class="ui-widget tooltip">P:{{member?.pastCount}}<span class="tooltiptext">Past Count</span></label>                                    <label class="ui-widget tooltip">C:{{member?.currentCount}}<span class="tooltiptext">Current Count</span></label>                                    <label class="ui-widget tooltip">F:{{member?.futureCount}}<span class="tooltiptext">Future Count</span></label></div>
+                            </div>
+                            <div class="ui-grid-row">
+                                <div class="ui-grid-col-4"> {{ getLabelName(memberWindowDefinition, 'policyholder_member_id', 'Policy Holder') }}:</div>
+                                <div class="ui-grid-col-7"><label class="ui-widget">{{member?.policyHolder}}</label></div>
+                            </div>
+                            <div class="ui-grid-row">
+                                <div class="ui-grid-col-4">{{ getLabelName(memberWindowDefinition, 'member_product', 'Plan / Product') }}:</div>
+                                <div class="ui-grid-col-7"><label class="ui-widget"> {{member?.product}} </label></div>
+                            </div>
+                            <div class="ui-grid-row">
+                                <div class="ui-grid-col-4">{{ getLabelName(memberWindowDefinition, 'member_group', 'Benefit Group') }}:</div>
+                                <div class="ui-grid-col-7"><label class="ui-widget">{{member?.group}}</label></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-grid-col-3">
+                        <div class="ui-grid ui-grid-responsive">
+                            <div class="ui-grid-row">
+                                <div class="ui-grid-col-4">{{ getLabelName(memberWindowDefinition, 'member_program', 'Program') }}:</div>
+                                <div class="ui-grid-col-7"> <label class="ui-widget"> {{member?.program}}</label></div>
+                            </div>
+                            <div class="ui-grid-row">
+                                <div class="ui-grid-col-4"> {{ getLabelName(memberWindowDefinition, 'member_claim_risk', 'Claims Risk') }}:</div>
+                                <div class="ui-grid-col-7"><label class="ui-widget">{{member?.claimsRisk}}</label></div>
+                            </div>
+                            <div class="ui-grid-row">
+                                <div class="ui-grid-col-4">{{ getLabelName(memberWindowDefinition, 'member_user_risk', 'User Risk') }}:</div>
+                                <div class="ui-grid-col-7"><label class="ui-widget">{{member?.userRisk}} </label></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </p-panel>
+    </div>
+</header>
+</div>

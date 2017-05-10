@@ -1,0 +1,71 @@
+<div class="PC">
+    <div *ngIf="isDevelopmentMode === true" id="MENUSIDE" [ngClass]="{'active':mobileMenuActive}">
+        <div id="MENUSIDEindent">
+            <span id="LOGO" class="">
+                <a href="#" [routerLink]=" ['/home']">
+                    <img alt="logo" src="app/resources/images/brands/axis_brand.png" />
+                </a>
+                <a href="#" id="openMobileMenuBtn" (click)="toggleMenu($event)" [ngClass]="{'active':mobileMenuActive}">
+                    <img alt="logo" src="app/resources/images/menuicon.svg"/>
+                </a>
+            </span>
+
+            <span id="button_menutitle" #buttonmenutitle class="MenuSideMainLink bordersOfMenuSide" [class.MenuSideMainLinkDark]="buttonmenutitle.id == activeMenuId" (click)="activeMenuId = buttonmenutitle.id"><span class="MainLinkText">Assessment SANDBOX</span></span>
+            <div class="SubMenuLinkContainer" [ngClass]="{'submenushow': (buttonmenutitle.id == activeMenuId), 'submenuhide': (buttonmenutitle.id != activeMenuId)}">
+                <a class="SubMenuLink" [routerLink]="['/apAssessment']" (click)="mobileMenuActive = false">&#9657; AP Assessment</a>
+                <a class="SubMenuLink" [routerLink]="['/apCareplan']" (click)="mobileMenuActive = false">&#9657; AP Careplan</a>
+                <a class="SubMenuLink" href="app\sandbox\ap-assessment\test\test.html">&#9657; Assessment Tester</a>
+            </div>
+
+            <span id="data_menutitle" #datamenutitle class="MenuSideMainLink bordersOfMenuSide" [class.MenuSideMainLinkDark]="datamenutitle.id == activeMenuId" (click)="activeMenuId = datamenutitle.id">
+                <span class="MainLinkText">Calendar SANDBOX</span></span>
+            <div class="SubMenuLinkContainer" [ngClass]="{'submenushow': (datamenutitle.id == activeMenuId), 'submenuhide': (datamenutitle.id != activeMenuId)}">
+                <a class="SubMenuLink" [routerLink]="['/calendarAdmin']" (click)="mobileMenuActive = false">&#9657; Admin</a>
+                <a class="SubMenuLink" [routerLink]="['/calendarAssessment']" (click)="mobileMenuActive = false">&#9657; Assessment</a>
+                <a class="SubMenuLink" [routerLink]="['/calendarGetNext']" (click)="mobileMenuActive = false">&#9657; GetNext</a>
+                <a class="SubMenuLink" [routerLink]="['/calendarMember']" (click)="mobileMenuActive = false">&#9657; Member</a>
+                <a class="SubMenuLink" [routerLink]="['/calendarUser']" (click)="mobileMenuActive = false">&#9657; User</a>
+            </div>
+
+            <span id="menu_panel" #panelmenutitle class="MenuSideMainLink bordersOfMenuSide" [class.MenuSideMainLinkDark]="panelmenutitle.id == activeMenuId" (click)="activeMenuId = panelmenutitle.id">
+                <span class="MainLinkText">GetNext SANDBOX</span></span>
+            <div class="SubMenuLinkContainer" [ngClass]="{'submenushow': (panelmenutitle.id == activeMenuId), 'submenuhide': (panelmenutitle.id != activeMenuId)}">
+                <a class="SubMenuLink" [routerLink]="['/getnext']" (click)="mobileMenuActive = false">&#9657; GetNext</a>
+                <a class="SubMenuLink" [routerLink]="['/getNextContainer']" (click)="mobileMenuActive = false">&#9657; GetNext Container</a>
+                <a class="SubMenuLink" [routerLink]="['/getNextContainerTester']" (click)="mobileMenuActive = false">&#9657; GetNext Tester</a>
+                <a class="SubMenuLink" [routerLink]="['/memberOtherContactTester']" (click)="mobileMenuActive = false">&#9657; Member Other Contact tester</a>
+                <a class="SubMenuLink" [routerLink]="['/memberDemographicsTester']" (click)="mobileMenuActive = false">&#9657; Member Demographics tester</a>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <div *ngIf="isDevelopmentMode === false">
+        <main>
+            <router-outlet></router-outlet>
+        </main>
+    </div>
+
+    <div id="CONTENTSIDE" *ngIf="isDevelopmentMode === true">
+        <div id="CONTENTSIDEindent">
+            <div class="ContentSideSections" id="PFTopLinksCover">
+
+                <a href="#" id="openMenuBtn" (click)="toggleMenu($event)" [ngClass]="{'active':mobileMenuActive}">
+                    <img alt="logo" src="app/resources/images/menuicon.svg" />
+                </a>
+
+                <div id="axisBrand">
+                    <a href="#" [routerLink]=" ['/home']" style="color: #ffffff !important;">
+                        AXIS Development Sandbox
+                    </a>
+                </div>
+            </div>
+
+            <main>
+                <router-outlet></router-outlet>
+            </main>
+        </div>
+    </div>
+</div>

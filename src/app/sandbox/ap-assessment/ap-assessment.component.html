@@ -1,0 +1,150 @@
+<div class="panel panel-default page-content">
+    <div class="ui-g">
+        <p-messages [value]="messages"></p-messages>
+    </div>
+
+    <div class="ui-g-12 ui-md-12 ui-lg-12" *ngIf="isSaveExit">
+        <p-panel class="toggle-Panel">
+            <h4>
+                <span *ngIf="assessmentType === 'CARETRACK'">Care Track Questionnaire Assessment has been 'Saved'. Please close Care Track Questionnaire Assessment</span>
+                <span *ngIf="assessmentType === 'GENERAL'">General Assessment has been 'Saved'. Please close General Assessment.</span>
+            </h4>
+            </p-panel>
+    </div>
+
+    <div class="ui-g-12 ui-md-12 ui-lg-12" *ngIf="isRecommendedSkillSetNull || isCalendarIconClicked">
+        <p-panel class="toggle-Panel">
+            <h4>Care Track Questionnaire Assessment has been Saved. Please close Care Track Questionnaire Assessment.</h4>
+        </p-panel>
+    </div>
+
+    <div class="ui-g-12 ui-md-12 ui-lg-12" *ngIf="waitingLaunch">
+        <img src="assets/images/loading_small.gif"> Loading Content...
+    </div>
+
+    <div *ngIf="!isSaveExit && !isRecommendedSkillSetNull && !isCalendarIconClicked">
+        <div class="ui-g-12 ui-md-12 ui-lg-12" *ngIf="apAssessmentDto?.question">
+            <div class="ui-g-12">
+                <!--<div class="ui-g-12 ui-g-nopad panel-heading">Algorithm Name PlaceHolder</div>-->
+                <p-panel class="toggle-Panel">
+                    <!-- interim code to check the API integration -->
+                    <div class="ui-g ui-g-nopad mb-10">
+                        <div class="ui-sm-12" *ngIf="apAssessmentDto?.apAssessmentGapStatementList">
+                            <gapStatementComponent [gapStatmentObject]='gapStatment'></gapStatementComponent>
+                        </div>
+                    </div>
+                    <div class="ui-g separator"></div>
+                    <div class="assessment-container" *ngIf="!isLoading">
+                        <div class="mt-10">
+                            <span [innerHTML]="apAssessmentDto?.question?.questionText?.baseText" *ngIf="apAssessmentDto?.question?.questionText?.baseText">
+                            </span>
+                            <span>
+								<span *ngIf="isRequired" class="axis-required"></span>
+                            <img src="assets/images/help_text.png" (click)="_showDialogService.showDialog(apAssessmentDto?.question?.helpText, true, false)" *ngIf="apAssessmentDto?.question?.helpText" style="margin-left:10px;" />
+                            <p-dialog header="Help Text" [(visible)]="_showDialogService.isHelpVisible" class="displayHelpText" [width]="700" [height]="300">
+                                <p> {{_showDialogService.helpText}}</p>
+                            </p-dialog>
+
+                            <p-dialog header="Recommendations and Referrals" [(visible)]="_showDialogService.isSubmit" class="display-skill-set" [width]="700" [height]="300">
+                                <p [innerHTML]="_showDialogService.helpText"></p><br/><br/>
+                                <span><img src="assets/images/calendar_icon_small.png" (click)="onClickCalendarIcon()"></span>
+                            </p-dialog>
+
+                            </span>
+                        </div>
+                        <div class="ui-g-nopad previous-assessment-answer" *ngIf="apAssessmentDto?.priorAnswerList && !(apAssessmentDto?.question?.responseUOM)"> <span *ngFor="let priorAnswer of priorAssessmentAnswer; let i = index">{{priorAnswer.answerText?.baseText}}<span *ngIf="priorAssessmentAnswer.length > 1 && i < (priorAssessmentAnswer.length-1)"> :</span> </span>- {{priorAssessmentAnswer[0].assessmentCompletedDate}}</div>
+                        <div class="ui-g-nopad previous-assessment-answer" *ngIf="apAssessmentDto?.priorAnswerList && (apAssessmentDto?.question?.responseUOM)">{{priorAssessmentAnswer}} - {{apAssessmentDto?.priorAnswerList[0].assessmentCompletedDate}}</div>
+                        <div class="ui-g" *ngIf="apAssessmentDto?.question?.questionType == 'MULTIPLE_CHOICE_MULTIPLE_SELECT'">
+                            <div class="ui-g-12" *ngFor="let answer of apAssessmentDto?.answerList">
+                                <p-checkbox name="multiple_choice_multiple_select" value="{{answer.answerId}}" (onChange)="handleNoneOfAbove($event, answer)" [(ngModel)]="providedAnswerList"></p-checkbox>
+                                <span [innerHTML]="answer.answerText?.baseText"></span>
+                                <span *ngIf="answer?.helpText">
+                            <img src="assets/images/help_text.png" (click)="_showDialogService.showDialog(answer.helpText, true, false)" />
+                        </span>
+                            </div>
+                        </div>
+                        <div class="ui-g" *ngIf="apAssessmentDto?.question?.questionType == 'MULTIPLE_CHOICE_SINGLE_SELECT'">
+                            <div class="ui-g-12" *ngFor="let answer of apAssessmentDto?.answerList">
+                                <p-radioButton name="multiple_choice_single_select" value="{{answer.answerId}}" [(ngModel)]="providedAnswerList"></p-radioButton>
+                                <span [innerHTML]="answer.answerText?.baseText"></span>
+                                <span *ngIf="answer?.helpText">
+                            <img src="assets/images/help_text.png" (click)="_showDialogService.showDialog(answer.helpText, true, false)"/>
+                        </span>
+                            </div>
+                        </div>
+                        <div class="ui-g" *ngIf="apAssessmentDto?.question?.questionType == 'FREE_TEXT' && apAssessmentDto?.assessmentStatus != 'READY_TO_SUBMIT'">
+                            <div class="ui-g-3"><textarea rows="5" cols="60" pInputTextarea autoResize="autoResize" [(ngModel)]="providedAnswerText"></textarea>
+                                <span *ngIf="answer?.helpText">
+                        <img src="assets/images/help_text.png" (click)="_showDialogService.showDialog(answer.helpText, true, false)" />
+                        </span>
+                            </div>
+                        </div>
+                        <!-- value Entry Question : datepicker -->
+                        <div class="ui-g " *ngIf="apAssessmentDto?.question?.questionType=='VALUEENTRY_DATE' && apAssessmentDto?.assessmentStatus
+                            !='READY_TO_SUBMIT' " [style.margin-bottom]="setMargin">
+                            <div class="ui-g-8 ">
+                                <p-calendar [(ngModel)]="pcpAppointmentDate" dateFormat="mm/dd/yy" (click)="alignCalendar(true)" (onSelect)="alignCalendar(false,pcpAppointmentDate)"></p-calendar>
+                            </div>
+                        </div>
+
+                        <div class="ui-g" *ngIf="apAssessmentDto?.assessmentStatus == 'READY_TO_SUBMIT'">
+                            <div class="ui-g-6">
+                                Assessment Complete. <br/>Please click "Submit" to post to Care Plan
+                            </div>
+                        </div>
+                        <div class="ui-button-container">
+                            <button pButton type="text" label="<< Previous" (click)="onClickPreviousQuestion()" [disabled]="apAssessmentDto?.assessmentStatus == 'START' || isLoading || apAssessmentDto?.assessmentStatus == 'COMPLETE' "></button>
+                            <button pButton type="text" label="Save and Exit" (click)="onClickSave()" [disabled]="isLoading || apAssessmentDto?.assessmentStatus == 'COMPLETE'"></button>
+                            <button pButton type="text" label="Submit" [disabled]="apAssessmentDto?.assessmentStatus != 'READY_TO_SUBMIT' || apAssessmentDto?.assessmentStatus == 'COMPLETE'" (click)="onClickSubmit()"></button>
+                            <button pButton type="text" label="Next >>" (click)="onClickNextQuestion()" [disabled]="apAssessmentDto?.assessmentStatus == 'READY_TO_SUBMIT' || isLoading || apAssessmentDto?.assessmentStatus == 'COMPLETE'"></button>
+                        </div>
+                    </div>
+                    <div class="assessment-container" *ngIf="isLoading">
+                        <div class="mt-10">
+                            <img src="assets/images/loading_small.gif"> Loading Content...
+                        </div>
+                    </div>
+                    <div class="ui-g">
+                        <p-confirmDialog width="425" #validationPopup>
+                            <footer>
+                                <button type="button" pButton label="Close" (click)="validationPopup.reject()"></button>
+                            </footer>
+                        </p-confirmDialog>
+
+
+                    </div>
+                </p-panel>
+            </div>
+        </div>
+        <!-- Begin: Read-only view -->
+        <div class="ui-g-8 question-answer-container" *ngIf=" apAssessmentViewDto?.questionList && assessmentAction === 'VIEW' && !isLoading">
+            <h4>Care Track Questionnaire - Read Only</h4>
+            <div class="ui-g-12 ui-md-12 ui-lg-12" *ngFor="let question of apAssessmentViewDto.questionList; let i = index">
+                <div class="mt-10" *ngIf="question?.questionText?.baseText">
+                    <span> {{i+1}}. </span>
+                    <span [innerHTML]="question?.questionText?.baseText" *ngIf="question?.questionText?.baseText"></span>
+                </div>
+
+                <div class="ui-g" *ngFor="let answer of question.answerList">
+                    <div class="ui-g-12 answer-text" *ngIf="question.questionType =='FREE_TEXT'">
+                        <span [innerHTML]="answer.userResponse"></span> <span *ngIf="answer.userResponseUOM !== null" [innerHTML]="answer.userResponseUOM"></span>
+                    </div>
+                    <div class="ui-g-12 answer-text" *ngIf="question.questionType =='VALUEENTRY_WEIGHT'">
+                        <span [innerHTML]="answer.userResponse"></span> <span [innerHTML]="answer.userResponseUOM"></span>
+                    </div>
+                    <div class="ui-g-12 answer-text" *ngIf="question.questionType !='FREE_TEXT' && answer.userResponseUOM === null">
+                        <span [innerHTML]="answer.answerText?.baseText"></span>
+                    </div>
+                </div>
+                <div class="ui-g-12 answer-text" *ngIf="question.questionType =='VALUEENTRY_DATE'">
+                    <span *ngIf="question.answerList[0].userResponse.length == 1">0</span><span>{{question.answerList[0].userResponse}}/</span><span *ngIf="question.answerList[1].userResponse.length == 1" [innerHTML]="0"></span><span>{{question.answerList[1].userResponse}}/</span>
+                    <span [innerHTML]="question.answerList[2].userResponse"></span>
+
+                </div>
+            </div>
+        </div>
+        <!-- End: Read-only view -->
+
+
+    </div>
+</div>

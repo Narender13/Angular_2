@@ -1,0 +1,204 @@
+
+.header-style {
+    /*color: #4e1a67!important;*/
+    background-color: rgb(238, 242, 246);
+    padding: 5px 20px 3px 10px;
+    border-top: 1px solid #dddddd;
+    border-bottom: 1px solid #dddddd;
+}
+
+.note-label {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: normal;
+}
+
+.toolbar-item-initialized {
+    color: lightseagreen;
+}
+
+.getnext-right {
+    float: right!important
+}
+
+.getnext-animate-right {
+    position: relative;
+    -webkit-animation: animateright 0.4s;
+    animation: animateright 0.4s
+}
+
+.getnext-animate-left {
+    position: relative;
+    -webkit-animation: animateleft 0.4s;
+    animation: animateleft 0.4s
+}
+
+.getnext-card-2 {
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12)!important
+}
+
+.getnext-white {
+    color: #000!important;
+    background-color: rgb(238, 242, 246);
+}
+
+.getnext-menunav {
+    height: 100%;
+    width: 200px;
+    background-color: rgb(238, 242, 246);
+    border-right: 1px solid #dddddd;
+    position: fixed!important;
+    z-index: 1;
+    overflow-y: auto;
+}
+
+.getnext-notenav {
+    height: 100%;
+    width: 300px;
+    display:none;
+    right:0;
+    border-left: 2px solid darkgrey;
+    position: absolute;
+    z-index: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.getnext-opennav:hover,
+.getnext-closenav:hover {
+    cursor: pointer;
+    color: black;
+    opacity: 1.5
+}
+
+.getnext-sidenav a,
+.getnext-closenav,
+*[class*="getnext-hover-"] {
+    -webkit-transition: background-color .25s, color .15s, box-shadow .25s, opacity 0.25s, filter 0.25s, border 0.15s;
+    transition: background-color .25s, color .15s, box-shadow .15s, opacity .25s, filter .25s, border .15s
+}
+
+
+
+
+
+
+
+
+/* menu side style*/
+
+#getNextMenuLeftSide {
+    /*    width: 85px;
+    float: left;
+    background-color: #313b3f;
+    border-right: solid 1px #151d21;
+    overflow: hidden;
+    width: 299px;  */
+    height: 100%;
+    /* 100% Full-height */
+    width: 200px;
+    /* 0 width - change this with JavaScript */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Stay on top */
+    
+    background-color: #E6ECEF;
+    /* #cfd8dc;  #313b3f;  Black*/
+    overflow-x: hidden;
+    /* Disable horizontal scroll */
+    /* padding-top: 60px;  Place content 60px from the top */
+    transition: 0.5s;
+    /* 0.5 second transition effect to slide in the sidenav */
+}
+
+#getNextMenuLeftSideIndent {
+    width: 100%;
+    height: auto;
+}
+
+.bordersOfGetNextMenuLeftSide {
+    border-top: solid 1px #A0A0A0;
+}
+
+.getNextMenuLeftSideMainLink {
+    width: 100%;
+    height: 27px;
+    display: block;
+    padding: 10px 0px 0px 0px;
+    cursor: pointer;
+}
+
+.getNextMenuLeftSideMainLink input {
+    padding: 6px;
+    background-color: #354044;
+    outline: none;
+    border: 0px;
+    border: none;
+    color: #9ba5ac;
+    border-radius: 20px;
+    -webkit-box-shadow: inset 0px 0px 3px 0px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: inset 0px 0px 3px 0px rgba(0, 0, 0, 0.5);
+    box-shadow: inset 0px 0px 3px 0px rgba(0, 0, 0, 0.5);
+}
+
+.getNextMenuLeftSideMainLinkDark {
+    background-color: #A6BBC4 !important;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.getNextMenuLeftSideMainLink:hover {
+    background-color: #ffffff;
+    /* #20282b; */
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.getNextMenuLeftSideMainLink img {
+    width: 20px;
+    height: auto;
+    float: left;
+}
+
+.MainLinkText {
+    color: #242D30;
+    font-size: 14px;
+    margin: 0px 0px 0px 20px;
+    display: block;
+}
+
+.SubMenuLinkContainer {
+    width: auto;
+    padding: 0px 5px 0px 13px;
+    overflow: hidden;
+    background-color: #ffffff;
+}
+
+.SubMenuLink {
+    width: 100%;
+    display: inline-block;
+    padding: 6px;
+    box-sizing: border-box;
+    cursor: pointer;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    color: #242D30;
+    font-size: 14px;
+}
+
+.SubMenuLink:hover {
+    background-color: #EDF0F2;
+    color: #242D30;
+}
+
+
+
+
+

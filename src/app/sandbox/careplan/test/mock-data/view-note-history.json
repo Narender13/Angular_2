@@ -1,0 +1,21 @@
+{
+    "apiStatus": {
+        "resultInformation": null,
+        "statusCode": "200",
+        "serviceDescription": "com.aph.webservice.ApCarePlanServiceV8Impl",
+        "timestamp": "2017-02-21 19:44:57.9",
+        "errorMessage": "SUCCESS",
+        "errorStackTrace": null
+    },
+    "memberGoalBarrierInterventionId": 711,
+    "noteList": [
+        {
+            "note": "notes enterd by user",
+            "interventionActivityDate": "MM/DD/YYYY"
+        },
+        {
+            "note": "notes enterd by user",
+            "interventionActivityDate": "MM/DD/YYYY"
+        }
+    ]
+}

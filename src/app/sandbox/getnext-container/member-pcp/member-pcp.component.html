@@ -1,0 +1,133 @@
+<confirmDialog [text]="alertDialog" (acceptedEmitter)="saveClose($event)">
+
+</confirmDialog>
+<p-growl [value]="messages" sticky="true"></p-growl>
+<p-dialog [(visible)]="display" modal="modal" [closable]="false" (onBeforeHide)="onHide($event)" [closeOnEscape]="false" showEffect="fade" responsive="true" height="500" width="1210">
+
+    <p-header>
+        <span style="font-family: Arial, Helvetica, sans-serif; font-size: 16px; font-weight: bold; width: 100% ">Primary Care Information</span>
+    </p-header>
+    <div *ngIf="isLoading">
+        <div class="mt-10">
+            <img src="assets/images/loading_small.gif"> Loading ...
+        </div>
+    </div>
+
+    <p-tabView id="tabViewPcp" orientation="left" (onChange)="handleChange($event)">
+        <p-tabPanel *ngFor="let pcp of pcpList;let i=index" [header]="pcp.pcpTypeDesc" [selected]="selected==i" [headerStyle]="{'font-family': 'Arial, Helvetica, sans-serif'}">
+            <div *ngIf="pcp.providerId!=null" class="row_container" style="margin-bottom: 25px;">
+                <div class="column_container" style="margin-left: 10px;">
+                    <div class="label">{{providerIdLabel}}</div>
+                    <div *ngIf="addedDto[i]!=null" class="pcp">{{addedDto[i].providerId}}</div>
+                    <div class="pcp">{{pcp.providerId}}</div>
+                </div>
+
+                <div class="column_container" style="margin-left: 10px;">
+                    <div class="label">{{firstNameLabel}}</div>
+                    <div *ngIf="addedDto[i]!=null" class="pcp">{{addedDto[i].providerFirstName}}</div>
+                    <div class="pcp">{{pcp.providerFirstName}}</div>
+                </div>
+
+                <div class="column_container" style="margin-left: 10px;">
+                    <div class="label">{{lastNameLabel}}</div>
+                    <div *ngIf="addedDto[i]!=null" [className]="pcpNameClass">{{addedDto[i].providerLastName}}</div>
+
+                    <div class="pcp_last_name">{{pcp.providerLastName}}</div>
+
+
+                </div>
+
+                <div class="column_container" style="margin-left: 10px;">
+                    <div class="label">{{startDateLabel}}</div>
+                    <div *ngIf="addedDto[i]!=null" class="pcp">{{addedDto[i].startDate}}</div>
+                    <div class="pcp">{{startDate[i]}}</div>
+                </div>
+
+                <div class="column_container" style="margin-left: 10px;">
+                    <div class="label">{{endDateLabel}}</div>
+                    <div *ngIf="addedDto[i]!=null" class="pcp">{{addedDto[i].endDate}}</div>
+                    <div *ngIf="view[i]" class="pcp_end_date">{{pcp.endDate}}</div>
+                    <div *ngIf="changed[i]" class="pcp_end_date">{{pcp.endDate}}</div>
+                    <!-- Calendar for "Edit" -->
+
+                    <div *ngIf="edit[i]" style="margin-left: 5px; width: 120px;">
+                        <p-calendar [showIcon]="true" placeholder="mm/dd/yyyy" (onBlur)="blurDate(i)" (onFocus)="focusDate(i)" (onSelect)="changedDate(i)" [minDate]="minDate[i]" [maxDate]="maxDate" [(ngModel)]="endDate[i]"></p-calendar>
+                        <div class="text-danger" *ngIf="checkValidEntry[i]">
+                            {{dateError[i]}}
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+
+                <div class="column_container" style="margin-left: 10px;">
+                    <div class="row_container">
+                        <!-- buttons for "View" -->
+                        <div *ngIf="view[i]&&i<2">
+                            <button pButton type="text" (click)="onEditClick(i)" title="Edit PCP" class="ui-button-icon-only left_align" style="position: relative; width: 1em; background-color: rgba(0, 0, 0,0); color:black; border: none; margin-left: auto" icon="fa fa-pencil fa-lg"></button>
+                            <button pButton type="text" (click)="onAddClick(i)" title="Replace PCP" class="ui-button-icon-only" style="background-color: rgba(0, 0, 0,0); color:black; border: none; width: 1em; margin-top: 0px; margin-left: 15px;" icon="fa fa-plus-circle fa-lg"></button>
+                        </div>
+
+                        <!-- buttons for "Edit"-->
+                        <div *ngIf="add[i]||edit[i]||changed[i]">
+                            <button pButton type="text" (click)="onCancelClick(i)" title="Cancel" class="ui-button-icon-only left_align" style="position: relative; width: 1em; background-color: rgba(0, 0, 0,0); color:black; border: none; margin-left: auto" icon="fa fa-ban fa-lg"></button>
+                        </div>
+                        <div *ngIf="changed[i]">
+                            <button pButton type="text" (click)="save(i)" title="Save" class="ui-button-icon-only" style="background-color: rgba(0, 0, 0,0); color:black; border: none; width: 1em; margin-top: 0px; margin-left: 15px;" icon="fa fa-floppy-o fa-lg"></button>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div *ngIf="pcp.providerId==null" class="row_container" style="margin-bottom: 25px;">
+                No provider found
+                <div *ngIf="view[i]&&i<2">
+                    <button pButton type="text" (click)="onAddClick(i)" title="Add PCP" class="ui-button-icon-only" style="background-color: rgba(0, 0, 0,0); color:black; border: none; width: 1em; margin-top: 0px; margin-left: 15px;" icon="fa fa-plus-circle fa-lg"></button>
+                </div>
+                <div *ngIf="add[i]||edit[i]||changed[i]">
+                    <button pButton type="text" (click)="onCancelClick(i)" title="Cancel Add" class="ui-button-icon-only" style="background-color: rgba(0, 0, 0,0); color:black; border: none; width: 1em; margin-top: 0px; margin-left: 15px;" icon="fa fa-ban fa-lg"></button>
+                </div>
+            </div>
+
+
+            <!--ADD selection autocomplete component -->
+
+            <div *ngIf="add[i]">
+                <div class="member_language_label">Select Provider:</div>
+                <div class="row_container">
+                    <p-autoComplete id="acSimple" (onSelect)="providerSelect()" [delay]="200" [(ngModel)]="provider" [suggestions]="providers" (completeMethod)="searchProviders($event)" field="name" [size]="55" placeholder="Enter Provider Name" [minLength]="3">
+                        <template let-provider pTemplate="item">
+                        
+                            <div class="ui-helper-clearfix" style="border-bottom:1px solid #D5D5D5">
+                                <div class="row_container">
+                                <div class="autocomplete_column_container">{{provider.name}}</div>                               
+                                </div>
+                            </div>
+                       
+                        </template>
+                    </p-autoComplete>
+
+                    <div class=" ui-widget-content ui-helper-clearfix" style="margin-left: 10px;">
+                        <button type="button" [disabled]="provDisabled" pButton icon="" (click)="addNewPCP(i)" label="Add"></button>
+                    </div>
+                </div>
+                <div class="text-danger">
+                    {{errorProvider}}
+                </div>
+            </div>
+
+
+
+        </p-tabPanel>
+
+
+    </p-tabView>
+
+    <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+        <button type="button" pButton icon="" [disabled]="disabled" (click)="onClose()" label="Close"></button>
+    </div>
+
+</p-dialog>

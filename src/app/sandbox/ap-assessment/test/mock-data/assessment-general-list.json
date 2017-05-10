@@ -1,0 +1,43 @@
+{
+	"apiStatus": {
+		"resultInformation": null,
+		"statusCode": "200",
+		"serviceDescription": "com.aph.webservice.ApAssessmentServiceV8Impl",
+		"timestamp": "2017-03-23 13:27:36.089",
+		"errorMessage": "SUCCESS",
+		"errorStackTrace": null
+	},
+	"assessmentList": [{
+		"assessmentAlgorithmId": "General-Food",
+		"assessmentName": "General-Food, housing, utilities",
+		"assessmentStatus": "NOT_STARTED"
+	}, {
+		"assessmentAlgorithmId": "General-Care-Needs",
+		"assessmentName": "General-Care needs",
+		"assessmentStatus": "NOT_STARTED"
+	}, {
+		"assessmentAlgorithmId": "General-Barriers",
+		"assessmentName": "General-Barriers to care",
+		"assessmentStatus": "NOT_STARTED"
+	}, {
+		"assessmentAlgorithmId": "General-Medical-History",
+		"assessmentName": "General-Medical History, Depression Screen",
+		"assessmentStatus": "NOT_STARTED"
+	}, {
+		"assessmentAlgorithmId": "General-Tobacco",
+		"assessmentName": "General-Tobacco, alcohol, drugs",
+		"assessmentStatus": "NOT_STARTED"
+	}, {
+		"assessmentAlgorithmId": "General-Flu",
+		"assessmentName": "General-Flu, pneumococcal vaccines",
+		"assessmentStatus": "NOT_STARTED"
+	}, {
+		"assessmentAlgorithmId": "General-Exercise",
+		"assessmentName": "General-Exercise, healthy eating, weight loss",
+		"assessmentStatus": "NOT_STARTED"
+	}, {
+		"assessmentAlgorithmId": "General-Med-Adherence",
+		"assessmentName": "General-Med adherence screening, Triage number",
+		"assessmentStatus": "NOT_STARTED"
+	}]
+}

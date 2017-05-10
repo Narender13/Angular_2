@@ -1,0 +1,3 @@
+<div>
+    <div> {{gapStatmentObject.apAssessmentGapStatementList[0].gapStatementDesc}} <span *ngIf="gapStatmentObject.apAssessmentGapStatementList[0].medicationName">- {{gapStatmentObject.apAssessmentGapStatementList[0].medicationName}}</span><span *ngIf="gapStatmentObject.apAssessmentGapStatementList[0].type == 'MED'"><strong>: Last Filled:</strong> <span *ngIf="gapStatmentObject.apAssessmentGapStatementList[0].fillDate">{{gapStatmentObject.apAssessmentGapStatementList[0].fillDate}}</span></span></div>
+</div>

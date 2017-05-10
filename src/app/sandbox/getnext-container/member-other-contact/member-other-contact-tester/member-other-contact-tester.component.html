@@ -1,0 +1,33 @@
+<div class="panel panel-default page-content">
+    <div style="width: 100%;">
+
+        <div class="ui-g">
+            <div id="testValueControls" class="ui-g-12">
+
+                <label class="testLabel" for='userIdInput'>User id * :&nbsp;&nbsp; </label>
+                <input pInputText id="userIdInput" value="54" #userIdInput/><br><br>
+
+                <label class="testLabel" for='userTokenInput'>User token * :&nbsp;&nbsp; </label>
+                <input pInputText id="userTokenInput" value="eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJ4ZzAwNSIsImlhdCI6MTQ4NzAxMjY4Mywic3ViIjoiQVBIIFN1YmplY3QiLCJpc3MiOiJBUEggSXNzdWVyIn0.lg4A_YrMKH1GQGnmswGiM7NvFF0EDN_PNDUsjOHlKVO9GVToQtZEOKixzT-mPnrDKRYdeSmw-PXJN1SK4vYGig" #userTokenInput/><br><br>
+
+                <label class="testLabel" for='tenantIdInput'>Tenant id * :&nbsp;&nbsp; </label>
+                <input pInputText id="tenantIdInput" value="ABC123" #tenantIdInput/><br><br>
+
+                <label class="testLabel" for='memberIdInput'>Member id * :&nbsp;&nbsp; </label>
+                <input pInputText id="memberIdInput" value="TMBEN" #memberIdInput/><br><br>
+
+                <label class="testLabel" for='conactIdInput'>Contact Seq :&nbsp;&nbsp; </label>
+                <input pInputText id="memberIdInput" value="500001" #contactIdInput/><br><br>
+
+                <button pButton type="button" label="Open" (click)="start(userIdInput.value,
+                                userTokenInput.value,
+                                tenantIdInput.value,
+                                memberIdInput.value,
+                                contactIdInput.value)">
+                </button>
+
+
+            </div>
+        </div>
+    </div>
+</div>

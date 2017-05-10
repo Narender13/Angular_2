@@ -1,0 +1,31 @@
+
+<div class="panel panel-default page-content">
+    <div style="width: 100%;"> 
+        
+        <div class="ui-g">
+            <div id="testValueControls" class="ui-g-12">
+
+                <label class="testLabel" for='userIdInput'>User id * :&nbsp;&nbsp; </label>
+                <input pInputText id="userIdInput" value="79" #userIdInput/><br><br>
+
+                <label class="testLabel" for='userTokenInput'>User token * :&nbsp;&nbsp; </label>
+                <input pInputText id="userTokenInput" value="eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJ1c2VyMDIiLCJpYXQiOjE0ODU1NTM2ODksInN1YiI6IkFQSCBTdWJqZWN0IiwiaXNzIjoiQVBIIElzc3VlciJ9.5nM60hQlz2_MCkHFtsMNLirfzladuatNwkETn11CJEKAdM47lafEDQ_G7nanLUcaZXDzNj7wl1m0COr1G1auxA" #userTokenInput/><br><br>
+
+                <label class="testLabel" for='tenantIdInput'>Tenant id * :&nbsp;&nbsp; </label>
+                <input pInputText id="tenantIdInput" value="ABC123" #tenantIdInput/><br><br>
+
+                <label class="testLabel" for='memberIdInput'>Member id * :&nbsp;&nbsp; </label>
+                <input pInputText id="memberIdInput" value="TM098876548" #memberIdInput/><br><br>
+
+                 <button pButton type="button" label="Open"
+                    (click)="start(userIdInput.value,
+                                userTokenInput.value,
+                                tenantIdInput.value,
+                                memberIdInput.value)" >
+                </button>
+
+                
+            </div>
+        </div>
+    </div>
+</div>

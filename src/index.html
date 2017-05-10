@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>
+      <%= webpackConfig.metadata.title %>
+    </title>
+
+    <meta name="description" content="<%= webpackConfig.metadata.title %>">
+
+    <% if (webpackConfig.htmlElements.headTags) { %>
+      <!-- Configured Head Tags  -->
+      <%= webpackConfig.htmlElements.headTags %>
+        <% } %>
+
+    <!-- base url -->
+    <base href="<%= webpackConfig.metadata.baseUrl %>">
+
+    <link rel="stylesheet" type="text/css" href="app/resources/icons/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="app/resources/theme/theme.css">
+    <link rel="stylesheet" type="text/css" href="app/resources/layout/layout.css">
+    <link rel="stylesheet" type="text/css" href="app/resources/primeng.min.css">
+    <link rel="stylesheet" type="text/css" href="app/resources/fullcalendar.min.css">
+    <link rel="stylesheet" type="text/css" href="app/resources/quill.snow.css">
+    <link rel="stylesheet" type="text/css" href="app/resources/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="app/resources/site.css">
+
+
+    <script type="text/javascript">
+        function openMemberChart(memberId) {
+            window.parent.openMemberChart(memberId);    
+        }
+
+        function notifyAssessment() {            
+			if(window.parent && window.parent.notifyAssessmentSaveResult) {
+				window.parent.notifyAssessmentSaveResult('', false);
+			}
+            
+        }
+		
+        function openGetNextItem(getnextItemId, taskDefinitionId, memberId, description, status) {
+            // console.log('id: ' + getnextItemId + ', task id: ' + taskDefinitionId + ', memberId: ' + memberId + ', description: ' + description + ', status: ' + status);
+            window.parent.openGetNextItem(getnextItemId, taskDefinitionId, memberId, description, status);
+        }		
+		
+        function closeGetNextItem(getnextItemId, memberId) {		
+			// window.parent.makeActiveGetNext();
+            window.parent.closeGetNextItem(getnextItemId, memberId);			
+        }		
+		
+        function closeParentWindow()
+        {
+            window.parent.closeParentWindow();
+        }
+
+        function areGetNextChildrenDirty(getNextQueueItemId)
+        {
+            var isDirty = false;            
+            isDirty = axis.namespace.areGetNextChildrenDirty(getNextQueueItemId);
+            // console.log('in javascript method areGetNextChildrenDirty... returning ' + isDirty);
+            return isDirty;
+        }
+
+        function saveGetNextChildren(getNextQueueItemId)
+        {
+            console.log('in javascript method saveGetNextChildren');
+
+            var success = false;
+            success = axis.namespace.saveGetNextChildren(getNextQueueItemId);
+            return success;
+        }
+    </script>
+    
+    <!-- Datetimepicker, Slider, Schedule --> 
+    <script src="app/resources/jquery.min.js"></script>
+    <!--script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script-->
+    <!--script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-timepicker-addon/1.6.1/jquery-ui-timepicker-addon.min.js"></script-->
+   
+    <script src="app/resources/moment.min.js"></script>
+    <script src="app/resources/fullcalendar.min.js"></script>
+    <script src="app/resources/quill.min.js"></script>
+
+    <!--/*<script src="app/sandbox/getnext/test.js"></script>*/-->
+
+</head>
+
+<body>
+
+    <app>
+      <div style="height:100%; width:100%; margin:0; padding:0; text-align:center">
+          <div style="padding-top:200px">
+              <img src="assets/favicon/favicon-96x96.png" style="height:50px;"/>
+          </div>
+          
+          <!--<div style="margin-top:25px">
+              <img src="assets/favicon/loader.gif" />
+          </div>-->
+      </div>
+    </app>
+
+    <% if (webpackConfig.metadata.isDevServer && webpackConfig.metadata.HMR !== true) { %>
+    <!-- Webpack Dev Server reload -->
+    <script src="/webpack-dev-server.js"></script>
+    <% } %>
+
+  </body>
+</html>

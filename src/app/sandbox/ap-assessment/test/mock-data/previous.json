@@ -1,0 +1,122 @@
+{
+   "apiStatus":    {
+      "statusCode": "0",
+      "serviceDescription": "com.aph.webservice.ApAssessmentServiceV8Impl",
+      "timestamp": "2016-11-15 11:42:41.71",
+      "errorMessage": "SUCCESS",
+      "errorStackTrace": null
+   },
+   "memberAssessmentId": "1371",
+   "question":    {
+      "questionText":       {
+         "baseText": "<B>Care Visit issues identified through claims:<\/B><BR />(Preselected by the system. Do not ask or change answer.)",
+         "layText": "",
+         "expertText": ""
+      },
+      "isRequired": true,
+      "helpText": null,
+      "questionType": "MULTIPLE_CHOICE_MULTIPLE_SELECT",
+      "questionId": "e6d9f1c9-0010-4e98-81f8-ff54caade522"
+   },
+   "answerList":    [
+            {
+         "answerText":          {
+            "baseText": "No PCP visit in past 12 months",
+            "layText": "",
+            "expertText": ""
+         },
+         "helpText": "aaaaaa",
+         "answerId": "0bc3f928-0ba9-445d-8d19-9e4125ccd4b0"
+      },
+            {
+         "answerText":          {
+            "baseText": "Chronic kidney disease and no nephrologist visit in the past 6 months",
+            "layText": "",
+            "expertText": ""
+         },
+         "helpText": null,
+         "answerId": "db71124d-4043-4a33-9c92-42ac6a8f91bd"
+      },
+            {
+         "answerText":          {
+            "baseText": "Asthma and last pulmonologist visit was more than 12 months ago",
+            "layText": "",
+            "expertText": ""
+         },
+         "helpText": null,
+         "answerId": "10441247-0103-4eab-99e6-567673e399e4"
+      },
+            {
+         "answerText":          {
+            "baseText": "COPD and last pulmonologist visit was more than 12 months ago",
+            "layText": "",
+            "expertText": ""
+         },
+         "helpText": null,
+         "answerId": "ce3b77b5-252b-4921-99ea-9b8739f8a9e4"
+      },
+            {
+         "answerText":          {
+            "baseText": "Bipolar disorder and last behavioral health specialist visit was more than 12 months ago",
+            "layText": "",
+            "expertText": ""
+         },
+         "helpText": null,
+         "answerId": "300176cb-b3d7-4c0b-9405-e4a33c82d0ef"
+      },
+            {
+         "answerText":          {
+            "baseText": "Depression and last behavioral health specialist visit was more than 12 months ago",
+            "layText": "",
+            "expertText": ""
+         },
+         "helpText": null,
+         "answerId": "4d2c6b5d-bcdc-4f49-8089-c2c35fa55aa6"
+      },
+            {
+         "answerText":          {
+            "baseText": "Coronary artery disease and last cardiologist visit was more than 12 months ago",
+            "layText": "",
+            "expertText": ""
+         },
+         "helpText": null,
+         "answerId": "5e3f3b16-3d9f-41fe-a0a7-ae804a9a7591"
+      },
+            {
+         "answerText":          {
+            "baseText": "Heart failure and last cardiologist visit was more than 12 months ago",
+            "layText": "",
+            "expertText": ""
+         },
+         "helpText": null,
+         "answerId": "977c706c-676f-4ce7-9ac3-1eb81af67ec8"
+      },
+            {
+         "answerText":          {
+            "baseText": "Hypertension and last cardiologist visit was more than 12 months ago",
+            "layText": "",
+            "expertText": ""
+         },
+         "helpText": null,
+         "answerId": "975dc8ff-63d7-4bce-9d46-a74188a5926e"
+      },
+            {
+         "answerText":          {
+            "baseText": "Crohn's disease or ulcerative colitis and last gastroenterologist visit was more than 12 months ago",
+            "layText": "",
+            "expertText": ""
+         },
+         "helpText": null,
+         "answerId": "4e774bef-d204-4be0-bd80-e0cc91535315"
+      },
+            {
+         "answerText":          {
+            "baseText": "Diabetes and last endocrinologist visit was more than 12 months ago",
+            "layText": "",
+            "expertText": ""
+         },
+         "helpText": null,
+         "answerId": "45239d33-56a3-435b-8529-f08ebb493d17"
+      }
+   ]
+}

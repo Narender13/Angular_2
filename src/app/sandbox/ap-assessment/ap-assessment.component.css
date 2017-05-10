@@ -1,0 +1,168 @@
+.ui-button-container {
+    width: 100%;
+    padding: 10px 0px 10px 0px;
+}
+
+.ui-button-container button {
+    margin: 0px 5px 0px 5px;
+}
+
+.toggle-Panel .ui-panel .ui-panel-content.ui-widget-content {
+    padding: 0px 30px 0px 10px;
+}
+
+.ui-panel.ui-widget {
+    border: 0px;
+}
+
+.separator {
+    border-bottom: 1px solid #ccc;
+    margin-left: -10px;
+    margin-right: -10px;
+}
+
+.question-body {
+    min-height: 150px;
+}
+
+.mt-10 {
+    margin-top: 10px !important;
+}
+
+.mt-5 {
+    margin-top: 5px !important;
+}
+
+.mb-10 {
+    margin-bottom: 10px !important;
+}
+
+.panel-heading {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 0.8em;
+}
+
+.general-assessment-container {
+    display: block;
+}
+
+.left-menu-container {
+    z-index: 1;
+    background-color: #e6eeff;
+    border: 1px solid #a0a0a0;
+    overflow-x: hidden;
+    margin-top: 21px;
+    margin-left: 10px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+
+.question-answer-container {
+    padding-left: 20px;
+    margin-top: -5px;
+}
+
+.menu-side-border {
+    color: #242D30;
+    line-height: 23px;
+    padding: 5px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+div[class*="menu-side-border"]:not(:last-of-type) {
+    border-bottom: 1px solid #a0a0a0;
+}
+
+.general-assessment-left-menu {
+    font-weight: bold;
+    font-size: 16px;
+    color: blue;
+    font-variant: small-caps;
+    text-align: right;
+    background-color: #ffffff !important;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.general-assessment-left-menu:hover {
+    background-color: #ffffff;
+    /* #20282b; */
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.general-assessment-button-container {
+    width: 100%;
+    padding: 10px 0px 10px 0px;
+}
+
+.general-assessment-button-container button {
+    margin: 0px 5px 0px 5px;
+}
+
+.display-skill-set img {
+    float: right;
+}
+
+.ui-check {
+    float: right;
+    padding-top: 5px;
+}
+
+.answer-text {
+    margin-left: -5px;
+    color: grey;
+}
+
+.assessment-container {
+    min-height: 150px;
+}
+
+.icon-shift {
+    margin-left: 6px;
+}
+
+/* Help text */
+
+.displayHelpText {
+    line-height: 1.5em;
+    overflow-y: scroll!important;
+}
+
+.duplicateError .ui-dialog .ui-dialog-titlebar-close span {
+    display: none !important;
+}
+
+.block-left-menu-container {
+    background: grey;
+    z-index: 1000;
+    /*margin: auto;*/
+    top: 20px;
+    bottom: 9px;
+    /*right: 839px;*/
+    left: 15px;
+    position: absolute;
+    display: block;
+    opacity: 0.1;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+
+}
+.previous-assessment-answer
+{
+    font-weight: bold;
+    margin-bottom: 10px;
+    color:#658cd9;
+}
+
+.ui-widget.ui-datepicker .ui-datepicker-calendar td a.ui-state-active{
+    background:#186ba0;
+}

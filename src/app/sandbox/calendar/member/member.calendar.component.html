@@ -1,0 +1,229 @@
+<div class="panel panel-default page-content">
+    <div *ngIf="!isLoading" class="axis-progress-indicator"></div>
+    <div *ngIf="isLoading" class="demo-progress-bar-container">
+        <md-progress-bar mode="query" class="demo-progress-bar-margins"></md-progress-bar>
+    </div>
+
+  <div class="ui-grid ui-grid-responsive ui-grid-pad memberCalendarHolder">
+      <div class="ui-grid-row">
+            <div class="ui-grid-col-3 no-padding">
+                <div class="search">
+                    <span class="fa fa-search"></span>
+
+                    <p-autoComplete [(ngModel)]="searchedForBaseCal" class="srchautocomplte" [suggestions]="searchResultsBaseCal" 
+                                    [minLength]="3" [delay]="200" (completeMethod)="filterCareManagerSingle($event, dialogVisible)" 
+                                    placeholder={{searchText}} (onSelect)="selectUserName('BaseCal')" styleClass="wid100"> 
+                    </p-autoComplete>
+                </div>
+            </div>
+            
+            <div class="ui-grid-col-9 userViewOption">
+                <div class="radio-select no-padding" *ngFor="let viewOption of viewOptions">   
+                 <input type="radio" name="groupname" [value]="viewOption.value" class="viewUser" [(ngModel)]="user.viewOption" (change)="setValue()" [ngClass]="{'selected': (user.viewOption == viewOption.value)}">
+                 <label>{{viewOption.display}}</label>
+                </div> 
+            </div> 
+              
+      </div>
+      <div class="ui-grid-row">
+          <div #caremgrs class="userViewOption" id="membernameblock">
+                <div class="no-padding nameblock caremanagerblock member search" >
+                    <div class="showusername">
+                        <div class="membername">{{ openedTabUserInfoList[0].userName}}</div>
+                    </div>
+                </div>
+                <div  class="no-padding nameblock caremanagerblock" *ngFor="let user of openedTabUserInfoList;  let i = index">
+                    <div *ngIf = !user.isMember class="showusername">
+                        <div class="membername">{{user.userName}}</div>
+                        <span class="close fa fa-times" (click)="removeCareManagerName(i, $event, 'baseCal')"></span>
+                    </div>
+                </div>                                 
+          </div>    
+       </div>
+    <div class="ui-grid-row">              
+        <p-schedule [events]="events" [eventRender]="eventRender" [header]="header" 
+                    [defaultDate]="" [eventLimit]="4" [fixedWeekCount]="false"  
+                    [businessHours]="busHrs" [eventLimit]="2" [slotLabelInterval]="" 
+                    [defaultView]="defaultView" [editable]="false" [nowIndicator]="true" 
+                    [eventDurationEditable]="false"
+                    (onDayClick)="handleDayClick($event)" (onEventClick)="handleAppointmentClick($event)" 
+                    (onViewRender)="fetchEvents($event)" 
+                    class="userCalendar" styleClass='custom' [scrollTime]="scrollTime" 
+                    [allDaySlot]=false [aspectRatio]="aspectRatio" [height]="getCalendarHeight()">
+         </p-schedule>  
+          <p-dialog width="300" [(visible)]="addAppointmentOverlay" [responsive]="true" showEffect="fade" [modal]="false">
+            <p-header>
+                <span class="dialogHeading">{{ displayDialogHeading() }}</span>
+            </p-header>
+            <div *ngIf="!errormessage" class="linkelement linkStyle">
+                <span (click)="showCalendarDetails()">Add Appointment</span>
+            </div>
+            <div *ngIf="editable" class="linkelement linkStyle">
+                <span (click)="editAppointmentDetails($event)">Edit Appointment</span>
+            </div>
+            <div *ngIf="errormessage">You can not select past date or time for an appointment.</div>
+            <div *ngIf="errormessage">
+                <button type="button" (click)="errorMessageDialogOk()" label="OK">OK</button>
+            </div>
+          </p-dialog>     
+        <p-dialog width="500" class="apptDetails" [(visible)]="dialogVisible" [responsive]="true" 
+        showEffect="fade" [modal]="true" (onAfterHide)="closeAppointmentDialogBox()">
+            <p-header>
+                <span *ngIf="editable" class="dialogHeading">Edit Appointment Details</span>
+                <span *ngIf="!editable" class="dialogHeading">Add Appointment Details</span>
+            </p-header>
+            <div class="ui-grid-row no-padding">
+                <div class="ui-grid-col-7 no-padding">
+                    <div class="search">
+                        <span class="fa fa-search"></span>
+                        <p-autoComplete [(ngModel)]="searchedForIspopup" class="srchautocomplte" [suggestions]="searchResultsIspopup" 
+                                        [minLength]="3" [delay]="200" (completeMethod)="filterCareManagerSingle($event, dialogVisible)" 
+                                        placeholder={{searchText}} (onSelect)="selectUserName('Ispopup')" styleClass="wid100"> 
+                        </p-autoComplete>
+                    </div>
+                </div>
+                
+                <div class="ui-grid-col-5 userViewOption">
+                    <div class="radio-select no-padding" *ngFor="let viewOption of viewOptions">   
+                    <input type="radio" name="groupnames" [value]="viewOption.value" class="viewUser" [(ngModel)]="user.viewOption" (change)="setValue()" [ngClass]="{'selected': (user.viewOption == viewOption.value)}">
+                    <label>{{viewOption.display}}</label>
+                    </div> 
+                </div> 
+                </div>
+            <div class="ui-grid-row no-padding">
+                <div class="userViewOption" *ngIf="popupOpenedTabInfoList.length>0">   
+                    <div  class="no-padding nameblock caremanagerblockIspopup" *ngFor="let user of popupOpenedTabInfoList;  let i = index">
+                        <div class="showusername" id={{user.userId}}>
+                            <div class="membername">{{user.userName}}</div>
+                            <span *ngIf="!user.isMember" class="close fa fa-times" (click)="removeCareManagerName(i, $event, 'isPopup')"></span>
+                        </div>
+                    </div>                                                      
+                </div>    
+            </div>
+            <form [formGroup]="memberApntDetails" (ngSubmit)="checkAppointmentValidation(memberApntDetails.value, memberApntDetails.valid,$event)" action="">
+            <!--<p-growl [value]="msgs" sticky="sticky"></p-growl>-->
+            <div class="ui-grid ui-grid-responsive ui-grid-pad no-padding form-holder">
+                <div class="ui-grid no-padding">
+                    <div class="ui-grid-col-4"><label>Appointment Type</label><span class="required">*</span></div>
+                    <div class="ui-grid-col-8">
+                        <p-dropdown [options]="appointmentTypesDesk" (onChange)="appointmentTypeChanged($event)" 
+                        [(ngModel)]="appointmenttype" class="formControlEle" formControlName="appointmenttype"></p-dropdown>
+                        <div class="text-danger" *ngIf="errormessage">
+                            Please select an Appointment Type.
+                        </div>
+                    </div>
+                    <!--<p>Selected City: {{selectedAppType ? selectedAppType.name : 'none'}}</p>-->
+                </div>
+                <div class="ui-grid no-padding">
+                    <div class="ui-grid-col-4"><label>Start Date/Time</label><span class="required">*</span></div>
+                    <div class="ui-grid-col-4">
+                        <p-calendar inputStyleClass="formElement" [(ngModel)]="modelAppointmentStartDate" 
+                        formControlName="appointmentStartDate" class="formControlEle" [showIcon]="true" 
+                        [readonlyInput]="false" dateFormat="mm/dd/yy" (onBlur)="onBlurMethod($event, 'startDate')"></p-calendar>  
+                        <div class="ui-grid-row text-danger" *ngIf="checkValidEntry">
+                            Start Date should be in valid mm/dd/yy format.
+                        </div>
+                    </div>
+                    <div class="ui-grid-col-4">
+                        <p-calendar inputStyleClass="formElement" [(ngModel)]="modelAppointmentStartTime" 
+                        formControlName="appointmentStartTime" class="formControlEle calendarElement" [showIcon]="true" 
+                        [timeOnly]="true" [readonlyInput]="false" (onBlur)="onBlurMethod($event, 'startTime')"></p-calendar> 
+                        <div class="ui-grid-row text-danger" *ngIf="checkValidStartTime">
+                            Start Time should be in valid hh:mm format.
+                        </div>
+                    </div>
+                    <div class="ui-grid-row member-text-danger" *ngIf="invalidStrtTime">
+                        Start Time should be after Current Time
+                    </div>
+                </div>
+                <div class="ui-grid no-padding">
+                    <div class="ui-grid-col-4"><label>End Date/Time</label><span class="required">*</span></div>
+                    <div class="ui-grid-col-4"> 
+                        <p-calendar inputStyleClass="formElement" [(ngModel)]="modelAppointmentEndDate"
+                        class="formControlEle" formControlName="appointmentEndDate" [showIcon]="true"
+                        [readonlyInput]="false" dateFormat="mm/dd/yy" (onBlur)="onBlurMethod($event, 'endDate')"></p-calendar>
+                        <div class="ui-grid-row text-danger" *ngIf="checkValidEndDate">
+                            End Date should be in valid mm/dd/yy format.
+                        </div>
+                    </div>
+                    <div class="ui-grid-col-4">
+                        <p-calendar [(ngModel)]="modelAppointmentEndTime" inputStyleClass="formElement" 
+                        class="formControlEle calendarElement" formControlName="appointmentEndTime" 
+                        [showIcon]="true" [timeOnly]="true" [readonlyInput]="false" (onBlur)="onBlurMethod($event, 'endTime')"></p-calendar> 
+                        <div class="ui-grid-row text-danger" *ngIf="checkValidEndTime">
+                            End Time should be in valid hh:mm format.
+                        </div>
+                    </div>
+                    <div class="ui-grid-row member-text-danger" *ngIf="invalidEndDate">
+                        End Date/Time should be greater than Start Date/Time.
+                    </div>
+                </div>
+                <div class="ui-grid no-padding">
+                    <div class="ui-grid-col-4"><label>Subject</label><span class="required">*</span></div>
+                    <div class="ui-grid-col-8">
+                        <p-dropdown [options]="appointmentTypeSubject" [(ngModel)]="subjecttype" 
+                        class="formControlEle" formControlName="subjecttype"></p-dropdown>
+                        <div class="text-danger" *ngIf="checkSubjectType">
+                            Please select a Subject.
+                        </div>
+                    </div>
+                </div>
+                <div class="ui-grid no-padding">
+                    <div class="ui-grid-col-4"><label>Description</label></div>
+                    <div class="ui-grid-col-8">
+                        <textarea rows="3" class="formElementTextarea" formControlName="description" maxlength="255" pInputTextarea></textarea>
+                    </div>
+                </div>
+                <!--<div class="ui-grid-row">
+                    <div class="ui-grid-col-2"></div>
+                    <div class="ui-grid-col-6">
+                        <button pButton type="submit" label="Submit"></button>
+                    </div>
+                    <div class="ui-grid-col-4"></div>
+                </div>-->
+            </div>
+            <p-footer>
+                <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix apptCalendar">
+                    <button type="button" class="closeAppointment" pButton (click)="closeAppointmentDialogBox()" label="Close"></button>
+                    <button pButton type="submit" *ngIf='!editable' class="addtoCalendar" label="Add to Calendar" [disabled]="btnDisabled"></button>
+                    <button pButton type="submit" *ngIf='editable' class="addtoCalendar" label="Update" [disabled]="btnDisabled"></button>
+                </div>
+                <div style="text-align:center;margin-top:20px" *ngIf="submitted">
+                    Form Submitted
+                    <br>
+                    {{diagnostic}}
+                </div>
+            </p-footer>
+            </form>
+        </p-dialog>
+            
+        <!-- dialog when view is Selected User already Open -->
+        <p-dialog [(visible)]="isDuplicateUser" modal="modal" width="300" 
+                    responsive="true"  [modal]="false" header="Info Message" 
+                    id="modalDialog" showEffect="fade">
+            <div>{{searchAlertText}}</div>
+            <div>
+                <button type="button" (click)="duplicateUserDialogOk()" label="OK">OK</button>
+            </div>                
+        </p-dialog>          
+        <!-- dialog end here -->   
+
+            <!-- dialog when trying to click on list button and user is selected in user search -->
+            <p-dialog header="Error" class="duplicateError" header = {{listViewAlert}} [(visible)]="userSelected" modal="modal" 
+                      width = "300" responsive="true" showEffect="fade" [modal]="false">
+                <div>
+                    <button type="button" (click)="listViewDialogOk()" label="OK">OK</button>
+                </div>
+            </p-dialog>
+            <!-- dialog end here -->  
+            <!-- dialog when trying to search an user in list view mode -->
+            <p-dialog header="Error" class="duplicateError" header = {{selectUserInListAlert}} [(visible)]="userSelectedInList" modal="modal" 
+                      width = "300" responsive="true" showEffect="fade" [modal]="false">
+                <div>
+                    <button type="button" (click)="selectUserDialogOk()" label="OK">OK</button>
+                </div>
+            </p-dialog>
+            <!-- dialog end here -->             
+        </div>
+    </div>
+</div>

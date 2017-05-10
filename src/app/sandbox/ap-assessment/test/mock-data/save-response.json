@@ -1,0 +1,48 @@
+{
+	"apiStatus": {
+		"resultInformation": null,
+		"statusCode": "200",
+		"serviceDescription": "com.aph.webservice.ApAssessmentServiceV8Impl",
+		"timestamp": "2017-03-23 12:17:26.601",
+		"errorMessage": "SUCCESS",
+		"errorStackTrace": null
+	},
+	"memberAssessmentId": "70891",
+	"assessmentStatus": "START",
+	"question": {
+		"questionText": {
+			"baseText": "<B>Need help with daily care?</B><BR />Do you need help with your daily activities, such as bathing, dressing, using the bathroom, or walking?",
+			"layText": "",
+			"expertText": ""
+		},
+		"isRequired": true,
+		"helpText": "Tip: This question is to determine if the member needs help, not if they have adequate help.",
+		"questionType": "MULTIPLE_CHOICE_SINGLE_SELECT",
+		"questionId": "18e9d456-a8d0-4576-b1e7-b5aab6d5aab3",
+		"isFirstQuestion": false,
+		"isLastQuestion": false,
+		"responseMeasureUnit": null,
+		"responseUOM": null
+	},
+	"answerList": [{
+		"answerText": {
+			"baseText": "Yes",
+			"layText": "Yes",
+			"expertText": "Yes"
+		},
+		"helpText": "",
+		"answerId": "c708da0f-05c7-4f18-9e3f-61bb0cf0a94a",
+		"userResponse": "FALSE",
+		"isExclusive": false
+	}, {
+		"answerText": {
+			"baseText": "No",
+			"layText": "No",
+			"expertText": "No"
+		},
+		"helpText": "",
+		"answerId": "81088556-ad11-4989-8217-602673523849",
+		"userResponse": "FALSE",
+		"isExclusive": false
+	}]
+}

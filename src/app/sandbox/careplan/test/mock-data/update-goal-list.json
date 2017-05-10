@@ -1,0 +1,70 @@
+{
+    "apiStatus": {
+        "resultInformation": null,
+        "statusCode": "200",
+        "serviceDescription": "com.aph.webservice.ApCarePlanServiceV8Impl",
+        "timestamp": "2017-03-17 11:23:06.672",
+        "errorMessage": "SUCCESS",
+        "errorStackTrace": null
+    },
+    "goalList": [
+        {
+            "memberGoalId": "9441",
+            "currentGoalStatus": {
+                "value": "ZDEFAULT",
+                "label": "Not Met",
+                "activityDate": "03/17/2017 01:52AM",
+                "activityPerformedBy": "CCMS Last Name, CCMS First Name"
+            }
+        },
+        {
+            "memberGoalId": "9511",
+            "currentGoalStatus": {
+                "value": "MET",
+                "label": "Met",
+                "activityDate": "03/17/2017 01:52AM",
+                "activityPerformedBy": "CCMS Last Name, CCMS First Name"
+            },
+            "currentGoalType": {
+                "value": "SHORT_TERM",
+                "label": "Short Term",
+                "activityDate": "03/17/2017 01:52AM",
+                "activityPerformedBy": "CCMS Last Name, CCMS First Name"
+            },
+            "currentGoalActivitySource": {
+                "value": "CARE_GIVER",
+                "label": "Caregiver",
+                "activityDate": "03/17/2017 01:52AM",
+                "activityPerformedBy": "CCMS Last Name, CCMS First Name"
+            },
+            "barrierList": [
+                {
+                    "memberGoalBarrierId": "8351",
+                    "currentBarrierStatus": {
+                        "value": "NOT_APPLICABLE",
+                        "label": "Not Applicable",
+                        "activityDate": "03/17/2017 11:23AM",
+                        "activityPerformedBy": "CCMS Last Name, CCMS First Name"
+                    },
+                    "currentBarrierMotivationalState": {
+                        "value": "CONTEMPLATION",
+                        "label": "Contemplation: Getting ready",
+                        "activityDate": "03/17/2017 11:23AM",
+                        "activityPerformedBy": "CCMS Last Name, CCMS First Name"
+                    },
+                    "interventionList": [
+                        {
+                            "memberGoalBarrierInterventionId": "18371",
+                            "currentInterventionStatus": {
+                                "value": "IN_PROGRESS",
+                                "label": "In Progress",
+                                "activityDate": "03/17/2017 11:23AM",
+                                "activityPerformedBy": "CCMS Last Name, CCMS First Name"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

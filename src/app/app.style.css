@@ -1,0 +1,97 @@
+html,
+body {
+  height: 100%;
+  font-family: Arial, Verdana, sans-serif
+}
+
+span.active {
+  background-color: gray;
+}
+
+.axis-progress-indicator {
+  height: 5px;
+  background-color: white;
+  padding: 0;
+  margin-bottom: 0;
+}
+
+.axis-table-title {
+    font-weight: bold;
+    word-break: break-all;
+    white-space: wrap;
+}
+
+.axis-progress-bar-container {
+  width: 100%; 
+}
+
+.axis-progress-bar-margins {
+  margin: 0; 
+}
+
+.axis-secondary-text {
+  color: rgba(0, 0, 0, 0.54);
+}
+
+.axis-page-header {
+  display: inline-block;
+  padding: 5px;
+  margin: 0;
+  color: #ffffff;
+}
+
+.axis-panel-background {
+  background-color: #6787B7;
+}
+
+.axis-panel-header-background {
+  font-size: 16px;
+  display: inline-block;
+  margin-top: 2px;
+  color: black;
+  font-weight: normal;
+}
+
+.axis-panel-header-background-sm {
+  font-size: 14px;
+  display: inline-block;
+  margin-top: 2px;
+  color: black;
+  font-weight: normal;
+}
+
+.axis-i-float-right {
+  cursor: pointer;
+  float: right;
+}
+
+.axis-i-margin-bottom {
+  margin-bottom: 6px;
+  margin-top: 25px;
+  margin-right: 10px;
+}
+
+.axis-error-style {
+  color:red; 
+  font-weight:bold;
+  padding-top:3px;
+}
+
+.axis-required {
+    color: #e32;
+    font-style: italic!important;
+    font-weight: bold!important;
+}
+
+.axis-required:after {
+    color: #e32;
+    content: ' *';
+    display:inline;
+}
+
+.ui-dialog-titlebar {
+    padding: 0px;
+    border-bottom: 0px;
+    background-color: #ffffff;
+}
+    

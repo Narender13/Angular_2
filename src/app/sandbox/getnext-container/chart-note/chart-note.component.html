@@ -1,0 +1,132 @@
+<div [formGroup]="chartNoteForm">
+    <div>
+        <p-messages [value]="messages"></p-messages>
+        <p-tabView>
+            <p-tabPanel header="{{noteTabLabel}}">
+                <label for="noteType" class="note-label axis-required">
+                    {{noteTypeLabel}}
+                </label>
+                <p-dropdown id="noteType" [options]="noteTypeOptions" formControlName="noteType" 
+                            [style]="{'width':'265px', 'margin-bottom':'8px'}"
+                            [(ngModel)]="selectedNoteTypeOption" 
+                            (onChange)="getTemplateDataRowsForNoteType();">
+                </p-dropdown>
+                <div *ngIf="saveClicked && !noteTypeControl.valid">
+                    <div *ngIf="noteTypeControl && noteTypeControl.errors 
+                                && noteTypeControl.errors.required" class="axis-error-style">
+                        {{noteTypeLabel}} is required.
+                    </div>
+                </div> 
+
+                <div *ngIf="!hideNoteTemplate">
+                    <label for="noteTemplate" class="note-label" [ngClass]="{'axis-required': isRequired('noteTemplate')}">
+                        {{noteTemplateLabel}}
+                    </label>
+                    <p-dropdown id="noteTemplate" [options]="noteTemplateOptions" formControlName="noteTemplate" [style]="{'width':'265px', 'margin-bottom':'8px'}"
+                                [(ngModel)]="selectedNoteTemplateOption" (onChange)="setNoteTemplate();">
+                    </p-dropdown>
+                    <div *ngIf="saveClicked && !noteTemplateControl.valid">
+                        <div *ngIf="noteTemplateControl && noteTemplateControl.errors 
+                                    && noteTemplateControl.errors.required" class="axis-error-style">
+                            {{noteTemplateLabel}} is required.
+                        </div>
+                    </div>
+                </div>
+
+                <label for="noteText" class="note-label" [ngClass]="{'axis-required': isRequired('noteText')}">
+                    {{noteTextLabel}}
+                </label>
+                <p-editor id="noteText" formControlName="noteText" [style]="{'height':'200px'}">
+                    <p-header>
+                        <span class="ql-formats">
+                            <button class="ql-bold"></button>
+                            <button class="ql-italic"></button>
+                            <button class="ql-underline"></button>
+                        </span>
+                        <span class="ql-formats">
+                            <select class="ql-color"></select>
+                            <select class="ql-background"></select>
+                        </span>
+                    </p-header>
+                </p-editor>
+                <div *ngIf="saveClicked && !noteTextControl.valid">
+                    <div *ngIf="noteTextControl && noteTextControl.errors 
+                                && noteTextControl.errors.required" class="axis-error-style">
+                        {{noteTextLabel}} is required.
+                    </div>
+                </div>
+
+                <div class="activity-log">
+                    <div class="ui-g-12 ui-g-nopad activity-item" *ngFor="let activity of activityLogItems">
+                        <div style="padding: 3px;">
+                            {{ activity }}
+                        </div>
+                    </div>
+                </div>
+
+                <button pButton type="button" (click)="saveNote()" label="Save" id="saveNote" style="margin-top: 10px;"></button>
+            </p-tabPanel>
+
+            <!-- The User Defined Fields tab -->
+            <div *ngIf="!hideUserDefinedFieldTab">
+                <p-tabPanel header="{{userDefinedFieldTabLabel}}">
+                    <div class="user-defined-fields">
+                        <div *ngFor="let userDefinedField of userDefinedFieldList">
+                            <div style="padding-bottom: 9px;">
+                                <div [ngSwitch]="userDefinedField.fieldType">
+                                    <div *ngSwitchCase="'DATE'">
+                                        <label for="udf_date_{{userDefinedField.fieldId}}">
+                                            {{ userDefinedField.fieldName }}
+                                        </label>
+                                        <p-calendar id="udf_date_{{userDefinedField.fieldId}}" 
+                                                    [showIcon]="false"
+                                                    [style]="{'width':'200px'}"
+                                                    formControlName="udf_date_{{userDefinedField.fieldId}}">
+                                        </p-calendar>
+                                    </div>
+                                    <div *ngSwitchCase="'TEXT'">
+                                        <label for="udf_text_{{userDefinedField.fieldId}}">
+                                            {{ userDefinedField.fieldName }}
+                                        </label>
+                                        <input pInputText id="udf_text_{{userDefinedField.fieldId}}" 
+                                            type="text" size="32" maxlength="255"
+                                            formControlName="udf_text_{{userDefinedField.fieldId}}" />
+                                    </div>
+                                    <div *ngSwitchCase="'NUMBER'">
+                                        <label for="udf_number_{{userDefinedField.fieldId}}">
+                                            {{ userDefinedField.fieldName }}
+                                        </label>
+                                        <p-spinner id="udf_number_{{userDefinedField.fieldId}}" 
+                                                size="10"  
+                                                [min]="userDefinedField?.fieldRestrictions?.minNumber" 
+                                                [max]="userDefinedField?.fieldRestrictions?.maxNumber"
+                                                formControlName="udf_number_{{userDefinedField.fieldId}}">
+                                        </p-spinner>
+                                    </div>
+                                    <div *ngSwitchCase="'BOOLEAN'" style="padding-top:6px;">
+                                        <p-checkbox id="udf_boolean_{{userDefinedField.fieldId}}" label="{{ userDefinedField.fieldName }}"
+                                                    [style]="{'width':'265px'}" binary="true"
+                                                    formControlName="udf_boolean_{{userDefinedField.fieldId}}">
+                                        </p-checkbox>
+                                    </div>
+                                    <div *ngSwitchCase="'LIST'">
+                                        <label for="udf_list_{{userDefinedField.fieldId}}">
+                                            {{ userDefinedField.fieldName }}
+                                        </label>
+                                        <p-dropdown id="udf_list_{{userDefinedField.fieldId}}" [options]="userDefinedField.convertedListItemsList" 
+                                            [style]="{'width':'265px'}"  [filter]="true"
+                                            formControlName="udf_list_{{userDefinedField.fieldId}}">
+                                        </p-dropdown>
+                                    </div>
+                                    <div *ngSwitchDefault>Unsupported user defined field type: {{userDefinedField.fieldType}}</div>
+                                </div>                               
+                            </div>
+                        </div>
+                    </div>
+
+                    <button pButton type="button" (click)="saveNote()" label="Save" id="saveNoteUDF" style="margin-top: 10px;"></button>
+                </p-tabPanel>
+            </div>
+        </p-tabView>
+    </div>
+</div>

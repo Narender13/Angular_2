@@ -1,0 +1,182 @@
+<section>
+    <div id="memberHeader">
+        <member-header [memberId]="memberId" [memberPCP]="memberPCP" (memberFullNameEmitter)="setMemberFullName($event)">
+        </member-header>
+    </div>
+</section>
+
+
+<div class="header-style">
+    <span *ngIf="isDevelopmentMode === true">
+        <i class="fa fa-bars" (click)="setGetNextMenuState()" pTooltip="Menu" tooltipPosition="top" accesskey="u"></i>
+        <i class="fa fa-reply tooltip" (click)="notifyOfSendBackToQueue()"
+            pTooltip="Send back to Queue" tooltipPosition="right" accesskey="v"></i>
+    </span>
+    <span *ngIf="isDevelopmentMode !== true">
+        <i class="fa fa-genderless" style="color: rgb(238, 242, 246);"></i>
+        <i class="fa fa-reply tooltip" (click)="notifyOfSendBackToQueue()"
+            pTooltip="Send back to Queue" tooltipPosition="right" accesskey="v"></i>
+    </span>
+
+    <span style="float:right;">
+        <i class="fa fa-user tooltip" (click)="openCareGiver()" *ngIf="showMemberCaregiverToolbarButton" 
+            pTooltip="{{tipCaregiver}}" tooltipPosition="top" accesskey="v"></i>
+        
+        <i class="fa fa-user-md tooltip" style="margin-left: 10px;" (click)="openPCP()" *ngIf="showMemberPCPToolbarButton"
+            pTooltip="{{tipPCP}}" tooltipPosition="top" accesskey="p"></i>
+        
+        <i class="fa fa-address-card tooltip" style="margin-right: 6px; margin-left: 10px;" (click)="openMemberDemographics()" 
+            *ngIf="showMemberDemographicsToolbarButton" pTooltip="{{tipDemographics}}" tooltipPosition="top" accesskey="o"></i>
+        
+        <i style="border-left: 1px solid #857D7A;" *ngIf="showMemberPCPToolbarButton || showMemberPCPToolbarButton || showMemberCaregiverToolbarButton"></i>
+        
+        <i class="fa fa-home tooltip" [ngClass]="{'toolbar-item-initialized': toolbarClickedHome}"
+            style="margin-left: 8px;" (click)="openHomeView()" 
+            pTooltip="GetNext Item" tooltipPosition="top" accesskey="g"></i>
+        
+        <i class="fa fa-list-alt tooltip" [ngClass]="{'toolbar-item-initialized': toolbarClickedGeneralAssessment}"
+            style="margin-left: 10px;" (click)="openGeneralAssessment()" *ngIf="showGeneralAssessmentToolbarButton"
+            pTooltip="{{tipAssessment}}" tooltipPosition="top" accesskey="a"></i>
+        
+        <i class="fa fa-list tooltip" [ngClass]="{'toolbar-item-initialized': toolbarClickedCareplan}"
+            style="margin-left: 10px;" (click)="openCarePlan()" *ngIf="showCareplanToolbarButton" 
+            pTooltip="{{tipCareplan}}" tooltipPosition="top" accesskey="r"></i>
+        
+        <i class="fa fa-calendar tooltip" [ngClass]="{'toolbar-item-initialized': toolbarClickedMemberCalendar}"
+            style="margin-left: 10px; margin-right: 8px;" (click)="openMemberCalendar()" 
+            pTooltip="{{tipCalendar}}" tooltipPosition="top" accesskey="c"></i>
+        
+        <i style="border-left: 1px solid #857D7A;"></i>
+        
+        <i class="fa fa-user-circle tooltip" (click)="openMemberChart()" 
+            style="margin-left: 10px;" pTooltip="{{tipMemberChart}}" tooltipPosition="top" accesskey="m"></i>
+        
+        <i class="fa fa-edit tooltip header-icon" style="margin-left: 10px;" (click)="setNotePanelState()" 
+            pTooltip="{{tipNote}}" tooltipPosition="top" accesskey="n"></i>
+    </span>
+</div>
+
+<div *ngIf="isDevelopmentMode === true">
+    <div id="leftMenu" class="getnext-menunav getnext-animate-left" style="display:none;">
+        <div id="getNextMenuLeftSide">
+            <div id="getNextMenuLeftSideIndent">
+
+                <span id="memberProfileMenu" #memberProfileMenu class="getNextMenuLeftSideMainLink bordersOfGetNextMenuLeftSide" [class.getNextMenuLeftSideMainLinkDark]="memberProfileMenu.id == activeGetNextMenuId" (click)="activeGetNextMenuId = memberProfileMenu.id"><span class="MainLinkText">Member Profile</span></span>
+                <div class="SubMenuLinkContainer" [ngClass]="{'submenushow': (memberProfileMenu.id == activeGetNextMenuId), 'submenuhide': (memberProfileMenu.id != activeGetNextMenuId)}">
+                    <a class="SubMenuLink" [routerLink]="['/memberProfile']">&#9657; Profile</a>
+                    <a class="SubMenuLink" [routerLink]="['/memberCoverage']">&#9657; Coverage</a>
+                    <a class="SubMenuLink" [routerLink]="['/memberProviders']">&#9657; Providers</a>
+                    <a class="SubMenuLink" [routerLink]="['/memberBenefits']">&#9657; Benefits</a>
+                    <a class="SubMenuLink" [routerLink]="['/memberConsent']">&#9657; Consent</a>
+                    <a class="SubMenuLink" [routerLink]="['/memberSavings']">&#9657; Savings</a>
+                    <a class="SubMenuLink" [routerLink]="['/memberPrograms']">&#9657; Programs</a>
+                </div>
+
+                <span id="clinicalMenu" #clinicalMenu class="getNextMenuLeftSideMainLink bordersOfGetNextMenuLeftSide" [class.getNextMenuLeftSideMainLinkDark]="clinicalMenu.id == activeGetNextMenuId" (click)="activeGetNextMenuId = clinicalMenu.id"><span class="MainLinkText">Clinical</span></span>
+                <div class="SubMenuLinkContainer" [ngClass]="{'submenushow': (clinicalMenu.id == activeGetNextMenuId), 'submenuhide': (clinicalMenu.id != activeGetNextMenuId)}">
+                    <a class="SubMenuLink" [routerLink]="['/memberClinicalVariables']">&#9657; Clinical Variables</a>
+                    <a class="SubMenuLink" [routerLink]="['/memberClaims']">&#9657; Medical Claims</a>
+                    <a class="SubMenuLink" [routerLink]="['/memberMedications']">&#9657; Medications</a>
+                    <a class="SubMenuLink" [routerLink]="['/memberMedicalHistory']">&#9657; Medical History</a>
+                </div>
+
+                <span id="eventsMenu" #eventsMenu class="getNextMenuLeftSideMainLink bordersOfGetNextMenuLeftSide" [class.getNextMenuLeftSideMainLinkDark]="eventsMenu.id == activeGetNextMenuId" (click)="activeGetNextMenuId = eventsMenu.id">
+                    <span class="MainLinkText">Events</span></span>
+                <div class="SubMenuLinkContainer" [ngClass]="{'submenushow': (eventsMenu.id == activeGetNextMenuId), 'submenuhide': (eventsMenu.id != activeGetNextMenuId)}">
+                    <a class="SubMenuLink" [routerLink]="['/memberEvents']">&#9657; Events</a>
+                    <a class="SubMenuLink" [routerLink]="['/memberAppeals']">&#9657; Appeals</a>
+                </div>
+
+                <span id="casesMenu" #casesMenu class="getNextMenuLeftSideMainLink bordersOfGetNextMenuLeftSide" [class.getNextMenuLeftSideMainLinkDark]="casesMenu.id == activeGetNextMenuId" (click)="activeGetNextMenuId = casesMenu.id">
+                    <span class="MainLinkText">Cases</span></span>
+                <div class="SubMenuLinkContainer" [ngClass]="{'submenushow': (casesMenu.id == activeGetNextMenuId), 'submenuhide': (casesMenu.id != activeGetNextMenuId)}">
+                    <a class="SubMenuLink" [routerLink]="['/memberCases']">&#9657; Cases</a>
+                </div>
+
+                <span id="managementMenu" #managementMenu class="getNextMenuLeftSideMainLink bordersOfGetNextMenuLeftSide" [class.getNextMenuLeftSideMainLinkDark]="managementMenu.id == activeGetNextMenuId" (click)="activeGetNextMenuId = managementMenu.id">
+                    <span class="MainLinkText">Management</span></span>
+                <div class="SubMenuLinkContainer" [ngClass]="{'submenushow': (managementMenu.id == activeGetNextMenuId), 'submenuhide': (managementMenu.id != activeGetNextMenuId)}">
+                    <a class="SubMenuLink" [routerLink]="['/memberAssessments']">&#9657; Assessments</a>
+                    <a class="SubMenuLink" [routerLink]="['/memberAlerts']">&#9657; Alerts</a>
+                    <a class="SubMenuLink" [routerLink]="['/memberRiskProfile']">&#9657; Risk Profile</a>
+                    <a class="SubMenuLink" [routerLink]="['/memberGapsInCare']">&#9657; Gaps In Care</a>
+                    <a class="SubMenuLink" [routerLink]="['/memberCarePlanAP']">&#9657; Care Plan (AP)</a>
+                    <a class="SubMenuLink" [routerLink]="['/memberCarePlanICC']">&#9657; Care Plan (ICC)</a>
+                    <a class="SubMenuLink" [routerLink]="['/memberGoals']">&#9657; Goals</a>
+                    <a class="SubMenuLink" [routerLink]="['/memberBarriers']">&#9657; Barriers</a>
+                    <a class="SubMenuLink" [routerLink]="['/memberInterventions']">&#9657; Interventions</a>
+                </div>
+
+                <span id="reviewsMenu" #reviewsMenu class="getNextMenuLeftSideMainLink bordersOfGetNextMenuLeftSide" [class.getNextMenuLeftSideMainLinkDark]="reviewsMenu.id == activeGetNextMenuId" (click)="activeGetNextMenuId = reviewsMenu.id">
+                    <span class="MainLinkText">Reviews</span></span>
+                <div class="SubMenuLinkContainer" [ngClass]="{'submenushow': (reviewsMenu.id == activeGetNextMenuId), 'submenuhide': (reviewsMenu.id != activeGetNextMenuId)}">
+                    <a class="SubMenuLink" [routerLink]="['/memberReviewsStandard']">&#9657; Standard</a>
+                    <a class="SubMenuLink" [routerLink]="['/memberReviewsInterQual']">&#9657; InterQual</a>
+                </div>
+
+                <span id="documentsMenu" #documentsMenu class="getNextMenuLeftSideMainLink bordersOfGetNextMenuLeftSide" [class.getNextMenuLeftSideMainLinkDark]="documentsMenu.id == activeGetNextMenuId" (click)="activeGetNextMenuId = documentsMenu.id">
+                    <span class="MainLinkText">Documents</span></span>
+                <div class="SubMenuLinkContainer" [ngClass]="{'submenushow': (documentsMenu.id == activeGetNextMenuId), 'submenuhide': (documentsMenu.id != activeGetNextMenuId)}">
+                    <a class="SubMenuLink" [routerLink]="['/memberNotes']">&#9657; Notes</a>
+                    <a class="SubMenuLink" [routerLink]="['/memberLetters']">&#9657; Letters</a>
+                    <a class="SubMenuLink" [routerLink]="['/memberAttachments']">&#9657; Attachments</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="rightMenu" class="getnext-notenav getnext-animate-right">
+    <chartNote (onNoteError)="onNoteError($event)"></chartNote>
+</div>
+
+<div id="getNextBody">
+    <p-messages [value]="messages"></p-messages>
+
+    <p-confirmDialog header="Confirm" icon="fa fa-question-circle" width="425"></p-confirmDialog>
+
+    <div [hidden]="hideHomeGetNextItem">
+        <div id="appliedPathwaysAssessment" *ngIf="typeAssessment">
+            <apAssessment [memberId]="memberId" [assessmentType]="assessmentType" [assessmentAlgorithmId]="algorithmId" [assessmentAction]="assessmentAction" (onSetMemberAssessmentId)="onSetMemberAssessmentId($event)" (onNotifyQuestionnaireEnd)='onNotifyQuestionnaireEnd($event)'>
+            </apAssessment>
+        </div>
+
+        <div id="appliedPathwaysCarePlan" *ngIf="typeCareplan">
+            <div [hidden]="hideAPCareplan">
+                <apCareplan></apCareplan>
+            </div>
+        </div>
+    </div>
+
+    <div id="appliedPathwaysCarePlan" *ngIf="toolbarClickedCareplan">
+        <div [hidden]="hideAPCareplan">
+            <apCareplan></apCareplan>
+        </div>
+    </div>
+
+    <div id="memberCalendar" *ngIf="toolbarClickedMemberCalendar">
+        <div [hidden]="hideCalendar">
+            <memberCalendar [memberId]="memberId" [loginUserId]="userId" [sBearerToken]="userToken">
+            </memberCalendar>
+        </div>
+    </div>
+
+    <div id="appliedPathwaysGeneralAssessment" *ngIf="toolbarClickedGeneralAssessment">
+        <div [hidden]="hideGeneralAssessment">
+            <apAssessment [memberId]="memberId" [assessmentType]="generalAssessmentType" [assessmentAlgorithmId]="generalAssessmentAlgorithmId" (onSetMemberAssessmentId)="onSetMemberAssessmentId($event)">
+            </apAssessment>
+        </div>
+    </div>
+</div>
+
+
+<div id="memberDemographicsView">
+    <memberDemographics></memberDemographics>
+</div>
+<div id="memberCaregiverView">
+    <memberCaregiver></memberCaregiver>
+</div>
+<div id="memberPCP">
+    <memberPCP (setMemberPcpEmitter)="setMemberPcp($event)"></memberPCP>
+</div>

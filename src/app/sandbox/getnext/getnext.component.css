@@ -1,0 +1,290 @@
+.getnext-base {
+    padding: 0px;
+    margin: 0px 0px 0px 14px;
+    font-size: 14px;
+}
+
+.topAppointment {
+    height: 100%;
+    position: relative;
+}
+
+.getnext-nocolpadding {
+    padding-left: 0px;
+    padding-right: 0px;
+    margin: 0px;
+    padding: 0px !important;
+}
+
+.getnext-queue {
+    padding: 10px 10px 8px 14px;
+}
+
+.getnext-queue h3 {
+    padding: 0px;
+    margin: 0px;
+    font-size: 20px;
+    font-weight: normal;
+}
+
+.getnext-queue .status>div {
+    width: 48%;
+    position: relative;
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 5px;
+}
+
+.getnext-queue .status span {
+    display: inline-block;
+    width: 13px;
+    height: 13px;
+    border: 0px;
+    border-radius: 10px;
+    background: #000;
+    margin-right: 5px;
+}
+
+.getnext-queue .status span.red {
+    background: #d92929;
+}
+
+.getnext-queue .status span.blue {
+    background: #6787b7;
+}
+
+.getnext-queue .status span.yellow {
+    background: #ffc600;
+}
+
+.getnext-queue .status span.green {
+    background: #4da400;
+}
+
+/*.taskList {
+    border-right: 1px #d2d2d2 solid;
+    height: 100%;
+}*/
+
+.no-queue-items {
+    display: block;
+    border-top: 1px #d2d2d2 solid;
+    color: #3393fc;
+    font-weight: bold;
+    font-size: 16px;
+    padding-top: 15px;  
+    padding-left: 15px;  
+}
+
+.getnext-task {
+    border-top: 1px #d2d2d2 solid;
+    border-left: 1px #d2d2d2 solid;
+    border-right: 1px #d2d2d2 solid;
+}
+
+.getnext-task ul {
+    display: block;
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+.getnext-task ul li {
+    display: block;
+    list-style: none;
+    padding: 10px;
+    margin: 0px;
+    min-height: 50px;
+    background: #f9f9f9;
+    border-bottom: 1px #d2d2d2 solid;
+    padding-left: 15px;
+    padding-right: 15px;
+    /*cursor: pointer;*/
+    cursor: hand;
+}
+
+.getnext-task ul li.red {
+    border-left: 5px solid #d92929;
+    color: #000 !important;
+}
+
+.getnext-task ul li.blue {
+    border-left: 5px solid #6787b7;
+    color: #000 !important;
+}
+
+.getnext-task ul li.yellow {
+    border-left: 5px solid #ffc600;
+    color: #000 !important;
+}
+
+.getnext-task ul li.green {
+    border-left: 5px solid #4da400;
+    color: #000 !important;
+}
+
+.getnext-task ul li h3 {
+    margin: 0px;
+    padding: 0px;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.getnext-task ul li>div {
+    padding-top: 5px;
+}
+
+.getnext-task ul li>div .urgent {
+    color: #d92929;
+    font-weight: bold;
+}
+
+.getnext-nocolpadding .fc-today {
+    background: #fff !important;
+}
+
+
+/** Calendar CSS */
+
+.fc-toolbar.fc-header-toolbar {
+    margin-bottom: .6em;
+}
+
+.getnext-display-calendar {
+    background: #fff;
+    border-right: 0px #d2d2d2 solid;
+}
+
+.getnext-cal {
+    padding: 10px 15px 0px 15px;
+    /*border-bottom: 1px #d2d2d2 solid;*/
+}
+
+.getnext-details {
+    background-color: #fff;
+}
+
+.getnext-details .line-item:not(last-of-type) {
+    padding-bottom:6px;
+}
+
+/*.getnext-details .line-item:last-of-type {
+    padding-bottom:25px;
+}*/
+
+.getnext-details .member-name {    
+    padding-bottom:10px;
+    color: #3366ff;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.getnext-details .member-section {
+    padding: 12px 10px 4px 15px;
+    background-color: #F9F9F9 ;
+    border: 1px solid #D0D0D0  ;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+
+.getnext-details .objective {    
+    padding-bottom:10px;
+    color: #3366ff;
+    font-weight: bold;
+}
+
+.getnext-details .due-date {
+    color: red;
+    font-weight: bold;
+    margin-right:10px;
+    float: right;
+}
+
+.getnext-details .field-value {
+    font-weight: bold; 
+    margin-left:10px;
+}
+
+.getnext-details .recorddata {
+    display: table;
+    width: 100%;
+}
+
+.getnext-details .recorddata ul {
+    display: table-row;
+    list-style: none;
+    padding: 0px;
+    margin-left: 10px;
+}
+
+.getnext-details .recorddata ul li {
+    display: table-cell;
+    list-style: none;
+    padding: 10px;
+    margin: 0px;
+    font-size: 14px;
+}
+
+.getnext-details .recorddata ul li:first-child {
+    width: 30%;
+    font-weight: bold;
+}
+
+.getnext-details .recorddata ul li.red {
+    color: #d92929;
+}
+
+.getnext-details .recorddata .phoneData {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4da400;
+    color: #fff;
+    text-decoration: none;
+}
+
+.getnext-details .recorddata .appointmentData {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #7d30a3;
+    color: #fff;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.getnext-details .recorddata .appointmentDelete {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #d90000;
+    color: #fff;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.getnext-dialog .ui-dialog {
+    top: 1% !important;
+}
+
+.getnext-dialog .ui-dialog-content {
+    max-height: 400px;
+    overflow: auto;
+}
+
+.getnext-begin-button {
+    margin-bottom: 15px; 
+    margin-right: 20px;
+    float:right;
+}
+
+/**
+BOOTSTRAP
+*/
+
+.whiteBackground {
+    background-color: #fff;
+}
+
+.allpadding {
+    width: 100%;
+    position: relative;
+    padding: 10px;
+}

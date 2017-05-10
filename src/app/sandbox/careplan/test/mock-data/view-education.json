@@ -1,0 +1,41 @@
+{
+      "apiStatus": {
+            "resultInformation": null,
+            "statusCode": "200",
+            "serviceDescription": "com.aph.webservice.ApCarePlanServiceV8Impl",
+            "timestamp": "2017-03-02 14:49:01.393",
+            "errorMessage": "There is no applied pathways data available",
+            "errorStackTrace": null
+      },
+      "title": "Document Title",
+      "text": "Lorem ipsum dolor sit amet, sit ut ubique patrioque. Ius iudico sanctus apeirian ea, et tibique eloquentiam vis. Tamquam volumus ex per, pro ei ipsum iuvaret. Eu zril epicuri nec, ad debet corrumpit torquatos eum. Mel et putant melius nostrud, nihil eripuit constituam et sea.",
+      "educationDocumentId": "",
+      "currentLevelOfUnderstanding": {
+            "value": "ZDEFAULT",
+            "label": "Partially Understood"
+      },
+      "isDelivered": "",
+      "isComplete": "",
+      "levelOfUnderstandingList": [
+            {
+                  "value": "UNDERSTOOD",
+                  "label": "Understood"
+            },
+            {
+                  "value": "ZDEFAULT",
+                  "label": "Partially Understood"
+            },
+            {
+                  "value": "PROFICIENT",
+                  "label": "Proficient Desc"
+            },
+            {
+                  "value": "PARTIALLY UNDRT",
+                  "label": "Partially Understood"
+            },
+            {
+                  "value": "NOT UNDERSTOOD",
+                  "label": "Not Understood"
+            }
+      ]
+}

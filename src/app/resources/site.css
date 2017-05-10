@@ -1,0 +1,1271 @@
+body {
+    margin: 0px;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: #ffffff;
+    font-family: Arial, Verdana, sans-serif;
+    font-weight: normal;
+    color: #404C51;
+}
+
+.ui-shadow {
+    -webkit-box-shadow: 0 0px 9px 3px #4e1a67;
+    -moz-box-shadow: 0 0px 9px 3px #4e1a67;
+    box-shadow: 0 0px 9px 3px #4e1a67;
+}
+
+#axisBrand {
+    float: left;
+    font-size: 24px !important;
+    color: #ffffff !important;
+    margin-top: -3px !important;
+}
+
+label {
+    padding-bottom: 3px;
+    font-weight: bold;
+}
+
+
+/* menu side style*/
+
+#MENUSIDE {
+    /*    width: 85px;
+    float: left;
+    background-color: #313b3f;
+    border-right: solid 1px #151d21;
+    overflow: hidden;
+    width: 299px;  */
+    height: 100%;
+    /* 100% Full-height */
+    width: 193px;
+    /* 0 width - change this with JavaScript */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Stay on top */
+    top: 0;
+    left: 0;
+    background-color: #E6ECEF;
+    /* #cfd8dc;  #313b3f;  Black*/
+    overflow-x: hidden;
+    /* Disable horizontal scroll */
+    /* padding-top: 60px;  Place content 60px from the top */
+    transition: 0.5s;
+    /* 0.5 second transition effect to slide in the sidenav */
+}
+
+#MENUSIDEindent {
+    width: 100%;
+    height: auto;
+}
+
+.bordersOfMenuSide {
+    border-top: solid 1px #A0A0A0;
+    /* #404a4e; */
+}
+
+#LOGO {
+    height: 45px;
+    display: block;
+    padding: 0px 25px 0px 0px;
+    z-index: 997;
+    /* background-color: #313b3f; */
+    text-align: center;
+    background-color: #ffffff;
+}
+
+#LOGO img {
+    width: 193px;
+    height: 45px;
+}
+
+.MenuSideMainLink {
+    width: 100%;
+    height: 27px;
+    display: block;
+    padding: 10px 0px 0px 0px;
+    cursor: pointer;
+}
+
+.MenuSideMainLink input {
+    padding: 6px;
+    background-color: #354044;
+    outline: none;
+    border: 0px;
+    border: none;
+    color: #9ba5ac;
+    border-radius: 20px;
+    -webkit-box-shadow: inset 0px 0px 3px 0px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: inset 0px 0px 3px 0px rgba(0, 0, 0, 0.5);
+    box-shadow: inset 0px 0px 3px 0px rgba(0, 0, 0, 0.5);
+}
+
+.MenuSideMainLinkDark {
+    background-color: #A6BBC4 !important;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.MenuSideMainLink:hover {
+    background-color: #ffffff;
+    /* #20282b; */
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.MenuSideMainLink img {
+    width: 20px;
+    height: auto;
+    float: left;
+}
+
+.MainLinkText {
+    color: #242D30;
+    /*#9ba5ac; */
+    font-size: 14px;
+    margin: 0px 0px 0px 20px;
+    display: block;
+}
+
+.SubMenuLinkContainer {
+    width: auto;
+    padding: 0px 5px 0px 13px;
+    overflow: hidden;
+    background-color: #ffffff;
+}
+
+.SubMenuLink {
+    width: 100%;
+    display: inline-block;
+    padding: 6px;
+    box-sizing: border-box;
+    cursor: pointer;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    color: #242D30;
+    /* #659eb3; */
+    font-size: 14px;
+}
+
+.SubMenuLink:hover {
+    background-color: #EDF0F2;
+    color: #242D30;
+}
+
+.selectmenu {
+    width: auto;
+    max-width: 120px;
+    float: right;
+    padding: 5px;
+    outline: none;
+    font-size: 16px;
+    display: block;
+    overflow: hidden;
+}
+
+.LEVEL1 {
+    color: #25aae1;
+    padding-left: 10px;
+}
+
+.LEVEL2 {
+    font-size: 12px;
+    color: #25aae1;
+    padding-left: 10px;
+}
+
+.selectmenu option {
+    font-size: 12px;
+}
+
+.ui-radiobutton-label {
+    padding-top: 4px;
+    font-weight: normal;
+}
+
+
+/* content side style*/
+
+#CONTENTSIDE {
+    width: auto;
+    overflow: hidden;
+    z-index: 1;
+    margin-left: 194px;
+    background-color: #FFFFFF;
+}
+
+#CONTENTSIDEindent {
+    width: 100%;
+    height: auto;
+}
+
+.ContentSideSections {
+    display: block;
+    border-bottom: solid 1px #dde3e6;
+    padding: 12px;
+    overflow: hidden;
+    background-color: #f5f7f8;
+    height: 21px;
+}
+
+.MOBILE .ContentSideSections {
+    padding: 14px 24px;
+}
+
+#PFTopLinksCover {
+    background-color: #4e1a67;
+}
+
+#PFMobileTopLinksCover {
+    position: inherit;
+}
+
+.PFTopLinks {
+    width: 80px;
+    display: inline-block;
+    text-align: center;
+    padding: 10px 5px;
+    border-radius: 5px;
+    font-size: 12px;
+    -webkit-border-radius: 5px;
+    margin-top: -17px;
+    background-color: rgb(246, 249, 251);
+    margin-left: 5px;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    overflow: hidden;
+}
+
+.PFTopLinks:hover,
+.PFTopLinksMobile:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.PFTopLinksMobile {
+    width: 20%;
+    display: inline-block;
+    text-align: center;
+    padding: 1%;
+    border-radius: 5px;
+    font-size: 11px;
+    -webkit-border-radius: 5px;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    overflow: hidden;
+}
+
+.PFTopLinks img,
+.PFTopLinksMobile img {
+    width: 80%;
+    height: 30px;
+}
+
+.PFGrayText {
+    color: #aab7c1;
+}
+
+.PFDarkText {
+    color: #313b3f;
+}
+
+#openMenuBtn {
+    float: left;
+    /* padding: 10px; */
+    padding-right: 10px;
+    margin-top: -2px;
+    border-radius: 5px;
+    /* display: none; */
+}
+
+#openMobileMenuBtn {
+    float: left;
+    padding: 8px 5px 5px 5px;
+    margin-left: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    width: 27px;
+    display: none;
+}
+
+#openMenuBtn.active,
+#openMenuBtn:hover,
+#openMenuBtn:focus,
+#openMobileMenuBtn:hover,
+#openMobileMenuBtn:focus {
+    background-color: #4e1a67;
+}
+
+#openMenuBtn img,
+#openMobileMenuBtn img {
+    width: 25px;
+    height: 25px;
+}
+
+.PropertyBox {
+    width: 27%;
+    height: 280px;
+    float: left;
+    padding: 3%;
+    overflow: hidden;
+    text-align: center;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    display: block;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.PropertyBox img {
+    width: 60%;
+}
+
+.PropertyBox .PropertyTopic {
+    display: block;
+    color: #25aae1;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.PropertyBox .PropertyText {
+    display: block;
+    color: #414D52;
+    font-size: 14px;
+    line-height: 22px;
+}
+
+.MOBILE .PropertyBox {
+    width: 27%;
+    height: 250px;
+    float: left;
+    padding: 3%;
+    overflow: hidden;
+    text-align: center;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    display: block;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.MOBILE .PropertyBox img {
+    width: 80%;
+}
+
+.MOBILE .PropertyBox .PropertyTopic {
+    display: block;
+    color: #25aae1;
+    font-size: 12px;
+}
+
+.MOBILE .PropertyBox .PropertyText {
+    display: block;
+    color: #8c9aa5;
+    font-size: 11px;
+}
+
+.widgetsLink {
+    width: 90%;
+    height: auto;
+    background-image: url(../images/widgetIconCover.svg);
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: table;
+    text-align: center;
+    padding: 5%;
+}
+
+.widgetsLink img {
+    width: 40%;
+    height: auto;
+    margin-top: 5%;
+}
+
+.widgetsLink span {
+    width: 100%;
+    margin-top: 10px;
+    overflow: hidden;
+    height: 50px;
+    display: table;
+    font-size: 14px;
+}
+
+.widgetsLink:hover span {
+    color: #fdd106;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.MOBILE .widgetsLink img {
+    width: 40%;
+    height: auto;
+    margin-top: 1%;
+}
+
+.MOBILE .widgetsLink span {
+    width: 100%;
+    margin-top: 0px;
+    overflow: hidden;
+    height: 50px;
+    display: table;
+    font-size: 11px;
+}
+
+.BoxesIndent {
+    width: 85%;
+    float: right;
+    padding-top: 30px;
+}
+
+.brandLogo {
+    width: 70px;
+    height: 70px;
+    display: block;
+    margin: 10px 10px 10px 0px;
+    float: left;
+}
+
+.MOBILE .BoxesIndent {
+    width: 85%;
+    float: none;
+    margin: 0px auto;
+    padding-top: 30px;
+}
+
+
+/** Responsive **/
+
+@media (min-width: 961px) {
+    .PFTopLinks {
+        display: block
+    }
+    .selectmenu {
+        display: none;
+    }
+    .mobileLogoCover {
+        display: none;
+    }
+    .PFNextGen iframe {
+        margin-left: 100px;
+    }
+    #openMenuBtn.active {
+        display: inline-block;
+        background-color: #4e1a67;
+    }
+}
+
+@media (max-width: 1140px) {
+    #PFTopLinksCover .PFTopLinks {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+@media (max-width: 960px) {
+    .PFTopLinks {
+        display: none
+    }
+    #PFTopLinksCover {
+        padding: 12px 10px 12px 3px;
+    }
+    .selectmenu {
+        display: block;
+    }
+    .mobileLogoCover {
+        display: block
+    }
+    #MENUSIDE {
+        display: none;
+        overflow-y: auto;
+        z-index: 999;
+    }
+    #MENUSIDE.active {
+        display: block;
+        width: 100%;
+        height: 100%;
+        overflow-y: auto;
+        z-index: 999;
+    }
+    #CONTENTSIDE {
+        margin-left: 0
+    }
+    .ContentSideSections {
+        padding: 14px 24px;
+    }
+    #openMenuBtn {
+        display: inline-block;
+        padding: 10px;
+        margin-top: -10px;
+        margin-right: 5px;
+        border-radius: 5px;
+        position: relative;
+        z-index: 1000;
+    }
+    #openMenuBtn.active {
+        display: none;
+    }
+    #openMobileMenuBtn.active {
+        display: inline-block;
+        background-color: #4e1a67;
+    }
+    #openMenuBtn:hover,
+    #openMenuBtn:focus,
+    #openMobileMenuBtn:hover,
+    #openMobileMenuBtn:focus {
+        background-color: #4e1a67;
+    }
+    #openMenuBtn img,
+    #openMobileMenuBtn img {
+        width: 20px;
+        height: 20px;
+    }
+    .Content33 {
+        width: 100%;
+    }
+    .Content66 {
+        width: 100%;
+    }
+    .ui-tabview.ui-tabview-top>.ui-tabview-nav li {
+        width: 100%;
+    }
+    .BigButton {
+        width: 100%;
+    }
+    .PFNextGen iframe {
+        margin-left: 0;
+    }
+    .SubSubMenu ul li {
+        width: 50%
+    }
+    .PropertyBox {
+        width: 44%;
+    }
+    .PropertyBox img {
+        width: 40%;
+    }
+}
+
+@media (max-width: 768px) {
+    .doc-table tbody td {
+        word-break: break-word;
+    }
+}
+
+.submenuhide {
+    overflow: hidden;
+    max-height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    -moz-transition-duration: 0.3s;
+    -webkit-transition-duration: 0.3s;
+    -o-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -moz-transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
+    -webkit-transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
+    -o-transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
+    transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
+}
+
+.submenushow {
+    -moz-transition-duration: 0.3s;
+    -webkit-transition-duration: 0.3s;
+    -o-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -moz-transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
+    -webkit-transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
+    -o-transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
+    transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
+    max-height: 500px;
+}
+
+/********************************/
+/* BEGIN AXIS STYLE ADJUSTMENTS */
+/********************************/
+
+/** Override the styles for the MESSAGES **/
+.ui-messages {
+    border: 1px solid;
+    margin: .5em 0;
+    padding: 1em 1em 1em .5em;
+    display: none;
+    position: relative;
+}
+
+.ui-messages-icon {
+    display:inline-block;
+    padding: 0;
+    vertical-align: middle;
+}
+
+.ui-messages-summary {
+    font-weight: bold;
+    margin-left: .25em;
+}
+
+.ui-messages-detail {
+    margin-left: .25em;
+}
+
+.ui-messages-success {
+    color: #303030 ; /* original: #ffffff; */
+    background-color: #a6d8a8; /* original:  #4CAF50; */
+    border-color: #4CAF50;
+}
+
+.ui-messages-info {
+    color: #303030 ; /* original: #ffffff; */
+    background-color: #9ed1fa;   /* original: #2196f3; */
+    border-color: #2196f3;
+}
+
+.ui-messages-warn {
+    color: #303030 ; /* original: #ffffff; */
+    background-color: #ffe099;  /* original: #FFB300; */
+    border-color: #FFB300;
+}
+
+.ui-messages-error {
+    color: #303030 ; /* original: #ffffff; */
+    background-color: #ffdfdf; /* original: #f44336; */
+    border-color: #f44336;
+}
+
+.ui-messages ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.ui-messages.ui-messages-noicon ul {
+    margin: 0 1.5em 0 0;
+}
+
+.ui-messages .ui-messages-close {
+    color: #404040; /* original: #ffffff; */
+    cursor: pointer;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+/** END - Override the styles for the MESSAGES **/
+
+
+/* The side navigation menu */
+
+.sidenav {
+    height: 100%;
+    /* 100% Full-height */
+    width: 0;
+    /* 0 width - change this with JavaScript */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Stay on top */
+    top: 0;
+    left: 0;
+    background-color: #111;
+    /* Black*/
+    overflow-x: hidden;
+    /* Disable horizontal scroll */
+    padding-top: 60px;
+    /* Place content 60px from the top */
+    transition: 0.5s;
+    /* 0.5 second transition effect to slide in the sidenav */
+}
+
+
+/* The navigation menu links 
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s
+}  */
+
+
+/* When you mouse over the navigation links, change their color 
+.sidenav a:hover, .offcanvas a:focus{
+    color: #f1f1f1;
+}  */
+
+
+/* Position and style the close button (top right corner) */
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+
+#CONTENTSIDE {
+    transition: margin-left .5s;
+    padding: 0px;
+}
+
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+
+@media screen and (max-height: 450px) {
+    .MENUSIDE {
+        padding-top: 5px;
+    }
+    .MENUSIDE a {
+        font-size: 14px;
+    }
+}
+
+
+/* Begin AXIS custom */
+
+.list-header {
+    height: 40px;
+    line-height: 40px;
+    background-color: #009688;
+    color: white;
+    vertical-align: middle;
+    font-size: 16px;
+    padding-left: 10px;
+}
+
+.userViewOption p-radiobutton .ui-radiobutton-label {
+    font-size: 14px;
+}
+
+.userCalendar .fc-button-group .fc-prev-button,
+.userCalendar .fc-button-group .fc-month-button,
+.userCalendar .fc-button-group .fc-agendaWeek-button,
+.memberCalendar .fc-button-group .fc-prev-button,
+.memberCalendar .fc-button-group .fc-month-button,
+.memberCalendar .fc-button-group .fc-agendaWeek-button {
+    margin-right: 5px !important;
+}
+
+.userCalendar .fc-button-group .fc-prev-button,
+.userCalendar .fc-button-group .fc-month-button,
+.userCalendar .fc-button-group .fc-agendaDay-button,
+.memberCalendar .fc-button-group .fc-prev-button,
+.memberCalendar .fc-button-group .fc-month-button,
+.memberCalendar .fc-button-group .fc-agendaDay-button {
+    margin-right: 5px !important;
+}
+
+.userCalendar .fc-button-group .fc-prev-button,
+.userCalendar .fc-button-group .fc-month-button,
+.userCalendar .fc-button-group .fc-listWeek-button,
+.memberCalendar .fc-button-group .fc-prev-button,
+.memberCalendar .fc-button-group .fc-month-button,
+.memberCalendar .fc-button-group .fc-listWeek-button {
+    margin-right: 5px !important;
+}
+
+.userCalendar .fc-left,
+.memberCalendar .fc-left {
+    margin-left: 20px;
+}
+
+.userCalendar .ui-state-active,
+.memberCalendar .ui-state-active {
+    background-color: #4e1a67;
+    color: #fff;
+}
+
+.userCalendar .fc-today-button.ui-state-default,
+.memberCalendar .fc-today-button.ui-state-default {
+    background-color: #e6e6e6;
+    color: #333333;
+}
+
+.userCalendar .fc-today-button.ui-state-disabled,
+.memberCalendar .fc-today-button.ui-state-disabled {
+    cursor: default;
+    color: #fff;
+    background-color: #4e1a67;
+    background-image: none;
+    opacity: 1.0;
+    filter: alpha(opacity=65);
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+.custom .ui-state-highlight,
+.ui-widget-content .ui-state-highlight,
+.ui-widget-header .ui-state-highlight {
+    color: #333333;
+    text-decoration: none;
+    background-color: white;
+    background-color: #FFFFFF;
+    border: 2px solid #000000;
+    /*border-width: 2px;*/
+    background-position: 0px;
+    background-image: -moz-linear-gradient(to bottom, #FFFFFF, #FFFFFF);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(white), to(#FFFFFF));
+    background-image: -webkit-linear-gradient(to bottom, white, #FFFFFF);
+    background-image: -o-linear-gradient(to bottom, white, #FFFFFF);
+    background-image: linear-gradient(to bottom, white, #FFFFFF);
+    background-repeat: repeat-x;
+    filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0077b3', GradientType=0);
+}
+
+
+.fc-right .fc-button-group {
+    margin-top: 0px;
+    margin-right: 10px;
+}
+
+
+/* for calender border and today date */
+
+.userCalendar .fc-agendaWeek-view .ui-widget-content.fc-today,
+.memberCalendar .fc-agendaWeek-view .ui-widget-content.fc-today {
+    border: 1px solid #000;
+}
+
+.userCalendar .fc-month-view table,
+.userCalendar .fc-agendaWeek-view table,
+.memberCalendar .fc-month-view table,
+.memberCalendar .fc-agendaWeek-view table {
+    border-collapse: separate;
+}
+
+.userCalendar .fc-month-view .fc-day-grid-container,
+.memberCalendar .fc-month-view .fc-day-grid-container {
+    margin-top: -2px;
+}
+
+.userCalendar,
+.memberCalendar {
+    width: 100%;
+}
+
+.userCalendar .ui-button,
+.memberCalendar .ui-button {
+    text-transform: capitalize;
+}
+
+.memberCalendar .fc-right .fc-button-group {
+    margin-top: 0px!important;
+}
+
+.userCalendar h2 {
+    text-align: left;
+    font-size: 18px;
+    margin-top: 10px;
+    padding-right: 20px;
+    width: 242px;
+}
+
+.memberCalendar h2 {
+    text-align: left;
+    font-size: 18px;
+    margin-top: 10px;
+    padding-right: 20px;
+    width: 242px;
+}
+
+
+/* for member banner */
+
+.toggle-Panel {
+    float: left;
+    width: 100%;
+    position: relative;
+}
+
+.toggle-Panel .ui-panel .ui-panel-titlebar-icon {
+    position: absolute;
+    left: 49%;
+    font-size: 0px;
+    bottom: -4px;
+    width: 35px;
+    height: 5px;
+    border: 0px none;
+    cursor: row-resize;
+}
+
+.toggle-Panel .ui-panel .ui-panel-titlebar-icon .fa-plus {
+    background: url(images/hsplit_snap_closed.gif) no-repeat left top;
+    display: block;
+    /*bottom: 4px;*/
+    width: 35px;
+    height: 5px;
+}
+
+.toggle-Panel .ui-panel .ui-panel-titlebar-icon .fa-minus {
+    background: url(images/hsplit_snap.gif) no-repeat left top;
+    display: block;
+    /*bottom: -4px;*/
+    width: 35px;
+    height: 5px;
+}
+
+.toggle-Panel .ui-panel .ui-panel-titlebar.ui-widget-header {
+    background: none;
+    border: 0px none;
+}
+
+.toggle-Panel .ui-panel .ui-panel-content.ui-widget-content {
+    padding: 0px 10px 10px 10px;
+}
+
+.toggle-Panel .ui-grid-col-3 {
+    background: url(images/verticalLine.png) no-repeat 97% top;
+}
+
+.toggle-Panel .usernameblock {
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    font-style: normal;
+    text-decoration: none;
+    color: #666;
+}
+
+.toggle-Panel .ui-grid-col-3:last-child {
+    background: none;
+}
+
+.calendareventadd .ui-dialog {
+    width: 500px;
+}
+
+.no-padding {
+    padding: 0px!important;
+}
+
+
+/* styles overwright for ui auto complete */
+
+.srchautocomplte input,
+.srchautocompltepopup input {
+    width: 99%;
+    height: 32px;
+    background: #fcfcfc;
+    border: 1px solid #aaa;
+    text-indent: 8px;
+    border-radius: 0px;
+}
+
+.srchautocompltepopup {
+    font-size: 13px!important;
+}
+
+.srchautocompltepopup input {
+    font-size: 13px!important;
+    border-radius: 0px!important;
+    -webkit-border-radius: 0px!important
+}
+
+.srchautocomplte input::-ms-clear {
+    margin-right: 20px
+}
+
+.ui-autocomplete {
+    width: 99%!important;
+}
+
+.appntdate {
+    margin-right: 5px!important;
+    float: left;
+}
+
+.text-danger {
+    font-size: 12px;
+    color: red;
+    line-height: 22px;
+    padding: 0px !important;
+}
+
+.member-text-danger {
+    font-size: 12px;
+    color: red;
+    line-height: 22px;
+    margin-left: 147px;
+}
+
+.member-text-danger-date {
+    font-size: 12px;
+    color: red;
+    line-height: 22px;
+    margin-left: 140px;
+    width: 375px;
+}
+
+.text-danger-end-date {
+    font-size: 12px;
+    color: red;
+    line-height: 22px;
+    margin-left: 140px;
+}
+
+.text-danger-end-time {
+    font-size: 12px;
+    color: red;
+    line-height: 22px;
+    margin-left: -13px;
+}
+
+.messageerror {
+    padding-left: 41%;
+}
+
+.appntdate input {
+    width: 76%;
+}
+
+.linkelement span{
+    cursor: pointer;
+}
+
+.appntdesc {
+    width: 96%;
+}
+
+.nameblock {
+    float: left;
+    margin-right: 8px;
+}
+
+.agendaweekdialog .ui-widget-header� {
+    padding: 0px!important;
+    border: 0px none !important;
+}
+
+� .agendaweekdialog .ui-dialog-content {
+    padding-top: 0px !important;
+}
+
+� .agendaweekdialog .ui-dialog-content p {
+    margin-top: 0px !important;
+}
+
+�
+/* prime NG UI */
+
+.ui-timepicker {
+    text-align: center;
+    padding: .5em 0
+}
+
+.ui-timepicker>div {
+    display: inline-block;
+    margin-left: 10px;
+    min-width: 24px
+}
+
+.ui-timepicker>.ui-minute-picker {
+    margin-left: 0
+}
+
+.ui-timepicker>.ui-separator {
+    margin-left: 0;
+    min-width: 12px
+}
+
+.ui-timepicker>.ui-separator a {
+    visibility: hidden
+}
+
+.ui-timepicker>div a {
+    display: block;
+    opacity: .7;
+    filter: Alpha(Opacity=70)
+}
+
+.ui-timepicker>div a:hover {
+    display: block;
+    opacity: 1;
+    filter: Alpha(Opacity=100)
+}
+
+.ui-timepicker>div span {
+    font-size: 16px
+}
+
+.appntdate .ui-datepicker {
+    position: absolute;
+}
+
+.appntdate.timepicker .ui-datepicker {
+    position: absolute;
+    width: 90px;
+}
+
+
+/* Tab View overrides */
+
+.ui-tabview {
+    padding: 0px;
+}
+
+.ui-tabview .ui-tabview-panel {
+    padding: 10px 15px;
+}
+
+.ui-tabview.ui-tabview-top>.ui-tabview-nav li:first-child {
+    margin-left: 5px;
+}
+
+.ui-tabview .ui-tabview-nav li a {
+    float: left;
+    padding: .2em 1em;
+    text-decoration: none;
+}
+
+.ui-tabview .ui-tabview-nav>li.ui-state-default {
+    background: #b6b8dc;
+    font-weight: normal;
+    color: #000000;
+}
+
+.ui-tabview .ui-tabview-nav>li.ui-state-active {
+    background: #ffffff;
+    font-weight: bold;
+    color: #000000;
+}
+
+.ui-tabview .ui-widget-header.ui-tabview-nav li a {
+    color: black!important;
+}
+
+
+
+.typedropdown {
+    width: 96%;
+    font-size: 13px;
+    border: 1px solid #dddddd;
+    padding: 3px;
+    line-height: 18px;
+    border-radius: 3px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
+    -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
+    -ms-transition: border linear 0.2s, box-shadow linear 0.2s;
+    -o-transition: border linear 0.2s, box-shadow linear 0.2s;
+    transition: border linear 0.2s, box-shadow linear 0.2s;
+}
+
+.apptCalendar .ui-button-text {
+    color: #fff !important;
+    background-color: #4e1a67 !important;
+}
+
+.apptCalendar .closeAppointment .ui-button-text {
+    color: #000 !important;
+    background-color: #ddd !important;
+}
+
+.apptCalendar .addtoCalendar {
+    float: left!important
+}
+
+ul li.ui-autocomplete-list-item.ui-state-highlight {
+    background: #4e1a67!important;
+    color: #FFFFFF!important;
+}
+
+.ui-autocomplete-panel.test {
+    display: block!important;
+}
+
+.ui-dialog.ui-widget .ui-dialog-titlebar {
+    padding: .5em 1.5em .4em;
+    border-bottom: 1px solid #dddddd;
+}
+
+.apptDetails .ui-dialog.ui-widget-content .ui-dialog-content {
+    height: 405px;
+    overflow: auto;
+}
+
+.apptDetails .ui-dialog-titlebar-close {
+    color: black;
+}
+
+.required {
+    color: red;
+}
+
+.fc-event,
+.fc-event-dot {
+    background: #7093c3;
+    border: 1px solid #7093c3;
+}
+
+.fc-time-grid .fc-event,
+.fc-time-grid .fc-bgevent {
+    overflow: hidden;
+}
+
+.fc-bgevent {
+    opacity: 0.6;
+}
+
+.formControlEle, .formControlEle {
+    width: 100%;
+    padding-top: 5px;
+}
+.formControlEle, .formControlEle .ui-dropdown, .formElementTextarea {
+    width: 100%!important;
+    display: block;
+}
+.formControlEle .formElement {
+  width: 80%;
+}
+.calendarElement .ui-datepicker {
+  width: 121px;
+}
+.memberCalendarHolder input, .memberCalendarHolder label {
+    display: inline-block;
+}
+.memberCalendarHolder.ui-grid-pad.ui-grid > .ui-grid-row > div {
+    padding: 4px 10px;
+}
+.memberCalendarHolder .fc td, .memberCalendarHolder .fc th {
+    border-color:#d9d9d9;
+}
+.ui-widget.ui-datepicker .ui-datepicker-calendar td a.ui-state-highlight.ui-state-active {
+    background: #186ba0!important;
+    color:#ffffff!important;
+}

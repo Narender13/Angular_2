@@ -1,0 +1,96 @@
+
+input, label {
+    display: inline;
+}
+
+.flex-container {
+    display: -webkit-flex;
+    display: flex;  
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    text-align: left;
+}
+
+.flex-container > * {
+    flex: 1 100%;
+}
+
+.ui-grid.ui-grid-pad>.ui-grid-row>div {
+    padding: 0px;
+}
+
+.ui-grid-row {
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+.ui-panel-titlebar {
+    color: red;
+}
+
+.ui-widget-content {
+    background: #ffffff;
+    color: #222222;
+}
+
+.ui-panel.ui-widget {
+    margin-bottom: 0px;
+    border-radius: 0px;
+    padding: 0px;
+    background-color: #fff;
+    border-bottom: 1px solid transparent;
+    -webkit-box-shadow: 0 0px 0px; 
+    box-shadow: 0 0px 0px; 
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-color: #ddd;
+}
+
+.ui-panel .ui-panel-titlebar.ui-widget-header {
+    padding: 0px 10px;
+}
+
+.ui-panel.ui-widget .ui-panel-titlebar-icon span {
+    position: absolute;
+     /*top: 0px; */
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 2px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -30px;
+    opacity: 0;
+    transition: opacity 1s;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}

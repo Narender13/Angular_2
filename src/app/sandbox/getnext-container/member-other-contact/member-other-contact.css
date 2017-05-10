@@ -1,0 +1,139 @@
+.row_container {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.row_container_footer {
+    display: flex;
+    flex-flow: row nowrap;
+    margin-top: 20px;
+}
+
+.row_container_checkbox {
+    display: flex;
+    flex-flow: row nowrap;
+    margin-bottom: 20px;
+}
+
+.column_container {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.column_container_address {
+    display: flex;
+    flex-flow: column nowrap;
+    margin-left: 30px;
+}
+
+.column_container_phone_email {
+    display: flex;
+    flex-flow: column nowrap;
+    margin-left: 30px;
+}
+
+.prefix_dropdown {
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
+
+.name_inputText {
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
+
+.phone_inputText {
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
+
+.address_inputText {
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
+
+.label {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    width: 50%;
+    white-space: nowrap;
+    font-size: 14px;
+    margin: 5px;
+}
+
+.label_address {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    width: 50%;
+    white-space: nowrap;
+    font-size: 14px;
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.label_2 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    width: 50%;
+    white-space: nowrap;
+    font-size: 14px;
+    color: red;
+    margin: 5px;
+}
+
+.label_phone {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    width: 50px;
+    white-space: nowrap;
+    font-size: 14px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 20px;
+}
+
+.prefix_dropdown_2 {
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 5px;
+    margin-right: 10px;
+    margin-bottom: 15px;
+}
+
+.label_add {
+    font-family: Arial, Helvetica, sans-serif;
+    width: 50px;
+    white-space: nowrap;
+    font-size: 14px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 1px;
+    margin-right: 20px;
+}
+
+.normal {
+    font-weight: normal;
+}
+
+.loading {
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+}
+
+.ui-chkbox-label {
+    font-weight: normal;
+}

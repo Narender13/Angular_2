@@ -1,0 +1,107 @@
+<div class="getnext-base">
+    <div class="ui-g getnext-nocolpadding">
+        <div class="ui-lg-4 ui-xl-4 ui-md-5 ui-sm-12 getnext-nocolpadding">
+
+            <div class="getnext-queue">
+                <h3>Queue
+                    <span><i class="fa fa-refresh tooltip" style="float:right; color:#3393fc;" 
+                             (click)="refreshQueue()" pTooltip="Refresh" tooltipPosition="left"></i></span>
+                </h3>
+            </div>
+
+            <p-messages [value]="messages"></p-messages>
+
+            <div *ngIf="queueList.length > 0">                
+                <div class="getnext-task">
+                    <ul>
+                        <li *ngFor="let queueItem of queueList"
+                            (click)="queueItemClick(queueItem);">
+                            <h3>{{queueItem.name}}</h3>
+                            <div *ngIf="queueItem.details">{{queueItem.details}}</div>
+                            <div *ngIf="queueItem.due !== ''">{{queueItem.due}}</div>
+                        </li>
+                    </ul>    
+                </div>                
+            </div>
+            <div *ngIf="queueList.length < 1" class="no-queue-items">
+                {{noItemsMessage}}
+            </div>                
+        </div>
+
+        <div class="ui-lg-8 ui-xl-8 ui-md-7 ui-sm-12  getnext-nocolpadding getnext-display-calendar">
+            <div class='getnext-cal'>
+                <div style="border-bottom: 1px #d2d2d2 solid;">
+                    <p-schedule defaultView="agenda" [height]="getCalendarHeight()" [header]="header" 
+                                [events]="events" [eventRender]="eventRender">
+                    </p-schedule>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<p-dialog header="Details" [(visible)]="showDetails" modal="true" width="700" closeOnEscape="true" draggable="true"
+    class="getnext-dialog">
+    <p-messages [value]="messages"></p-messages>
+    <div class="getnext-details">
+        <div class="recorddata" *ngIf="getNextTaskDetailsDto !== null">
+            
+            <div class="member-section">
+                <div class="due-date" *ngIf="selectedQueueItemDueDate !== null">
+                    {{selectedQueueItemDueDate}}
+                </div>
+                <div class="member-name" *ngIf="selectedQueueItemMember !== null">
+                    {{selectedQueueItemMember}}
+                </div>
+                <div class="line-item" *ngIf="memberDobAndGender !== null">
+                    {{memberDobAndGenderLabel}}:<span class="field-value">{{memberDobAndGender}}</span>
+                </div>
+
+                <div class="line-item" *ngIf="memberContactInfo !== null">{{memberContactInfo}}</div>
+
+                <div class="line-item" *ngIf="caregiverName !== null">
+                    {{caregiverNameLabel}}:<span class="field-value">{{caregiverName}}</span>
+                </div>
+
+                <div class="line-item" *ngIf="caregiverContactInfo !== null">{{caregiverContactInfo}}</div>
+            </div>
+
+            <div class="member-section" style="margin-top:10px;"
+                 *ngIf="objective !== null || careGapStatement !== null || memberCareTrackMedication !== null || memberCareTrack !== null || memberCondition !== null">
+                <div class="objective tooltip" *ngIf="objective !== null" pTooltip="{{objectiveLabel}}" tooltipPosition="left">
+                    {{objective}}
+                </div>
+                
+                <div class="line-item tooltip" *ngIf="careGapStatement !== null" pTooltip="{{careGapStatementLabel}}" tooltipPosition="left">
+                    {{careGapStatement}}
+                </div>
+
+                <div class="line-item tooltip" *ngIf="memberCareTrackMedication !== null" pTooltip="{{memberCareTrackMedicationLabel}}" tooltipPosition="left">
+                    {{memberCareTrackMedication}}
+                </div>
+
+                <div class="line-item" *ngIf="memberCareTrack !== null">
+                    {{memberCareTrackLabel}}:<span class="field-value">{{memberCareTrack}}</span>
+                </div>
+
+                <div class="line-item" *ngIf="memberCondition !== null">
+                    {{memberConditionLabel}}:<span class="field-value">{{memberCondition}}</span>
+                </div>
+            </div>
+
+            <div class="member-section" style="margin-top:10px;"
+                    *ngIf="generalFields !== null && generalFields.length > 0">            
+                <ul *ngFor="let field of generalFields">                    
+                    <div style="padding-bottom:6px;">
+                        {{field.displayLabel}}: <span class="field-value">{{field.displayValue}}</span>
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <p-footer>
+        <button pButton type="button" (click)="onContinue()" label="Continue" class="getnext-begin-button" id="continueGetNextItemButton"></button>
+        <button pButton type="button" (click)="onNoContact()" label="No Contact" class="getnext-begin-button" id="noContactGetNextItemButton" style="margin-right:15px;"></button>
+    </p-footer>
+</p-dialog>
